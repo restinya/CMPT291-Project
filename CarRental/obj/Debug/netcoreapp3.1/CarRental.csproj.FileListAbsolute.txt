@@ -13,3 +13,4 @@ A:\Google Drive\Macewan Documents\2020-2021\Spring Term 2021\CMPT291\Project\Car
 A:\Google Drive\Macewan Documents\2020-2021\Spring Term 2021\CMPT291\Project\CarRental\obj\Debug\netcoreapp3.1\CarRental.dll
 A:\Google Drive\Macewan Documents\2020-2021\Spring Term 2021\CMPT291\Project\CarRental\obj\Debug\netcoreapp3.1\CarRental.pdb
 A:\Google Drive\Macewan Documents\2020-2021\Spring Term 2021\CMPT291\Project\CarRental\obj\Debug\netcoreapp3.1\CarRental.genruntimeconfig.cache
+A:\Google Drive\Macewan Documents\2020-2021\Spring Term 2021\CMPT291\Project\CarRental\obj\Debug\netcoreapp3.1\CarRental.Properties.Resources.resources

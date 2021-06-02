@@ -21,8 +21,11 @@ namespace CarRental
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Employee View of Car Records
             ListOfCars.Items.Add(String.Format(carDetails, "ID", "Firstname", "Surname", "Course", "Year", "Full/PartTime"));
+            
         }
+        
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -60,6 +63,16 @@ namespace CarRental
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
         {
 
         }
