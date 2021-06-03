@@ -35,6 +35,7 @@ namespace CarRental
             int selectedIndex = userSelectBox.SelectedIndex;
 
             // if Employee is selected
+            // when Employee specific screen is ready, change Selection below to the name of the corresponding form
             if (selectedIndex == 1)
             {
                 this.Hide();
