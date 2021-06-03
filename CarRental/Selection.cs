@@ -38,5 +38,12 @@ namespace CarRental
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Cars c1 = new Cars();
+            c1.ShowDialog();
+        }
     }
 }
