@@ -83,6 +83,16 @@ namespace CarRental.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IntermediateSUV {
+            get {
+                object obj = ResourceManager.GetObject("IntermediateSUV", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StandardSUV {
             get {
                 object obj = ResourceManager.GetObject("StandardSUV", resourceCulture);

@@ -39,8 +39,8 @@ namespace CarRental
             if (selectedIndex == 1)
             {
                 this.Hide();
-                Selection s1 = new Selection();
-                s1.ShowDialog();
+                EmployeeCars e1 = new EmployeeCars();
+                e1.ShowDialog();
             };
             
             // if Customer is Selected

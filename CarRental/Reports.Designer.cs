@@ -30,6 +30,8 @@ namespace CarRental
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -37,13 +39,13 @@ namespace CarRental
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.comboBox4);
             this.groupBox1.Controls.Add(this.richTextBox1);
             this.groupBox1.Controls.Add(this.button2);
@@ -58,6 +60,24 @@ namespace CarRental
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(7, 110);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 23);
+            this.comboBox4.TabIndex = 8;
+            this.comboBox4.Text = "Search Property 2";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.AccessibleName = "StatsTextBox";
+            this.richTextBox1.Location = new System.Drawing.Point(6, 197);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(355, 189);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "Stats Text Box";
             // 
             // button2
             // 
@@ -118,23 +138,15 @@ namespace CarRental
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // richTextBox1
+            // button3
             // 
-            this.richTextBox1.AccessibleName = "StatsTextBox";
-            this.richTextBox1.Location = new System.Drawing.Point(6, 197);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(355, 189);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "Stats Text Box";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(7, 110);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 23);
-            this.comboBox4.TabIndex = 8;
-            this.comboBox4.Text = "Search Property 2";
+            this.button3.Location = new System.Drawing.Point(6, 392);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Back";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Reports
             // 
@@ -161,5 +173,6 @@ namespace CarRental
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button3;
     }
 }
