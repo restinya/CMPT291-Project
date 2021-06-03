@@ -32,13 +32,27 @@ namespace CarRental
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Selection s1 = new Selection();
-            s1.ShowDialog();
-            if (userSelectBox.SelectedValue.ToString() == "Employee")
+            int selectedIndex = userSelectBox.SelectedIndex;
+
+            // if Employee is selected
+            // when Employee specific screen is ready, change Selection below to the name of the corresponding form
+            if (selectedIndex == 1)
             {
-                MessageBox.Show("It works!!");
-            }
+                this.Hide();
+                Selection s1 = new Selection();
+                s1.ShowDialog();
+            };
+            
+            // if Customer is Selected
+            if (selectedIndex == 0)
+            {
+                this.Hide();
+                Selection s1 = new Selection();
+                s1.ShowDialog();
+            };
+
+
+
         }
     }
 }
