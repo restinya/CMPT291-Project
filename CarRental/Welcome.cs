@@ -35,6 +35,10 @@ namespace CarRental
             this.Hide();
             Selection s1 = new Selection();
             s1.ShowDialog();
+            if (userSelectBox.SelectedValue.ToString() == "Employee")
+            {
+                MessageBox.Show("It works!!");
+            }
         }
     }
 }

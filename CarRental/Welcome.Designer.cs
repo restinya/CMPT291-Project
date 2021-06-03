@@ -33,7 +33,7 @@ namespace CarRental
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.userSelectBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -77,17 +77,17 @@ namespace CarRental
             this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 3;
             // 
-            // comboBox1
+            // userSelectBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.userSelectBox.FormattingEnabled = true;
+            this.userSelectBox.Items.AddRange(new object[] {
             "Customer",
             "Employee"});
-            this.comboBox1.Location = new System.Drawing.Point(116, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.userSelectBox.Location = new System.Drawing.Point(116, 102);
+            this.userSelectBox.Name = "userSelectBox";
+            this.userSelectBox.Size = new System.Drawing.Size(121, 23);
+            this.userSelectBox.TabIndex = 4;
+            this.userSelectBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -123,7 +123,7 @@ namespace CarRental
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.userSelectBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -141,7 +141,7 @@ namespace CarRental
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox userSelectBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
