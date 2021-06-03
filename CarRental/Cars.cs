@@ -21,8 +21,7 @@ namespace CarRental
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Employee View of Car Records
-            ListOfCars.Items.Add(String.Format(carDetails, "ID", "Firstname", "Surname", "Course", "Year", "Full/PartTime"));
+            
             
         }
         
@@ -75,6 +74,13 @@ namespace CarRental
         private void label25_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Selection s1 = new Selection();
+            s1.ShowDialog();
         }
     }
 }
