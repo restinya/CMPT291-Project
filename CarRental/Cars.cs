@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace CarRental
 {
-    public partial class Form1 : Form
+    public partial class Cars : Form
     {
         String carDetails = "{0, -10}{1, -20}{2, -20}{3, -20}{4, -20}{5, -16}";
 
-        public Form1()
+        public Cars()
         {
             InitializeComponent();
         }
