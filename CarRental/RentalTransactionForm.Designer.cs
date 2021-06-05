@@ -30,15 +30,19 @@ namespace CarRental
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.PickUpDate2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.ExpectedDate2 = new System.Windows.Forms.ComboBox();
+            this.RequestedClass2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.Membership2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.PickUpDate = new System.Windows.Forms.TextBox();
+            this.ExpectedDate = new System.Windows.Forms.TextBox();
+            this.RequestedClass = new System.Windows.Forms.TextBox();
+            this.Membership = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,13 +54,13 @@ namespace CarRental
             this.label1.TabIndex = 0;
             this.label1.Text = "Pick Up Date";
             // 
-            // comboBox1
+            // PickUpDate2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 1;
+            this.PickUpDate2.FormattingEnabled = true;
+            this.PickUpDate2.Location = new System.Drawing.Point(191, 38);
+            this.PickUpDate2.Name = "PickUpDate2";
+            this.PickUpDate2.Size = new System.Drawing.Size(121, 23);
+            this.PickUpDate2.TabIndex = 1;
             // 
             // label2
             // 
@@ -76,22 +80,22 @@ namespace CarRental
             this.label3.TabIndex = 3;
             this.label3.Text = "Expected Return Date";
             // 
-            // comboBox2
+            // ExpectedDate2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(12, 92);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 4;
+            this.ExpectedDate2.FormattingEnabled = true;
+            this.ExpectedDate2.Location = new System.Drawing.Point(191, 91);
+            this.ExpectedDate2.Name = "ExpectedDate2";
+            this.ExpectedDate2.Size = new System.Drawing.Size(121, 23);
+            this.ExpectedDate2.TabIndex = 4;
             // 
-            // comboBox3
+            // RequestedClass2
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(9, 147);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 23);
-            this.comboBox3.TabIndex = 6;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.RequestedClass2.FormattingEnabled = true;
+            this.RequestedClass2.Location = new System.Drawing.Point(191, 147);
+            this.RequestedClass2.Name = "RequestedClass2";
+            this.RequestedClass2.Size = new System.Drawing.Size(121, 23);
+            this.RequestedClass2.TabIndex = 6;
+            this.RequestedClass2.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -103,13 +107,13 @@ namespace CarRental
             this.label4.Text = "Requested Vehicle Class";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // comboBox4
+            // Membership2
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(10, 213);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 23);
-            this.comboBox4.TabIndex = 8;
+            this.Membership2.FormattingEnabled = true;
+            this.Membership2.Location = new System.Drawing.Point(191, 211);
+            this.Membership2.Name = "Membership2";
+            this.Membership2.Size = new System.Drawing.Size(121, 23);
+            this.Membership2.TabIndex = 8;
             // 
             // label5
             // 
@@ -130,20 +134,52 @@ namespace CarRental
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // PickUpDate
+            // 
+            this.PickUpDate.Location = new System.Drawing.Point(13, 38);
+            this.PickUpDate.Name = "PickUpDate";
+            this.PickUpDate.Size = new System.Drawing.Size(119, 23);
+            this.PickUpDate.TabIndex = 10;
+            // 
+            // ExpectedDate
+            // 
+            this.ExpectedDate.Location = new System.Drawing.Point(13, 92);
+            this.ExpectedDate.Name = "ExpectedDate";
+            this.ExpectedDate.Size = new System.Drawing.Size(119, 23);
+            this.ExpectedDate.TabIndex = 11;
+            // 
+            // RequestedClass
+            // 
+            this.RequestedClass.Location = new System.Drawing.Point(13, 147);
+            this.RequestedClass.Name = "RequestedClass";
+            this.RequestedClass.Size = new System.Drawing.Size(119, 23);
+            this.RequestedClass.TabIndex = 12;
+            // 
+            // Membership
+            // 
+            this.Membership.Location = new System.Drawing.Point(13, 211);
+            this.Membership.Name = "Membership";
+            this.Membership.Size = new System.Drawing.Size(119, 23);
+            this.Membership.TabIndex = 13;
+            // 
             // RentalTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 377);
+            this.Controls.Add(this.Membership);
+            this.Controls.Add(this.RequestedClass);
+            this.Controls.Add(this.ExpectedDate);
+            this.Controls.Add(this.PickUpDate);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.Membership2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.RequestedClass2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.ExpectedDate2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.PickUpDate2);
             this.Controls.Add(this.label1);
             this.Name = "RentalTransactionForm";
             this.Text = "RentalTransactionForm";
@@ -155,14 +191,18 @@ namespace CarRental
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox PickUpDate2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox ExpectedDate2;
+        private System.Windows.Forms.ComboBox RequestedClass2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox Membership2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox PickUpDate;
+        private System.Windows.Forms.TextBox ExpectedDate;
+        private System.Windows.Forms.TextBox RequestedClass;
+        private System.Windows.Forms.TextBox Membership;
     }
 }

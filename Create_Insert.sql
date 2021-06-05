@@ -1,9 +1,14 @@
 use [CarRental];
 
-drop table WorkIn;
-drop table Project;
+drop table Rental;
 drop table Employee;
-drop table Department;
+drop table PhoneNum;
+drop table Car;
+drop table Test;
+drop table Branch;
+drop table Customer;
+drop table CarType;
+
 
 /* Creating Branch table*/
 create table Branch(
@@ -51,7 +56,7 @@ create table CarType(
 	changeBranch int
 );
 
-/*Creating Customer Phone Num table*/
+/*Creating Customer PhoneNum table*/
 create table PhoneNum(
 	customerID int primary key,
 	phoneNum int,
@@ -96,4 +101,12 @@ create table Rental(
 	foreign key(carID) references Car(carID),
 	foreign key(pickUpBranchID) references Branch(branchID),
 	foreign key(returnBranchID) references Branch(branchID)
+);
+
+create table Test(
+	rentalID varchar(10) primary key, 
+	pickUpDate varchar(10),
+	expectedDate varchar(10),
+	requestedClass varchar(10),
+	goldMember varchar(10)
 );

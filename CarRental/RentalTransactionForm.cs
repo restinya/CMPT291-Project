@@ -51,10 +51,25 @@ namespace CarRental
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            String pickUpDate, expectedDate, requestedClass, goldMember;
 
-            MessageBox.Show(e.ToString(), "Successfully added to ");
-            this.Close();
+            pickUpDate = PickUpDate2.Text;
+            expectedDate = ExpectedDate2.Text;
+            requestedClass = RequestedClass2.Text;
+            goldMember = Membership2.Text;
+
+            try
+            {
+                myCommand.CommandText = "insert into Test values (" + "001," + PickUpDate.Text + ", " + ExpectedDate.Text + ", " + RequestedClass.Text + ", "  + Membership.Text + ")";
+                MessageBox.Show(myCommand.CommandText);
+
+                myCommand.ExecuteNonQuery();
+            }
+
+            catch (Exception e2) 
+            {
+                MessageBox.Show(e2.ToString(), "Error");
+            }
 
             this.Hide();
             EmployeeCars e1 = new EmployeeCars();
