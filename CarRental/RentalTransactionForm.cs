@@ -15,8 +15,17 @@ namespace CarRental
         public SqlCommand myCommand;
         public SqlDataReader myReader;
 
-        public ConnectionState()
+        public RentalTransactionForm()
         {
+            InitializeComponent();
+
+            SqlConnection myConnection = new SqlConnection("user id=admin291;" +
+                                        "password=cmpt291;" +
+                                        "server=localhost;" +
+                                        "database=CarRental; " +
+                                        "connection timeout=30");
+
+
             try
             {
                 myConnection.Open();
@@ -28,11 +37,6 @@ namespace CarRental
                 MessageBox.Show(e.ToString(), "Error");
                 this.Close();
             }
-        }
-
-        public RentalTransactionForm()
-        {
-            InitializeComponent();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -47,6 +51,7 @@ namespace CarRental
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
 
             MessageBox.Show(e.ToString(), "Successfully added to ");
             this.Close();
