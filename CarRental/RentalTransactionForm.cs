@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,25 @@ namespace CarRental
 {
     public partial class RentalTransactionForm : Form
     {
+        public SqlConnection myConnection;
+        public SqlCommand myCommand;
+        public SqlDataReader myReader;
+
+        public ConnectionState()
+        {
+            try
+            {
+                myConnection.Open();
+                myCommand = new SqlCommand();
+                myCommand.Connection = myConnection;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error");
+                this.Close();
+            }
+        }
+
         public RentalTransactionForm()
         {
             InitializeComponent();
@@ -27,6 +47,10 @@ namespace CarRental
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            MessageBox.Show(e.ToString(), "Successfully added to ");
+            this.Close();
+
             this.Hide();
             EmployeeCars e1 = new EmployeeCars();
             e1.ShowDialog();
