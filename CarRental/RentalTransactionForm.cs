@@ -25,7 +25,6 @@ namespace CarRental
                                         "database=CarRental; " +
                                         "connection timeout=30");
 
-
             try
             {
                 myConnection.Open();
@@ -60,9 +59,9 @@ namespace CarRental
 
             try
             {
-                myCommand.CommandText = "insert into Test values (" + "001," + PickUpDate.Text + ", " + ExpectedDate.Text + ", " + RequestedClass.Text + ", "  + Membership.Text + ")";
-                MessageBox.Show(myCommand.CommandText);
+                myCommand.CommandText = "insert into Test values (" + "001,'" + PickUpDate.Text + "','" + ExpectedDate.Text + "','" + RequestedClass.Text + "','"  + Membership.Text.ToString() + "')";
 
+                MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
             }
 

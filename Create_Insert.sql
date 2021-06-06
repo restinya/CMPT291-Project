@@ -104,7 +104,7 @@ create table Rental(
 );
 
 create table Test(
-	rentalID varchar(10) primary key, 
+	rentalID int primary key, 
 	pickUpDate varchar(10),
 	expectedDate varchar(10),
 	requestedClass varchar(10),
