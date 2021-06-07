@@ -52,10 +52,10 @@ namespace CarRental
         {
             try
             {
-                myCommand.CommandText = "insert into Rental values (" + "001,NULL,NULL" + "," + "NULL,NULL,NULL,NULL," + 
+                myCommand.CommandText = "insert into Rental values (" + "001,'" + pickUpDate.Text + "','" + expectedDate.Text +
+                                        "'," + "NULL,NULL,NULL,NULL," + 
                                         customerID.Text + ","  + empID.Text + ",NULL," 
-                                         + carID.Text + "," + pickUpBranch.Text + ",NULL" + 
-                                        ")";
+                                         + carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
 
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
@@ -76,7 +76,9 @@ namespace CarRental
             try
             {
                 
-                myCommand.CommandText = "insert into Customer values (" + "001,'" + fName.Text + "','" + lName.Text + "',NULL,'" + city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "',NULL" + ")";
+                myCommand.CommandText = "insert into Customer values (" + "001,'" + fName.Text + "','" + lName.Text + "',NULL,'" + 
+                                            city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "','" + 
+                                            dateOfBirth.Text + "')";
 
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();

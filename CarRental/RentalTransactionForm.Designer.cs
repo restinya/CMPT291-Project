@@ -297,7 +297,7 @@ namespace CarRental
             // 
             // dateOfBirth
             // 
-            this.dateOfBirth.CustomFormat = "YYYYMMDD";
+            this.dateOfBirth.CustomFormat = "";
             this.dateOfBirth.Location = new System.Drawing.Point(23, 321);
             this.dateOfBirth.Name = "dateOfBirth";
             this.dateOfBirth.Size = new System.Drawing.Size(200, 23);
