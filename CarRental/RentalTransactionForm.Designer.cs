@@ -40,7 +40,6 @@ namespace CarRental
             this.label5 = new System.Windows.Forms.Label();
             this.pickUpBranch = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.carID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pickUpDate = new System.Windows.Forms.DateTimePicker();
             this.expectedDate = new System.Windows.Forms.DateTimePicker();
@@ -75,6 +74,7 @@ namespace CarRental
             this.label22 = new System.Windows.Forms.Label();
             this.empID = new System.Windows.Forms.ComboBox();
             this.requestCar = new System.Windows.Forms.GroupBox();
+            this.carID = new System.Windows.Forms.ComboBox();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.SuspendLayout();
@@ -120,9 +120,7 @@ namespace CarRental
             // 
             this.customerID.FormattingEnabled = true;
             this.customerID.Items.AddRange(new object[] {
-            "001",
-            "002",
-            "003"});
+            "001"});
             this.customerID.Location = new System.Drawing.Point(24, 48);
             this.customerID.Name = "customerID";
             this.customerID.Size = new System.Drawing.Size(121, 23);
@@ -169,10 +167,7 @@ namespace CarRental
             // 
             this.pickUpBranch.FormattingEnabled = true;
             this.pickUpBranch.Items.AddRange(new object[] {
-            "001",
-            "002",
-            "003",
-            "004"});
+            "001"});
             this.pickUpBranch.Location = new System.Drawing.Point(27, 154);
             this.pickUpBranch.Name = "pickUpBranch";
             this.pickUpBranch.Size = new System.Drawing.Size(121, 23);
@@ -186,13 +181,6 @@ namespace CarRental
             this.label8.Size = new System.Drawing.Size(39, 15);
             this.label8.TabIndex = 25;
             this.label8.Text = "Car ID";
-            // 
-            // carID
-            // 
-            this.carID.Location = new System.Drawing.Point(25, 215);
-            this.carID.Name = "carID";
-            this.carID.Size = new System.Drawing.Size(100, 23);
-            this.carID.TabIndex = 26;
             // 
             // label9
             // 
@@ -500,11 +488,7 @@ namespace CarRental
             // 
             this.empID.FormattingEnabled = true;
             this.empID.Items.AddRange(new object[] {
-            "001",
-            "002",
-            "003",
-            "004",
-            "005"});
+            "001"});
             this.empID.Location = new System.Drawing.Point(25, 386);
             this.empID.Name = "empID";
             this.empID.Size = new System.Drawing.Size(121, 23);
@@ -521,11 +505,22 @@ namespace CarRental
             this.requestCar.TabStop = false;
             this.requestCar.Visible = false;
             // 
+            // carID
+            // 
+            this.carID.FormattingEnabled = true;
+            this.carID.Items.AddRange(new object[] {
+            "001"});
+            this.carID.Location = new System.Drawing.Point(27, 214);
+            this.carID.Name = "carID";
+            this.carID.Size = new System.Drawing.Size(121, 23);
+            this.carID.TabIndex = 41;
+            // 
             // RentalTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 577);
+            this.Controls.Add(this.carID);
             this.Controls.Add(this.requestCar);
             this.Controls.Add(this.empID);
             this.Controls.Add(this.label22);
@@ -538,7 +533,6 @@ namespace CarRental
             this.Controls.Add(this.radioButtonYes);
             this.Controls.Add(this.expectedDate);
             this.Controls.Add(this.pickUpDate);
-            this.Controls.Add(this.carID);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pickUpBranch);
             this.Controls.Add(this.label5);
@@ -605,9 +599,9 @@ namespace CarRental
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox empID;
-        private System.Windows.Forms.TextBox carID;
         private System.Windows.Forms.DateTimePicker dateOfBirth;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox requestCar;
+        private System.Windows.Forms.ComboBox carID;
     }
 }
