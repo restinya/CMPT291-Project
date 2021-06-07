@@ -60,7 +60,7 @@ create table CarType(
 /*Creating Customer PhoneNum table*/
 create table PhoneNum(
 	customerID int primary key,
-	phoneNum int,
+	phoneNum varchar(10),
 	foreign key(customerID) references Customer(customerID)
 );
 

@@ -114,6 +114,7 @@ namespace CarRental
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            String custID = "sample";
             try
             {
                 
@@ -127,10 +128,23 @@ namespace CarRental
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    MessageBox.Show("Customer ID " + myReader["customerID"].ToString() + " is created.");
+                    custID = myReader["customerID"].ToString();
+                    MessageBox.Show("Customer ID " + custID + " is created.");
+                    
                 }
                 myReader.Close();
-                
+
+                //Create records for customer phone number table
+                if (homeNum.Text != "")
+                {
+                    myCommand.CommandText = "insert into PhoneNum values (" + custID + ",'" + homeNum.Text +  "')";
+                    myCommand.ExecuteNonQuery();
+                }
+                if (mobileNum.Text != "")
+                {
+                    myCommand.CommandText = "insert into PhoneNum values (" + custID + ",'" + mobileNum.Text + "')";
+                    myCommand.ExecuteNonQuery();
+                }
             }
 
             catch (Exception e2)
