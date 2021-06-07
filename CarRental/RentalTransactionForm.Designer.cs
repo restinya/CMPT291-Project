@@ -236,6 +236,7 @@ namespace CarRental
             this.calculateButton.TabIndex = 32;
             this.calculateButton.Text = "Calculate Estimated Cost";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // result
             // 

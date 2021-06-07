@@ -93,8 +93,8 @@ namespace CarRental
         {
             try
             {
-                myCommand.CommandText = "insert into Rental values (" + "001,'" + pickUpDate.Text + "','" + expectedDate.Text +
-                                        "'," + "NULL,NULL,NULL,NULL," + 
+                myCommand.CommandText = "insert into Rental values ('" + pickUpDate.Text + "','" + expectedDate.Text +
+                                        "'," + "NULL,NULL," + result.Text + ",NULL," + 
                                         customerID.Text + ","  + empID.Text + ",NULL," 
                                          + carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
 
@@ -206,7 +206,6 @@ namespace CarRental
             myCommand.CommandText = "select customerID from Customer";
             try
             {
-                MessageBox.Show(myCommand.CommandText);
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -219,6 +218,59 @@ namespace CarRental
                 MessageBox.Show(e3.ToString(), "Error");
             }
             
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            //Initialize variables
+            float dayPricing = 20;
+            float weekPricing = 50;
+            float monthPricing = 80;
+            float estimatedCost = 100;
+
+            //Retrieve pricing for cartype selected
+            myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + carID.Text;
+            try
+            {
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    dayPricing = Convert.ToSingle(myReader["dailyPricing"]);
+                    weekPricing = Convert.ToSingle(myReader["weeklyPricing"]);
+                    monthPricing = Convert.ToSingle(myReader["monthlyPricing"]);
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+
+            //Calculate estimatedCost
+            int days = (expectedDate.Value - pickUpDate.Value).Days + 1;
+            if (days < 7)
+            {
+                estimatedCost = days * dayPricing;
+            }
+            if (days >= 7 & days < 30)
+            {
+                int weeks = days / 7;
+                int leftDays = days - (weeks * 7);
+                estimatedCost = (weeks * weekPricing) + (leftDays * dayPricing);
+            }
+            if (days >= 30)
+            {
+                int months = days / 30;
+                int leftDays = days - (months * 30);
+                int weeks = 0;
+                if (leftDays > 7)
+                {
+                    weeks = leftDays / 7;
+                    leftDays = leftDays - (weeks * 7);
+                }
+                estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
+            }
+            result.Text = estimatedCost.ToString();
         }
     }
 }
