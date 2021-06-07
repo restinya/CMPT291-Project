@@ -36,6 +36,22 @@ namespace CarRental
                 MessageBox.Show(e.ToString(), "Error");
                 this.Close();
             }
+
+            myCommand.CommandText = "select customerID from Customer";
+            try
+            {
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -88,6 +104,22 @@ namespace CarRental
             {
                 MessageBox.Show(e2.ToString(), "Error");
             }
+
+            try
+            {
+                customerID.Items.Clear();
+                myCommand.CommandText = "select customerID from Customer";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
         }
 
         private void checkBoxCustomer_CheckedChanged(object sender, EventArgs e)
@@ -120,6 +152,26 @@ namespace CarRental
             {
                 requestCar.Visible = false;
             }
+        }
+
+        private void customerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select customerID from Customer";
+            try
+            {
+                MessageBox.Show(myCommand.CommandText);
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+            
         }
     }
 }

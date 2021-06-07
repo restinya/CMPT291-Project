@@ -119,12 +119,11 @@ namespace CarRental
             // customerID
             // 
             this.customerID.FormattingEnabled = true;
-            this.customerID.Items.AddRange(new object[] {
-            "001"});
             this.customerID.Location = new System.Drawing.Point(24, 48);
             this.customerID.Name = "customerID";
             this.customerID.Size = new System.Drawing.Size(121, 23);
             this.customerID.TabIndex = 15;
+            this.customerID.SelectedIndexChanged += new System.EventHandler(this.customerID_SelectedIndexChanged);
             // 
             // checkBoxCustomer
             // 
