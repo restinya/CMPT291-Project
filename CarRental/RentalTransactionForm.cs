@@ -63,6 +63,14 @@ namespace CarRental
                     carID.Items.Add(myReader["carID"].ToString());
                 }
                 myReader.Close();
+                //Retrieving carTypeIDs
+                myCommand.CommandText = "select carTypeID from CarType";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    requestedClass.Items.Add(myReader["carTypeID"].ToString());
+                }
+                myReader.Close();
                 //Retrieving employeeIDs
                 myCommand.CommandText = "select empID from Employee";
                 myReader = myCommand.ExecuteReader();
@@ -94,9 +102,19 @@ namespace CarRental
             try
             {
                 myCommand.CommandText = "insert into Rental values ('" + pickUpDate.Text + "','" + expectedDate.Text +
-                                        "'," + "NULL,NULL," + result.Text + ",NULL," + 
-                                        customerID.Text + ","  + empID.Text + ",NULL," 
-                                         + carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
+                                        "'," + "NULL,NULL," + result.Text + ",NULL," +
+                                        customerID.Text + "," + empID.Text;
+                //if else statement to check if gold member or not
+                if (requestedClass.Text == "")
+                {
+                    myCommand.CommandText += ",NULL,";
+                }
+                else
+                {
+                    myCommand.CommandText += "," + requestedClass.Text + ",";
+                }
+                //continue rest of command text
+                myCommand.CommandText += carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
 
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
