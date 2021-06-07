@@ -55,8 +55,8 @@ namespace CarRental
                     pickUpBranch.Items.Add(myReader["branchID"].ToString());
                 }
                 myReader.Close();
-                //Retrieving carIDs
-                myCommand.CommandText = "select carID from Car";
+                //Retrieving available carIDs based on branchID selected
+                myCommand.CommandText = "select carID from Car, Branch where Car.branchID = Branch.branchID and Car.carID not in (select carID from Rental)";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -104,7 +104,7 @@ namespace CarRental
 
             catch (Exception e2) 
             {
-                MessageBox.Show(e2.ToString(), "Error");
+                MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
             }
 
             this.Hide();
@@ -149,7 +149,7 @@ namespace CarRental
 
             catch (Exception e2)
             {
-                MessageBox.Show(e2.ToString(), "Error");
+                MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
             }
 
             try
@@ -228,10 +228,10 @@ namespace CarRental
             float monthPricing = 80;
             float estimatedCost = 100;
 
-            //Retrieve pricing for cartype selected
-            myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + carID.Text;
+            //Retrieve pricing for cartype selecteD
             try
             {
+                myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + carID.Text;
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -243,7 +243,7 @@ namespace CarRental
             }
             catch (Exception e3)
             {
-                MessageBox.Show(e3.ToString(), "Error");
+                MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
             }
 
             //Calculate estimatedCost
