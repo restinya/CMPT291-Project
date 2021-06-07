@@ -40,6 +40,7 @@ create table Customer(
 	lName varchar(12),
 	goldMember bit,
 	city varchar(10), 
+	state varchar(10),
 	street  varchar(10),
 	postalCode nvarchar(6), 
 	dateOfBirth date
