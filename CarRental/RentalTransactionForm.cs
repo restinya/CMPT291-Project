@@ -37,13 +37,38 @@ namespace CarRental
                 this.Close();
             }
 
-            myCommand.CommandText = "select customerID from Customer";
             try
             {
+                //Retrieving customerIDs
+                myCommand.CommandText = "select customerID from Customer";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
                     customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving branchIDs
+                myCommand.CommandText = "select branchID from Branch";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    pickUpBranch.Items.Add(myReader["branchID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving carIDs
+                myCommand.CommandText = "select carID from Car";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    carID.Items.Add(myReader["carID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving employeeIDs
+                myCommand.CommandText = "select empID from Employee";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    empID.Items.Add(myReader["empID"].ToString());
                 }
                 myReader.Close();
             }

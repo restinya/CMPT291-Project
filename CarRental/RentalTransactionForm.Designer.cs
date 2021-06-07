@@ -165,8 +165,6 @@ namespace CarRental
             // pickUpBranch
             // 
             this.pickUpBranch.FormattingEnabled = true;
-            this.pickUpBranch.Items.AddRange(new object[] {
-            "001"});
             this.pickUpBranch.Location = new System.Drawing.Point(27, 154);
             this.pickUpBranch.Name = "pickUpBranch";
             this.pickUpBranch.Size = new System.Drawing.Size(121, 23);
@@ -486,8 +484,6 @@ namespace CarRental
             // empID
             // 
             this.empID.FormattingEnabled = true;
-            this.empID.Items.AddRange(new object[] {
-            "001"});
             this.empID.Location = new System.Drawing.Point(25, 386);
             this.empID.Name = "empID";
             this.empID.Size = new System.Drawing.Size(121, 23);
@@ -507,8 +503,6 @@ namespace CarRental
             // carID
             // 
             this.carID.FormattingEnabled = true;
-            this.carID.Items.AddRange(new object[] {
-            "001"});
             this.carID.Location = new System.Drawing.Point(27, 214);
             this.carID.Name = "carID";
             this.carID.Size = new System.Drawing.Size(121, 23);
