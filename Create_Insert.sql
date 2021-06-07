@@ -35,26 +35,26 @@ create table Employee(
 
 /* Creating Customer table*/
 create table Customer(
-	customerID int primary key, 
+	customerID int PRIMARY KEY,
 	fName varchar(10), 
 	lName varchar(12),
 	goldMember bit,
 	city varchar(10), 
 	[state] varchar(10),
 	street  varchar(10),
-	postalCode nvarchar(6), 
-	dateOfBirth date
+	postalCode varchar(6), 
+	dateOfBirth date,
 );
 
 /* Creating CarType table*/
 create table CarType(
 	carTypeID int primary key, 
 	carClass varchar(20),
-	dailyPricing int,
-	weeklyPricing int,
-	monthlyPricing int,
-	lateFee int,
-	changeBranch int
+	dailyPricing float,
+	weeklyPricing float,
+	monthlyPricing float,
+	lateFee float,
+	changeBranch float
 );
 
 /*Creating Customer PhoneNum table*/
@@ -67,8 +67,8 @@ create table PhoneNum(
 /* Creating Cars table*/
 create table Car(
 	carID int primary key, 
-	licensePlate nvarchar(6),
-	status varchar(10),
+	licensePlate varchar(6),
+	[status] varchar(10),
 	currentMileage int,
 	transmissionType varchar(10),
 	seats int,

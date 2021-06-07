@@ -155,6 +155,7 @@ namespace CarRental
             this.returnLocation.Size = new System.Drawing.Size(121, 23);
             this.returnLocation.TabIndex = 9;
             this.returnLocation.Visible = false;
+            this.returnLocation.SelectedIndexChanged += new System.EventHandler(this.returnLocation_SelectedIndexChanged);
             // 
             // returnLocLabel
             // 

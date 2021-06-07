@@ -52,5 +52,10 @@ namespace CarRental
             Welcome w1 = new Welcome();
             w1.ShowDialog();
         }
+
+        private void returnLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
