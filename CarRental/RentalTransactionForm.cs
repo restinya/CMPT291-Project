@@ -52,6 +52,12 @@ namespace CarRental
         {
             try
             {
+                //Insert dummy values for branch, car type, car and employee
+                myCommand.CommandText = "insert into Branch values (001, 'Edmonton', 'Edmonton', 'Millwoods', T6L5M5, 7806049803)";
+                myCommand.CommandText = "insert into CarType values (001, 'Intermediate SUV', 56.60, 250.50, 800.25, 25.00, 25.00)";
+                myCommand.CommandText = "insert into Car values (001, 'BXN2267', 'Available', 95000, 'Automatic', 5, 2020, 'Toyota', 'RAV4', 001, 001";
+                myCommand.CommandText = "insert into Employee values (001, 'Edmonton', 'Edmonton', 'Millwoods', T6L5M5, 7806049803)";
+
                 myCommand.CommandText = "insert into Rental values (" + "001,NULL,NULL" + "," + "NULL,NULL,NULL,NULL," + 
                                         customerID.Text + ","  + empID.Text + ",NULL," 
                                          + carID.Text + "," + pickUpBranch.Text + ",NULL" + 
@@ -75,6 +81,7 @@ namespace CarRental
         {
             try
             {
+                
                 myCommand.CommandText = "insert into Customer values (" + "004,'" + fName.Text + "','" + lName.Text + "',NULL,'" + city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "',NULL" + ")";
 
                 MessageBox.Show(myCommand.CommandText);

@@ -15,9 +15,9 @@ create table Branch(
 	branchID int primary key, 
 	branchName varchar(15), 
 	city varchar(10), 
-	street  varchar(10),
-	postalCode nvarchar(6), 
-	phoneNum int
+	street  varchar(20),
+	postalCode varchar(10), 
+	phoneNum varchar(10),
 );
 
 /* Creating Employees table*/
@@ -26,9 +26,9 @@ create table Employee(
 	fName	varchar(10),
 	lName   varchar(12),
 	city    varchar(10),
-	street  varchar(10),
-	postalCode nvarchar(6),
-	phoneNum int,
+	street  varchar(20),
+	postalCode varchar(10),
+	phoneNum varchar(10),
 	branchID int,
 	foreign key(branchID) references Branch(branchID)
 );
@@ -41,7 +41,7 @@ create table Customer(
 	goldMember bit,
 	city varchar(10), 
 	[state] varchar(10),
-	street  varchar(10),
+	street  varchar(20),
 	postalCode varchar(6), 
 	dateOfBirth date,
 );
@@ -67,7 +67,7 @@ create table PhoneNum(
 /* Creating Cars table*/
 create table Car(
 	carID int primary key, 
-	licensePlate varchar(6),
+	licensePlate varchar(10),
 	[status] varchar(10),
 	currentMileage int,
 	transmissionType varchar(10),
@@ -111,3 +111,8 @@ create table Test(
 	requestedClass varchar(10),
 	goldMember varchar(10)
 );
+
+insert into Branch values (1, 'Edmonton', 'Edmonton', 'Millwoods', 'T6L5M5', '7806049803');
+insert into CarType values (1, 'Intermediate SUV', 56.60, 250.50, 800.25, 25.00, 25.00);
+insert into Car values (1, 'BXN2267', 'Available', 95000, 'Automatic', 5, 2020, 'Toyota', 'RAV4', 1, 1);
+insert into Employee values (1, 'Ryan', 'Tran', 'Edmonton', 'Terwilleger', 'T6N7A3', '7805689380', 1);

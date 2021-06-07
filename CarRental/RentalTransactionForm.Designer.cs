@@ -205,6 +205,7 @@ namespace CarRental
             // 
             // pickUpDate
             // 
+            this.pickUpDate.CustomFormat = "YYYYMMDD";
             this.pickUpDate.Location = new System.Drawing.Point(25, 272);
             this.pickUpDate.Name = "pickUpDate";
             this.pickUpDate.Size = new System.Drawing.Size(200, 23);
@@ -212,6 +213,7 @@ namespace CarRental
             // 
             // expectedDate
             // 
+            this.expectedDate.CustomFormat = "YYYYMMDD";
             this.expectedDate.Location = new System.Drawing.Point(25, 332);
             this.expectedDate.Name = "expectedDate";
             this.expectedDate.Size = new System.Drawing.Size(200, 23);
@@ -307,6 +309,7 @@ namespace CarRental
             // 
             // dateOfBirth
             // 
+            this.dateOfBirth.CustomFormat = "YYYYMMDD";
             this.dateOfBirth.Location = new System.Drawing.Point(23, 321);
             this.dateOfBirth.Name = "dateOfBirth";
             this.dateOfBirth.Size = new System.Drawing.Size(200, 23);
