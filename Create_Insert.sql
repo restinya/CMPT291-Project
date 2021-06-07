@@ -40,7 +40,7 @@ create table Customer(
 	lName varchar(12),
 	goldMember bit,
 	city varchar(10), 
-	state varchar(10),
+	[state] varchar(10),
 	street  varchar(10),
 	postalCode nvarchar(6), 
 	dateOfBirth date
@@ -72,7 +72,7 @@ create table Car(
 	currentMileage int,
 	transmissionType varchar(10),
 	seats int,
-	year int,
+	[year] int,
 	make varchar(10),
 	model varchar(10),
 	carTypeID int,
