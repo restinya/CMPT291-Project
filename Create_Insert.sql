@@ -35,7 +35,7 @@ create table Employee(
 
 /* Creating Customer table*/
 create table Customer(
-	customerID int PRIMARY KEY,
+	customerID int IDENTITY(1,1) PRIMARY KEY,
 	fName varchar(10), 
 	lName varchar(12),
 	goldMember bit,
@@ -66,7 +66,7 @@ create table PhoneNum(
 
 /* Creating Cars table*/
 create table Car(
-	carID int primary key, 
+	carID int IDENTITY(1,1) PRIMARY KEY, 
 	licensePlate varchar(10),
 	[status] varchar(10),
 	currentMileage int,
@@ -83,7 +83,7 @@ create table Car(
 
 /* Creating Rental table*/
 create table Rental(
-	rentalID int primary key, 
+	rentalID int IDENTITY(1,1) PRIMARY KEY, 
 	pickUpDate date,
 	expectedDate date,
 	returnDate date,
@@ -114,5 +114,5 @@ create table Test(
 
 insert into Branch values (1, 'Edmonton', 'Edmonton', 'Millwoods', 'T6L5M5', '7806049803');
 insert into CarType values (1, 'Intermediate SUV', 56.60, 250.50, 800.25, 25.00, 25.00);
-insert into Car values (1, 'BXN2267', 'Available', 95000, 'Automatic', 5, 2020, 'Toyota', 'RAV4', 1, 1);
+insert into Car values ('BXN2267', 'Available', 95000, 'Automatic', 5, 2020, 'Toyota', 'RAV4', 1, 1);
 insert into Employee values (1, 'Ryan', 'Tran', 'Edmonton', 'Terwilleger', 'T6N7A3', '7805689380', 1);

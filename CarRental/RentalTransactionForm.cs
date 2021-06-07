@@ -76,7 +76,7 @@ namespace CarRental
             try
             {
                 
-                myCommand.CommandText = "insert into Customer values (" + "001,'" + fName.Text + "','" + lName.Text + "',NULL,'" + 
+                myCommand.CommandText = "insert into Customer values (" + "'" + fName.Text + "','" + lName.Text + "',NULL,'" + 
                                             city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "','" + 
                                             dateOfBirth.Text + "')";
 
