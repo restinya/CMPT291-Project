@@ -15,7 +15,7 @@ create table Branch(
 	branchID int primary key, 
 	branchName varchar(15), 
 	city varchar(10), 
-	street  varchar(20),
+	street  varchar(40),
 	postalCode varchar(10), 
 	phoneNum varchar(10),
 );
@@ -26,7 +26,7 @@ create table Employee(
 	fName	varchar(10),
 	lName   varchar(12),
 	city    varchar(10),
-	street  varchar(20),
+	street  varchar(40),
 	postalCode varchar(10),
 	phoneNum varchar(10),
 	branchID int,
@@ -41,7 +41,7 @@ create table Customer(
 	goldMember bit,
 	city varchar(10), 
 	[state] varchar(10),
-	street  varchar(20),
+	street  varchar(40),
 	postalCode varchar(6), 
 	dateOfBirth date,
 );
