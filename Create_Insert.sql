@@ -112,6 +112,7 @@ create table Test(
 	goldMember varchar(10)
 );
 
+
 insert into Branch values (1, 'Edmonton', 'Edmonton', 'Millwoods', 'T6L5M5', '7806049803');
 insert into CarType values (1, 'Intermediate SUV', 56.60, 250.50, 800.25, 25.00, 25.00);
 insert into Car values ('BXN2267', 'Available', 95000, 'Automatic', 5, 2020, 'Toyota', 'RAV4', 1, 1);

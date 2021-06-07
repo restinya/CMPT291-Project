@@ -120,9 +120,17 @@ namespace CarRental
                 myCommand.CommandText = "insert into Customer values (" + "'" + fName.Text + "','" + lName.Text + "',NULL,'" + 
                                             city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "','" + 
                                             dateOfBirth.Text + "')";
-
-                MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
+
+                //Retrive the newly created customerID
+                myCommand.CommandText = "select customerID from Customer where customerID = (select max(customerID) from Customer)";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    MessageBox.Show("Customer ID " + myReader["customerID"].ToString() + " is created.");
+                }
+                myReader.Close();
+                
             }
 
             catch (Exception e2)
