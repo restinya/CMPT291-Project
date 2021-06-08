@@ -60,7 +60,7 @@ create table CarType(
 /*Creating Customer PhoneNum table*/
 create table PhoneNum(
 	customerID int primary key,
-	phoneNum int,
+	phoneNum varchar(10),
 	foreign key(customerID) references Customer(customerID)
 );
 
@@ -111,6 +111,7 @@ create table Test(
 	requestedClass varchar(10),
 	goldMember varchar(10)
 );
+
 
 insert into Branch values (1, 'Edmonton', 'Edmonton', 'Millwoods', 'T6L5M5', '7806049803');
 insert into CarType values (1, 'Intermediate SUV', 56.60, 250.50, 800.25, 25.00, 25.00);

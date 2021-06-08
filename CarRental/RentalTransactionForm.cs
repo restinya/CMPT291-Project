@@ -36,6 +36,55 @@ namespace CarRental
                 MessageBox.Show(e.ToString(), "Error");
                 this.Close();
             }
+
+            try
+            {
+                //Retrieving customerIDs
+                myCommand.CommandText = "select customerID from Customer";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving branchIDs
+                myCommand.CommandText = "select branchID from Branch";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    pickUpBranch.Items.Add(myReader["branchID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving available carIDs based on branchID selected
+                myCommand.CommandText = "select carID from Car, Branch where Car.branchID = Branch.branchID and Car.carID not in (select carID from Rental)";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    carID.Items.Add(myReader["carID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving carTypeIDs
+                myCommand.CommandText = "select carTypeID from CarType";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    requestedClass.Items.Add(myReader["carTypeID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving employeeIDs
+                myCommand.CommandText = "select empID from Employee";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    empID.Items.Add(myReader["empID"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -52,10 +101,20 @@ namespace CarRental
         {
             try
             {
-                myCommand.CommandText = "insert into Rental values (" + "001,'" + pickUpDate.Text + "','" + expectedDate.Text +
-                                        "'," + "NULL,NULL,NULL,NULL," + 
-                                        customerID.Text + ","  + empID.Text + ",NULL," 
-                                         + carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
+                myCommand.CommandText = "insert into Rental values ('" + pickUpDate.Text + "','" + expectedDate.Text +
+                                        "'," + "NULL,NULL," + result.Text + ",NULL," +
+                                        customerID.Text + "," + empID.Text;
+                //if else statement to check if gold member or not
+                if (requestedClass.Text == "")
+                {
+                    myCommand.CommandText += ",NULL,";
+                }
+                else
+                {
+                    myCommand.CommandText += "," + requestedClass.Text + ",";
+                }
+                //continue rest of command text
+                myCommand.CommandText += carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
 
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
@@ -63,7 +122,7 @@ namespace CarRental
 
             catch (Exception e2) 
             {
-                MessageBox.Show(e2.ToString(), "Error");
+                MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
             }
 
             this.Hide();
@@ -73,20 +132,58 @@ namespace CarRental
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            String custID = "sample";
             try
             {
                 
                 myCommand.CommandText = "insert into Customer values (" + "'" + fName.Text + "','" + lName.Text + "',NULL,'" + 
                                             city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "','" + 
                                             dateOfBirth.Text + "')";
-
-                MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
+
+                //Retrive the newly created customerID
+                myCommand.CommandText = "select customerID from Customer where customerID = (select max(customerID) from Customer)";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    custID = myReader["customerID"].ToString();
+                    MessageBox.Show("Customer ID " + custID + " is created.");
+                    
+                }
+                myReader.Close();
+
+                //Create records for customer phone number table
+                if (homeNum.Text != "")
+                {
+                    myCommand.CommandText = "insert into PhoneNum values (" + custID + ",'" + homeNum.Text +  "')";
+                    myCommand.ExecuteNonQuery();
+                }
+                if (mobileNum.Text != "")
+                {
+                    myCommand.CommandText = "insert into PhoneNum values (" + custID + ",'" + mobileNum.Text + "')";
+                    myCommand.ExecuteNonQuery();
+                }
             }
 
             catch (Exception e2)
             {
-                MessageBox.Show(e2.ToString(), "Error");
+                MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
+            }
+
+            try
+            {
+                customerID.Items.Clear();
+                myCommand.CommandText = "select customerID from Customer";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
             }
         }
 
@@ -120,6 +217,78 @@ namespace CarRental
             {
                 requestCar.Visible = false;
             }
+        }
+
+        private void customerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select customerID from Customer";
+            try
+            {
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+            
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            //Initialize variables
+            float dayPricing = 20;
+            float weekPricing = 50;
+            float monthPricing = 80;
+            float estimatedCost = 100;
+
+            //Retrieve pricing for cartype selecteD
+            try
+            {
+                myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + carID.Text;
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    dayPricing = Convert.ToSingle(myReader["dailyPricing"]);
+                    weekPricing = Convert.ToSingle(myReader["weeklyPricing"]);
+                    monthPricing = Convert.ToSingle(myReader["monthlyPricing"]);
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
+            }
+
+            //Calculate estimatedCost
+            int days = (expectedDate.Value - pickUpDate.Value).Days + 1;
+            if (days < 7)
+            {
+                estimatedCost = days * dayPricing;
+            }
+            if (days >= 7 & days < 30)
+            {
+                int weeks = days / 7;
+                int leftDays = days - (weeks * 7);
+                estimatedCost = (weeks * weekPricing) + (leftDays * dayPricing);
+            }
+            if (days >= 30)
+            {
+                int months = days / 30;
+                int leftDays = days - (months * 30);
+                int weeks = 0;
+                if (leftDays > 7)
+                {
+                    weeks = leftDays / 7;
+                    leftDays = leftDays - (weeks * 7);
+                }
+                estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
+            }
+            result.Text = estimatedCost.ToString();
         }
     }
 }
