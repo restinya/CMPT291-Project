@@ -106,7 +106,7 @@ namespace CarRental
                     myCommand.CommandText += "," + requestedClass.Text + ",";
                 }
                 //continue rest of command text
-                myCommand.CommandText += carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
+                myCommand.CommandText += availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + pickUpBranch.Text + ",NULL" + ")";
 
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
@@ -241,7 +241,7 @@ namespace CarRental
             //Retrieve pricing for cartype selecteD
             try
             {
-                myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + carID.Text;
+                myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + availableCars.SelectedRows[0].Cells[0].Value.ToString();
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -257,7 +257,7 @@ namespace CarRental
             }
 
             //Calculate estimatedCost
-            int days = (expectedDate.Value - pickUpDate.Value).Days + 1;
+            int days = (expectedDate.Value - pickUpDate.Value).Days;
             if (days < 7)
             {
                 estimatedCost = days * dayPricing;
@@ -290,17 +290,35 @@ namespace CarRental
 
         private void carID_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
             //Retrieving available carIDs based on branchID selected
-            myCommand.CommandText = "select carID from Car, Branch where Car.branchID = Branch.branchID and " +
+            myCommand.CommandText = "select * from Car, Branch where Car.branchID = Branch.branchID and " +
                                     "Branch.branchID = " + pickUpBranch.Text + " and Car.carID not in " +
                                     "((select carID from Rental where pickUpDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "') UNION " +
                                     "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
             myReader = myCommand.ExecuteReader();
+            availableCars.Rows.Clear();
             while (myReader.Read())
             {
-                carID.Items.Add(myReader["carID"].ToString());
+                availableCars.Rows.Add(myReader["carID"].ToString(), myReader["carTypeID"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString());
             }
             myReader.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EmployeeCars e1 = new EmployeeCars();
+            e1.ShowDialog();
         }
     }
 }
