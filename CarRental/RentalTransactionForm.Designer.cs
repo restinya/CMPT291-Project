@@ -75,14 +75,22 @@ namespace CarRental
             this.empID = new System.Windows.Forms.ComboBox();
             this.requestCar = new System.Windows.Forms.GroupBox();
             this.carID = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 253);
+            this.label1.Location = new System.Drawing.Point(14, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 0;
@@ -91,7 +99,7 @@ namespace CarRental
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 313);
+            this.label3.Location = new System.Drawing.Point(15, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 15);
             this.label3.TabIndex = 3;
@@ -99,7 +107,7 @@ namespace CarRental
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(24, 499);
+            this.submitButton.Location = new System.Drawing.Point(346, 751);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 9;
@@ -110,7 +118,7 @@ namespace CarRental
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 30);
+            this.label6.Location = new System.Drawing.Point(15, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 15);
             this.label6.TabIndex = 14;
@@ -119,7 +127,7 @@ namespace CarRental
             // customerID
             // 
             this.customerID.FormattingEnabled = true;
-            this.customerID.Location = new System.Drawing.Point(24, 48);
+            this.customerID.Location = new System.Drawing.Point(15, 107);
             this.customerID.Name = "customerID";
             this.customerID.Size = new System.Drawing.Size(121, 23);
             this.customerID.TabIndex = 15;
@@ -128,7 +136,7 @@ namespace CarRental
             // checkBoxCustomer
             // 
             this.checkBoxCustomer.AutoSize = true;
-            this.checkBoxCustomer.Location = new System.Drawing.Point(179, 50);
+            this.checkBoxCustomer.Location = new System.Drawing.Point(170, 109);
             this.checkBoxCustomer.Name = "checkBoxCustomer";
             this.checkBoxCustomer.Size = new System.Drawing.Size(149, 19);
             this.checkBoxCustomer.TabIndex = 16;
@@ -139,7 +147,7 @@ namespace CarRental
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 88);
+            this.label4.Location = new System.Drawing.Point(15, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 15);
             this.label4.TabIndex = 17;
@@ -156,7 +164,7 @@ namespace CarRental
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 136);
+            this.label5.Location = new System.Drawing.Point(14, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 15);
             this.label5.TabIndex = 21;
@@ -165,7 +173,7 @@ namespace CarRental
             // pickUpBranch
             // 
             this.pickUpBranch.FormattingEnabled = true;
-            this.pickUpBranch.Location = new System.Drawing.Point(27, 154);
+            this.pickUpBranch.Location = new System.Drawing.Point(14, 37);
             this.pickUpBranch.Name = "pickUpBranch";
             this.pickUpBranch.Size = new System.Drawing.Size(121, 23);
             this.pickUpBranch.TabIndex = 22;
@@ -173,7 +181,7 @@ namespace CarRental
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 196);
+            this.label8.Location = new System.Drawing.Point(20, 585);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 15);
             this.label8.TabIndex = 25;
@@ -191,7 +199,7 @@ namespace CarRental
             // pickUpDate
             // 
             this.pickUpDate.CustomFormat = "YYYYMMDD";
-            this.pickUpDate.Location = new System.Drawing.Point(25, 272);
+            this.pickUpDate.Location = new System.Drawing.Point(15, 91);
             this.pickUpDate.Name = "pickUpDate";
             this.pickUpDate.Size = new System.Drawing.Size(200, 23);
             this.pickUpDate.TabIndex = 28;
@@ -199,15 +207,16 @@ namespace CarRental
             // expectedDate
             // 
             this.expectedDate.CustomFormat = "YYYYMMDD";
-            this.expectedDate.Location = new System.Drawing.Point(25, 332);
+            this.expectedDate.Location = new System.Drawing.Point(16, 146);
             this.expectedDate.Name = "expectedDate";
             this.expectedDate.Size = new System.Drawing.Size(200, 23);
             this.expectedDate.TabIndex = 29;
+            this.expectedDate.ValueChanged += new System.EventHandler(this.expectedDate_ValueChanged);
             // 
             // radioButtonYes
             // 
             this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(27, 105);
+            this.radioButtonYes.Location = new System.Drawing.Point(17, 161);
             this.radioButtonYes.Name = "radioButtonYes";
             this.radioButtonYes.Size = new System.Drawing.Size(42, 19);
             this.radioButtonYes.TabIndex = 30;
@@ -219,7 +228,7 @@ namespace CarRental
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(83, 105);
+            this.radioButtonNo.Location = new System.Drawing.Point(73, 161);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(41, 19);
             this.radioButtonNo.TabIndex = 31;
@@ -230,7 +239,7 @@ namespace CarRental
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(24, 435);
+            this.calculateButton.Location = new System.Drawing.Point(210, 576);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(163, 40);
             this.calculateButton.TabIndex = 32;
@@ -240,9 +249,9 @@ namespace CarRental
             // 
             // result
             // 
-            this.result.Location = new System.Drawing.Point(218, 445);
+            this.result.Location = new System.Drawing.Point(145, 653);
             this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(117, 23);
+            this.result.Size = new System.Drawing.Size(166, 23);
             this.result.TabIndex = 33;
             // 
             // fName
@@ -256,7 +265,7 @@ namespace CarRental
             // 
             this.customerDetails.AutoSize = true;
             this.customerDetails.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customerDetails.Location = new System.Drawing.Point(407, 32);
+            this.customerDetails.Location = new System.Drawing.Point(442, 55);
             this.customerDetails.Name = "customerDetails";
             this.customerDetails.Size = new System.Drawing.Size(179, 30);
             this.customerDetails.TabIndex = 35;
@@ -286,7 +295,7 @@ namespace CarRental
             this.customerForm.Controls.Add(this.lName);
             this.customerForm.Controls.Add(this.label10);
             this.customerForm.Controls.Add(this.fName);
-            this.customerForm.Location = new System.Drawing.Point(408, 65);
+            this.customerForm.Location = new System.Drawing.Point(443, 88);
             this.customerForm.Name = "customerForm";
             this.customerForm.Size = new System.Drawing.Size(461, 441);
             this.customerForm.TabIndex = 36;
@@ -464,7 +473,7 @@ namespace CarRental
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(794, 512);
+            this.addButton.Location = new System.Drawing.Point(829, 535);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 27);
             this.addButton.TabIndex = 37;
@@ -476,7 +485,7 @@ namespace CarRental
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(25, 368);
+            this.label22.Location = new System.Drawing.Point(15, 33);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 15);
             this.label22.TabIndex = 38;
@@ -485,7 +494,7 @@ namespace CarRental
             // empID
             // 
             this.empID.FormattingEnabled = true;
-            this.empID.Location = new System.Drawing.Point(25, 386);
+            this.empID.Location = new System.Drawing.Point(15, 51);
             this.empID.Name = "empID";
             this.empID.Size = new System.Drawing.Size(121, 23);
             this.empID.TabIndex = 39;
@@ -494,7 +503,7 @@ namespace CarRental
             // 
             this.requestCar.Controls.Add(this.label9);
             this.requestCar.Controls.Add(this.requestedClass);
-            this.requestCar.Location = new System.Drawing.Point(179, 75);
+            this.requestCar.Location = new System.Drawing.Point(169, 131);
             this.requestCar.Name = "requestCar";
             this.requestCar.Size = new System.Drawing.Size(162, 61);
             this.requestCar.TabIndex = 40;
@@ -504,45 +513,112 @@ namespace CarRental
             // carID
             // 
             this.carID.FormattingEnabled = true;
-            this.carID.Location = new System.Drawing.Point(27, 214);
+            this.carID.Location = new System.Drawing.Point(23, 603);
             this.carID.Name = "carID";
             this.carID.Size = new System.Drawing.Size(121, 23);
             this.carID.TabIndex = 41;
+            this.carID.SelectedIndexChanged += new System.EventHandler(this.carID_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.pickUpBranch);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.pickUpDate);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.expectedDate);
+            this.groupBox1.Location = new System.Drawing.Point(18, 191);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(265, 183);
+            this.groupBox1.TabIndex = 42;
+            this.groupBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(155, 377);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 29);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "Find Available Cars";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(15, 416);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(358, 154);
+            this.listBox1.TabIndex = 44;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(24, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 27);
+            this.button2.TabIndex = 45;
+            this.button2.Text = "Back";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(20, 653);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 21);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Estimated Cost";
+            this.label2.Visible = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.customerID);
+            this.groupBox2.Controls.Add(this.checkBoxCustomer);
+            this.groupBox2.Controls.Add(this.listBox1);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.radioButtonYes);
+            this.groupBox2.Controls.Add(this.carID);
+            this.groupBox2.Controls.Add(this.radioButtonNo);
+            this.groupBox2.Controls.Add(this.requestCar);
+            this.groupBox2.Controls.Add(this.calculateButton);
+            this.groupBox2.Controls.Add(this.empID);
+            this.groupBox2.Controls.Add(this.result);
+            this.groupBox2.Location = new System.Drawing.Point(24, 55);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(397, 690);
+            this.groupBox2.TabIndex = 48;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "NEW RENTAL RESERVATION";
             // 
             // RentalTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 577);
-            this.Controls.Add(this.carID);
-            this.Controls.Add(this.requestCar);
-            this.Controls.Add(this.empID);
-            this.Controls.Add(this.label22);
+            this.ClientSize = new System.Drawing.Size(955, 788);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.customerForm);
             this.Controls.Add(this.customerDetails);
-            this.Controls.Add(this.result);
-            this.Controls.Add(this.calculateButton);
-            this.Controls.Add(this.radioButtonNo);
-            this.Controls.Add(this.radioButtonYes);
-            this.Controls.Add(this.expectedDate);
-            this.Controls.Add(this.pickUpDate);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.pickUpBranch);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.checkBoxCustomer);
-            this.Controls.Add(this.customerID);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Name = "RentalTransactionForm";
             this.Text = "RentalTransactionForm";
             this.customerForm.ResumeLayout(false);
             this.customerForm.PerformLayout();
             this.requestCar.ResumeLayout(false);
             this.requestCar.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,5 +673,11 @@ namespace CarRental
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox requestCar;
         private System.Windows.Forms.ComboBox carID;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

@@ -55,14 +55,6 @@ namespace CarRental
                     pickUpBranch.Items.Add(myReader["branchID"].ToString());
                 }
                 myReader.Close();
-                //Retrieving available carIDs based on branchID selected
-                myCommand.CommandText = "select carID from Car, Branch where Car.branchID = Branch.branchID and Car.carID not in (select carID from Rental)";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    carID.Items.Add(myReader["carID"].ToString());
-                }
-                myReader.Close();
                 //Retrieving carTypeIDs
                 myCommand.CommandText = "select carTypeID from CarType";
                 myReader = myCommand.ExecuteReader();
@@ -289,6 +281,26 @@ namespace CarRental
                 estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
             }
             result.Text = estimatedCost.ToString();
+        }
+
+        private void expectedDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void carID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Retrieving available carIDs based on branchID selected
+            myCommand.CommandText = "select carID from Car, Branch where Car.branchID = Branch.branchID and " +
+                                    "Branch.branchID = " + pickUpBranch.Text + " and Car.carID not in " +
+                                    "((select carID from Rental where pickUpDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "') UNION " +
+                                    "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                carID.Items.Add(myReader["carID"].ToString());
+            }
+            myReader.Close();
         }
     }
 }
