@@ -90,5 +90,35 @@ namespace CarRental
             {
 
             }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            String BranchName, CarClass, branchID = "sample", carTypeID = "sample";
+            BranchName = branchName.Text;
+            CarClass = carClass.Text;
+
+            //Retrieve branchID
+            myCommand.CommandText = "select branchID from Branch where branchName = '" + BranchName + "'";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                branchID = myReader["branchID"].ToString();
+            }
+            myReader.Close();
+            //Retrieve carTypeID
+            myCommand.CommandText = "select carTypeID from CarType where carClass = '" + CarClass + "'";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                carTypeID = myReader["carTypeID"].ToString();
+            }
+            myReader.Close();
+            //Add to Database
+            myCommand.CommandText = "insert into Car values (" + "'" + licensePlate.Text + "','" + status.Text + "'," + currentMileage.Text + ",'" + transmissionType.Text + "'," +
+                                            seats.Text + "," + year.Text + ",'" + make.Text + "','" + model.Text + "'," +
+                                            carTypeID + "," + branchID + ")";
+            MessageBox.Show(myCommand.CommandText);
+            myCommand.ExecuteNonQuery();
         }
+    }
     }

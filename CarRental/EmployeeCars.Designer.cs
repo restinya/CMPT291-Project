@@ -64,7 +64,7 @@ namespace CarRental
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,7 +107,7 @@ namespace CarRental
             this.EmployeeLOC.Controls.Add(this.label2);
             this.EmployeeLOC.Controls.Add(this.comboBox1);
             this.EmployeeLOC.Controls.Add(this.label1);
-            this.EmployeeLOC.Controls.Add(this.button2);
+            this.EmployeeLOC.Controls.Add(this.addButton);
             this.EmployeeLOC.Controls.Add(this.button1);
             this.EmployeeLOC.Location = new System.Drawing.Point(4, 24);
             this.EmployeeLOC.Name = "EmployeeLOC";
@@ -131,7 +131,7 @@ namespace CarRental
             this.seats2,
             this.BranchID,
             this.status2});
-            this.listOfCars.Location = new System.Drawing.Point(28, 136);
+            this.listOfCars.Location = new System.Drawing.Point(31, 136);
             this.listOfCars.Name = "listOfCars";
             this.listOfCars.RowTemplate.Height = 25;
             this.listOfCars.Size = new System.Drawing.Size(558, 439);
@@ -378,7 +378,7 @@ namespace CarRental
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(511, 618);
+            this.button4.Location = new System.Drawing.Point(511, 581);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 9;
@@ -387,7 +387,7 @@ namespace CarRental
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(416, 618);
+            this.button3.Location = new System.Drawing.Point(416, 581);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 8;
@@ -428,14 +428,15 @@ namespace CarRental
             this.label1.TabIndex = 4;
             this.label1.Text = "Branch";
             // 
-            // button2
+            // addButton
             // 
-            this.button2.Location = new System.Drawing.Point(889, 618);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.addButton.Location = new System.Drawing.Point(889, 581);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 3;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // button1
             // 
@@ -552,7 +553,7 @@ namespace CarRental
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
