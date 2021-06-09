@@ -197,18 +197,12 @@ namespace CarRental
 
         private void radioButtonYes_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonYes.Checked)
-            {
-                requestCar.Visible = true;
-            }
+           
         }
 
         private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonNo.Checked)
-            {
-                requestCar.Visible = false;
-            }
+            
         }
 
         private void customerID_SelectedIndexChanged(object sender, EventArgs e)
@@ -334,6 +328,31 @@ namespace CarRental
             this.Hide();
             EmployeeCars e1 = new EmployeeCars();
             e1.ShowDialog();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Retrieving goldMembership
+            myCommand.CommandText = "select goldMember from Customer where customerID = " + customerID.Text;
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                if (myReader["goldMember"] == DBNull.Value)
+                {
+                    membership.Text = "No";
+                }
+                else
+                {
+                    membership.Text = "Yes";
+                    requestCar.Visible = true;
+                }
+            }
+            myReader.Close();
         }
     }
 }

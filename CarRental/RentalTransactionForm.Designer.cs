@@ -35,15 +35,12 @@ namespace CarRental
             this.label6 = new System.Windows.Forms.Label();
             this.customerID = new System.Windows.Forms.ComboBox();
             this.checkBoxCustomer = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.requestedClass = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pickUpBranch = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pickUpDate = new System.Windows.Forms.DateTimePicker();
             this.expectedDate = new System.Windows.Forms.DateTimePicker();
-            this.radioButtonYes = new System.Windows.Forms.RadioButton();
-            this.radioButtonNo = new System.Windows.Forms.RadioButton();
             this.calculateButton = new System.Windows.Forms.Button();
             this.result = new System.Windows.Forms.TextBox();
             this.fName = new System.Windows.Forms.TextBox();
@@ -77,7 +74,7 @@ namespace CarRental
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.s = new System.Windows.Forms.GroupBox();
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,10 +82,12 @@ namespace CarRental
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
+            this.membership = new System.Windows.Forms.TextBox();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.s.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.availableCars)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,15 +148,6 @@ namespace CarRental
             this.checkBoxCustomer.UseVisualStyleBackColor = true;
             this.checkBoxCustomer.CheckedChanged += new System.EventHandler(this.checkBoxCustomer_CheckedChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 144);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 15);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Gold Member";
-            // 
             // requestedClass
             // 
             this.requestedClass.FormattingEnabled = true;
@@ -191,6 +181,7 @@ namespace CarRental
             this.label9.Size = new System.Drawing.Size(132, 15);
             this.label9.TabIndex = 27;
             this.label9.Text = "Requested Vehicle Class";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // pickUpDate
             // 
@@ -208,30 +199,6 @@ namespace CarRental
             this.expectedDate.Size = new System.Drawing.Size(200, 23);
             this.expectedDate.TabIndex = 29;
             this.expectedDate.ValueChanged += new System.EventHandler(this.expectedDate_ValueChanged);
-            // 
-            // radioButtonYes
-            // 
-            this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(17, 161);
-            this.radioButtonYes.Name = "radioButtonYes";
-            this.radioButtonYes.Size = new System.Drawing.Size(42, 19);
-            this.radioButtonYes.TabIndex = 30;
-            this.radioButtonYes.TabStop = true;
-            this.radioButtonYes.Text = "Yes";
-            this.radioButtonYes.UseVisualStyleBackColor = true;
-            this.radioButtonYes.CheckedChanged += new System.EventHandler(this.radioButtonYes_CheckedChanged);
-            // 
-            // radioButtonNo
-            // 
-            this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(73, 161);
-            this.radioButtonNo.Name = "radioButtonNo";
-            this.radioButtonNo.Size = new System.Drawing.Size(41, 19);
-            this.radioButtonNo.TabIndex = 31;
-            this.radioButtonNo.TabStop = true;
-            this.radioButtonNo.Text = "No";
-            this.radioButtonNo.UseVisualStyleBackColor = true;
-            this.radioButtonNo.CheckedChanged += new System.EventHandler(this.radioButtonNo_CheckedChanged);
             // 
             // calculateButton
             // 
@@ -499,7 +466,7 @@ namespace CarRental
             // 
             this.requestCar.Controls.Add(this.label9);
             this.requestCar.Controls.Add(this.requestedClass);
-            this.requestCar.Location = new System.Drawing.Point(169, 131);
+            this.requestCar.Location = new System.Drawing.Point(250, 134);
             this.requestCar.Name = "requestCar";
             this.requestCar.Size = new System.Drawing.Size(162, 61);
             this.requestCar.TabIndex = 40;
@@ -550,29 +517,28 @@ namespace CarRental
             this.label2.TabIndex = 46;
             this.label2.Text = "Estimated Cost";
             // 
-            // groupBox2
+            // s
             // 
-            this.groupBox2.Controls.Add(this.availableCars);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.customerID);
-            this.groupBox2.Controls.Add(this.checkBoxCustomer);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.radioButtonYes);
-            this.groupBox2.Controls.Add(this.radioButtonNo);
-            this.groupBox2.Controls.Add(this.requestCar);
-            this.groupBox2.Controls.Add(this.calculateButton);
-            this.groupBox2.Controls.Add(this.empID);
-            this.groupBox2.Controls.Add(this.result);
-            this.groupBox2.Location = new System.Drawing.Point(24, 55);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(586, 671);
-            this.groupBox2.TabIndex = 48;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "NEW RENTAL RESERVATION";
+            this.s.Controls.Add(this.membership);
+            this.s.Controls.Add(this.button3);
+            this.s.Controls.Add(this.availableCars);
+            this.s.Controls.Add(this.label22);
+            this.s.Controls.Add(this.label6);
+            this.s.Controls.Add(this.label2);
+            this.s.Controls.Add(this.customerID);
+            this.s.Controls.Add(this.checkBoxCustomer);
+            this.s.Controls.Add(this.button1);
+            this.s.Controls.Add(this.groupBox1);
+            this.s.Controls.Add(this.requestCar);
+            this.s.Controls.Add(this.calculateButton);
+            this.s.Controls.Add(this.empID);
+            this.s.Controls.Add(this.result);
+            this.s.Location = new System.Drawing.Point(24, 55);
+            this.s.Name = "s";
+            this.s.Size = new System.Drawing.Size(586, 671);
+            this.s.TabIndex = 48;
+            this.s.TabStop = false;
+            this.s.Text = "NEW RENTAL RESERVATION";
             // 
             // availableCars
             // 
@@ -621,12 +587,29 @@ namespace CarRental
             this.dailyPricing.HeaderText = "dailyPricing";
             this.dailyPricing.Name = "dailyPricing";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 145);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 29);
+            this.button3.TabIndex = 48;
+            this.button3.Text = "Check Gold Membership";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // membership
+            // 
+            this.membership.Location = new System.Drawing.Point(193, 149);
+            this.membership.Name = "membership";
+            this.membership.Size = new System.Drawing.Size(40, 23);
+            this.membership.TabIndex = 49;
+            // 
             // RentalTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 854);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.s);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.customerForm);
@@ -640,8 +623,8 @@ namespace CarRental
             this.requestCar.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.s.ResumeLayout(false);
+            this.s.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.availableCars)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -656,7 +639,6 @@ namespace CarRental
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox customerID;
         private System.Windows.Forms.CheckBox checkBoxCustomer;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox requestedClass;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox pickUpBranch;
@@ -664,8 +646,6 @@ namespace CarRental
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker pickUpDate;
         private System.Windows.Forms.DateTimePicker expectedDate;
-        private System.Windows.Forms.RadioButton radioButtonYes;
-        private System.Windows.Forms.RadioButton radioButtonNo;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TextBox result;
         private System.Windows.Forms.TextBox fName;
@@ -699,7 +679,7 @@ namespace CarRental
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox member;
         private System.Windows.Forms.DataGridView availableCars;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarType;
@@ -707,5 +687,9 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyPricing;
+        private System.Windows.Forms.GroupBox s;
+        private System.Windows.Forms.TextBox hi;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox membership;
     }
 }

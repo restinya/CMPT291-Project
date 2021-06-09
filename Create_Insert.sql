@@ -119,3 +119,4 @@ insert into CarType values (2, 'Compact', 34.70, 230.50, 750.25, 25.00, 25.00);
 insert into Car values ('BXN2267', 'Available', 95000, 'Automatic', 5, 2020, 'Toyota', 'RAV4', 1, 1);
 insert into Car values ('BXA7585', 'Available', 97000, 'Automatic', 5, 2020, 'Nissan', 'Versa', 2, 1);
 insert into Employee values (1, 'Ryan', 'Tran', 'Edmonton', 'Terwilleger', 'T6N7A3', '7805689380', 1);
+insert into Customer values ('John', 'Doe', 1, 'Edmonton', 'AB', '235 Huntington Hill NW', 'T6N7N7', '1990-06-08');
