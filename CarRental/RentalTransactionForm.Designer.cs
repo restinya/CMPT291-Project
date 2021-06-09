@@ -84,6 +84,7 @@ namespace CarRental
             this.Make = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dailyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -581,7 +582,8 @@ namespace CarRental
             this.CarType,
             this.Make,
             this.Model,
-            this.Year});
+            this.Year,
+            this.dailyPricing});
             this.availableCars.Location = new System.Drawing.Point(15, 416);
             this.availableCars.Name = "availableCars";
             this.availableCars.RowTemplate.Height = 25;
@@ -613,6 +615,11 @@ namespace CarRental
             // 
             this.Year.HeaderText = "Year";
             this.Year.Name = "Year";
+            // 
+            // dailyPricing
+            // 
+            this.dailyPricing.HeaderText = "dailyPricing";
+            this.dailyPricing.Name = "dailyPricing";
             // 
             // RentalTransactionForm
             // 
@@ -699,5 +706,6 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn Make;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dailyPricing;
     }
 }
