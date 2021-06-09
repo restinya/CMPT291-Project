@@ -55,20 +55,12 @@ namespace CarRental
                     pickUpBranch.Items.Add(myReader["branchID"].ToString());
                 }
                 myReader.Close();
-                //Retrieving available carIDs based on branchID selected
-                myCommand.CommandText = "select carID from Car, Branch where Car.branchID = Branch.branchID and Car.carID not in (select carID from Rental)";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    carID.Items.Add(myReader["carID"].ToString());
-                }
-                myReader.Close();
                 //Retrieving carTypeIDs
-                myCommand.CommandText = "select carTypeID from CarType";
+                myCommand.CommandText = "select carClass from CarType";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    requestedClass.Items.Add(myReader["carTypeID"].ToString());
+                    requestedClass.Items.Add(myReader["carClass"].ToString());
                 }
                 myReader.Close();
                 //Retrieving employeeIDs
@@ -114,7 +106,7 @@ namespace CarRental
                     myCommand.CommandText += "," + requestedClass.Text + ",";
                 }
                 //continue rest of command text
-                myCommand.CommandText += carID.Text + "," + pickUpBranch.Text + ",NULL" + ")";
+                myCommand.CommandText += availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + pickUpBranch.Text + ",NULL" + ")";
 
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
@@ -205,51 +197,32 @@ namespace CarRental
 
         private void radioButtonYes_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonYes.Checked)
-            {
-                requestCar.Visible = true;
-            }
+           
         }
 
         private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonNo.Checked)
-            {
-                requestCar.Visible = false;
-            }
+            
         }
 
         private void customerID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            myCommand.CommandText = "select customerID from Customer";
-            try
-            {
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    customerID.Items.Add(myReader["customerID"].ToString());
-                }
-                myReader.Close();
-            }
-            catch (Exception e3)
-            {
-                MessageBox.Show(e3.ToString(), "Error");
-            }
+            
             
         }
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
             //Initialize variables
-            float dayPricing = 20;
-            float weekPricing = 50;
-            float monthPricing = 80;
-            float estimatedCost = 100;
+            float dayPricing = 0;
+            float weekPricing = 0;
+            float monthPricing = 0;
+            float estimatedCost = 0;
 
             //Retrieve pricing for cartype selecteD
             try
             {
-                myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + carID.Text;
+                myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + availableCars.SelectedRows[0].Cells[0].Value.ToString();
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -262,6 +235,34 @@ namespace CarRental
             catch (Exception e3)
             {
                 MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
+            }
+
+            //Retrieve pricing for requested carType for goldMember
+            if (requestedClass.Text != "")
+            {
+                try
+                {
+                    myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from CarType where carClass = '" + requestedClass.Text + "'";
+                    myReader = myCommand.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        float requestedDayPricing = Convert.ToSingle(myReader["dailyPricing"]);
+                        float requestedWeekPricing = Convert.ToSingle(myReader["weeklyPricing"]);
+                        float requestedMonthPricing = Convert.ToSingle(myReader["monthlyPricing"]);
+
+                        if (requestedDayPricing < dayPricing)
+                        {
+                            dayPricing = requestedDayPricing;
+                            weekPricing = requestedWeekPricing;
+                            monthPricing = requestedMonthPricing;
+                        }
+                    }
+                    myReader.Close();
+                }
+                catch (Exception e3)
+                {
+                    MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
+                }
             }
 
             //Calculate estimatedCost
@@ -289,6 +290,69 @@ namespace CarRental
                 estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
             }
             result.Text = estimatedCost.ToString();
+        }
+
+        private void expectedDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void carID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //Retrieving available carIDs based on branchID selected
+            myCommand.CommandText = "select * from Car, Branch, CarType where Car.branchID = Branch.branchID and Car.cartypeID = CarType.cartypeID and " +
+                                    "Branch.branchID = " + pickUpBranch.Text + " and Car.carID not in " +
+                                    "((select carID from Rental where pickUpDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "') UNION " +
+                                    "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
+            myReader = myCommand.ExecuteReader();
+            availableCars.Rows.Clear();
+            while (myReader.Read())
+            {
+                availableCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString());
+            }
+            myReader.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EmployeeCars e1 = new EmployeeCars();
+            e1.ShowDialog();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Retrieving goldMembership
+            myCommand.CommandText = "select goldMember from Customer where customerID = " + customerID.Text;
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                if (myReader["goldMember"] == DBNull.Value)
+                {
+                    membership.Text = "No";
+                }
+                else
+                {
+                    membership.Text = "Yes";
+                    requestCar.Visible = true;
+                }
+            }
+            myReader.Close();
         }
     }
 }
