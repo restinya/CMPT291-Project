@@ -31,6 +31,7 @@ namespace CarRental
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.EmployeeLOC = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.listOfCars = new System.Windows.Forms.DataGridView();
             this.CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +70,7 @@ namespace CarRental
             this.label8 = new System.Windows.Forms.Label();
             this.transmissionType = new System.Windows.Forms.TextBox();
             this.seats = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.vehicleClass = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@ namespace CarRental
             this.label1 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.EmployeeLOC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfCars)).BeginInit();
@@ -103,7 +103,7 @@ namespace CarRental
             this.EmployeeLOC.Controls.Add(this.button6);
             this.EmployeeLOC.Controls.Add(this.button5);
             this.EmployeeLOC.Controls.Add(this.groupBox1);
-            this.EmployeeLOC.Controls.Add(this.button4);
+            this.EmployeeLOC.Controls.Add(this.deleteButton);
             this.EmployeeLOC.Controls.Add(this.button3);
             this.EmployeeLOC.Controls.Add(this.vehicleClass);
             this.EmployeeLOC.Controls.Add(this.label2);
@@ -117,6 +117,17 @@ namespace CarRental
             this.EmployeeLOC.Size = new System.Drawing.Size(991, 692);
             this.EmployeeLOC.TabIndex = 1;
             this.EmployeeLOC.Text = "EmployeeLOC";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.Location = new System.Drawing.Point(331, 103);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Clear Filters";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listOfCars
             // 
@@ -433,14 +444,15 @@ namespace CarRental
             this.seats.Size = new System.Drawing.Size(197, 23);
             this.seats.TabIndex = 22;
             // 
-            // button4
+            // deleteButton
             // 
-            this.button4.Location = new System.Drawing.Point(511, 581);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(511, 581);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 9;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -507,17 +519,6 @@ namespace CarRental
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(331, 103);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 23);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Clear Filters";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // EmployeeCars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -562,7 +563,7 @@ namespace CarRental
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox vehicleClass;
         private System.Windows.Forms.Label label2;

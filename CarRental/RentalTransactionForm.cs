@@ -91,23 +91,24 @@ namespace CarRental
 
         private void button1_Click(object sender, EventArgs e)
         {
+            String RequestedClass = ",NULL,";
             try
             {
+                if (requestedClass.Text != "")
+                {
+                    myCommand.CommandText = "select carTypeID from CarType where carClass = '" + requestedClass.Text + "'";
+                    myReader = myCommand.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        RequestedClass = "," + myReader["carTypeID"].ToString() + ",";
+
+                    }
+                    myReader.Close();
+                }
+
                 myCommand.CommandText = "insert into Rental values ('" + pickUpDate.Text + "','" + expectedDate.Text +
                                         "'," + "NULL,NULL," + result.Text + ",NULL," +
-                                        customerID.Text + "," + empID.Text;
-                //if else statement to check if gold member or not
-                if (requestedClass.Text == "")
-                {
-                    myCommand.CommandText += ",NULL,";
-                }
-                else
-                {
-                    myCommand.CommandText += "," + requestedClass.Text + ",";
-                }
-                //continue rest of command text
-                myCommand.CommandText += availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + pickUpBranch.Text + ",NULL" + ")";
-
+                                        customerID.Text + "," + empID.Text + RequestedClass + availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + pickUpBranch.Text + ",NULL" + ")";
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
             }
@@ -266,7 +267,7 @@ namespace CarRental
             }
 
             //Calculate estimatedCost
-            int days = (expectedDate.Value - pickUpDate.Value).Days + 1;
+            int days = (expectedDate.Value - pickUpDate.Value).Days;
             if (days < 7)
             {
                 estimatedCost = days * dayPricing;

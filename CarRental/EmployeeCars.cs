@@ -14,6 +14,7 @@ namespace CarRental
         public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
+        public string id;
 
         public EmployeeCars()
         {
@@ -104,7 +105,12 @@ namespace CarRental
 
             private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
             {
+                id = listOfCars.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
 
+            private void listOfCars_RowHeaderSelect(object sender, DataGridViewCellEventArgs e)
+            {
+                id = listOfCars.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -140,15 +146,15 @@ namespace CarRental
         private void loadButton_Click(object sender, EventArgs e)
         {
             //Retrieve records based on branch and vehicle class
-            if (branch.Text == "" & vehicleClass.Text != "")
+            if (branch.Text == "" && vehicleClass.Text != "")
             {
                 myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and carClass = '" + vehicleClass.Text + "'";
             }
-            else if (branch.Text != "" & vehicleClass.Text == "")
+            else if (branch.Text != "" && vehicleClass.Text == "")
             {
                 myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and branchID = " + branch.Text;
             }
-            else if (branch.Text == "" & vehicleClass.Text == "")
+            else if (branch.Text == "" && vehicleClass.Text == "")
             {
                 myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
             }
@@ -176,6 +182,17 @@ namespace CarRental
         {
             branch.Text = "";
             vehicleClass.Text = "";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (id != "")
+            {
+                myCommand.CommandText = "delete from Car where carID = " + id;
+                MessageBox.Show(myCommand.CommandText);
+                myCommand.ExecuteNonQuery();
+                
+            }
         }
     }
     }
