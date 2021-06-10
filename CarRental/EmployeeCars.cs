@@ -39,12 +39,28 @@ namespace CarRental
 
             try
             {
-                //Retrieving current car records
-                myCommand.CommandText = "select * from Car";
+                //Retrieving branchIDs
+                myCommand.CommandText = "select branchID from Branch";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carTypeID"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
+                    branch.Items.Add(myReader["branchID"].ToString());
+                }
+                myReader.Close();
+                //Retrieving Vehicle Classes
+                myCommand.CommandText = "select carClass from CarType";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    branch.Items.Add(myReader["carClass"].ToString());
+                }
+                myReader.Close();
+                //Retrieving current car records
+                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
                                         myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
                                         myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
                 }
@@ -119,6 +135,23 @@ namespace CarRental
                                             carTypeID + "," + branchID + ")";
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            //Retrieve records based on branch and vehicle class
+            /*myCommand.CommandText = "select branchID from Branch where branchName = '" + BranchName + "'";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                branchID = myReader["branchID"].ToString();
+            }
+            myReader.Close();*/
+        }
+
+        private void branch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
     }
