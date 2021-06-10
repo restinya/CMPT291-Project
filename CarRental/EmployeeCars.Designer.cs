@@ -77,6 +77,7 @@ namespace CarRental
             this.label1 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.EmployeeLOC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfCars)).BeginInit();
@@ -95,6 +96,7 @@ namespace CarRental
             // EmployeeLOC
             // 
             this.EmployeeLOC.BackColor = System.Drawing.Color.DarkGray;
+            this.EmployeeLOC.Controls.Add(this.button1);
             this.EmployeeLOC.Controls.Add(this.listOfCars);
             this.EmployeeLOC.Controls.Add(this.button8);
             this.EmployeeLOC.Controls.Add(this.button7);
@@ -452,7 +454,7 @@ namespace CarRental
             // vehicleClass
             // 
             this.vehicleClass.FormattingEnabled = true;
-            this.vehicleClass.Location = new System.Drawing.Point(177, 89);
+            this.vehicleClass.Location = new System.Drawing.Point(178, 75);
             this.vehicleClass.Name = "vehicleClass";
             this.vehicleClass.Size = new System.Drawing.Size(121, 23);
             this.vehicleClass.TabIndex = 7;
@@ -460,7 +462,7 @@ namespace CarRental
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 74);
+            this.label2.Location = new System.Drawing.Point(181, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 6;
@@ -469,7 +471,7 @@ namespace CarRental
             // branch
             // 
             this.branch.FormattingEnabled = true;
-            this.branch.Location = new System.Drawing.Point(28, 89);
+            this.branch.Location = new System.Drawing.Point(29, 75);
             this.branch.Name = "branch";
             this.branch.Size = new System.Drawing.Size(121, 23);
             this.branch.TabIndex = 5;
@@ -478,7 +480,7 @@ namespace CarRental
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 74);
+            this.label1.Location = new System.Drawing.Point(32, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 4;
@@ -497,13 +499,24 @@ namespace CarRental
             // loadButton
             // 
             this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.loadButton.Location = new System.Drawing.Point(319, 88);
+            this.loadButton.Location = new System.Drawing.Point(331, 75);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.Size = new System.Drawing.Size(114, 23);
             this.loadButton.TabIndex = 2;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.Location = new System.Drawing.Point(331, 103);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Clear Filters";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EmployeeCars
             // 
@@ -580,5 +593,6 @@ namespace CarRental
         private System.Windows.Forms.TextBox transmissionType;
         private System.Windows.Forms.TextBox seats;
         private System.Windows.Forms.TextBox ranc;
+        private System.Windows.Forms.Button button1;
     }
 }

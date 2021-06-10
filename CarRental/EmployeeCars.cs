@@ -52,7 +52,7 @@ namespace CarRental
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    branch.Items.Add(myReader["carClass"].ToString());
+                    vehicleClass.Items.Add(myReader["carClass"].ToString());
                 }
                 myReader.Close();
                 //Retrieving current car records
@@ -140,18 +140,42 @@ namespace CarRental
         private void loadButton_Click(object sender, EventArgs e)
         {
             //Retrieve records based on branch and vehicle class
-            /*myCommand.CommandText = "select branchID from Branch where branchName = '" + BranchName + "'";
+            if (branch.Text == "" & vehicleClass.Text != "")
+            {
+                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and carClass = '" + vehicleClass.Text + "'";
+            }
+            else if (branch.Text != "" & vehicleClass.Text == "")
+            {
+                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and branchID = " + branch.Text;
+            }
+            else if (branch.Text == "" & vehicleClass.Text == "")
+            {
+                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
+            }
+            else
+            {
+                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and branchID = " + branch.Text + " and carClass = '" + vehicleClass.Text + "'";
+            }
             myReader = myCommand.ExecuteReader();
+            listOfCars.Rows.Clear();
             while (myReader.Read())
             {
-                branchID = myReader["branchID"].ToString();
+                listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
+                                        myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
+                                        myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
             }
-            myReader.Close();*/
+            myReader.Close();
         }
 
         private void branch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            branch.Text = "";
+            vehicleClass.Text = "";
         }
     }
     }
