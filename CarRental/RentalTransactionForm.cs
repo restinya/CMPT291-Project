@@ -334,6 +334,7 @@ namespace CarRental
                         changeBranch = Convert.ToSingle(myReader["changeBranch"]);
                     }
                     estimatedCost += changeBranch;
+                    myReader.Close();
                 }
                 catch (Exception e3)
                 {
@@ -426,6 +427,7 @@ namespace CarRental
                 returnBranchID.Visible = false;
                 returnBranch.Visible = false;
                 returnBranch.Items.Clear();
+                returnBranch.Text = "";
             }
         }
     }
