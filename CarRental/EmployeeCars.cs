@@ -14,7 +14,38 @@ namespace CarRental
         public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
-        public string id = "";
+        public string id = "", updateCarID, updateCarType, updateMake, updateModel, updateYear, updateLicensePlate;
+        public string updateCurrentMileage, updateTransmissionType, updateSeats, updateBranchID, updateStatus;
+
+        public void DisplayData()
+        {
+            listOfCars.Rows.Clear();
+            myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
+                                    myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
+                                    myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
+            }
+            myReader.Close();
+        }
+
+        public string readCarTypeID(string CarClass)
+        {
+            String carTypeID = "";
+            //Retrieve carTypeID
+            myCommand.CommandText = "select carTypeID from CarType where carClass = '" + CarClass + "'";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                carTypeID = myReader["carTypeID"].ToString();
+            }
+            myReader.Close();
+            
+
+            return carTypeID;
+        }
 
         public EmployeeCars()
         {
@@ -57,15 +88,7 @@ namespace CarRental
                 }
                 myReader.Close();
                 //Retrieving current car records
-                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
-                                        myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
-                                        myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
-                }
-                myReader.Close();
+                DisplayData();
             }
             catch (Exception e)
             {
@@ -105,12 +128,36 @@ namespace CarRental
 
             private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
             {
-                id = listOfCars.Rows[e.RowIndex].Cells[0].Value.ToString();
-            }
+                listOfCars.RowsDefaultCellStyle.SelectionBackColor = Color.Red;
+                int rowselect = e.RowIndex;
+                updateCarID = listOfCars.Rows[rowselect].Cells[0].Value.ToString();
+                updateCarType = listOfCars.Rows[rowselect].Cells[1].Value.ToString();
+                updateMake = listOfCars.Rows[rowselect].Cells[2].Value.ToString();
+                updateModel = listOfCars.Rows[rowselect].Cells[3].Value.ToString();
+                updateYear = listOfCars.Rows[rowselect].Cells[4].Value.ToString();
+                updateLicensePlate = listOfCars.Rows[rowselect].Cells[5].Value.ToString();
+                updateCurrentMileage = listOfCars.Rows[rowselect].Cells[6].Value.ToString();
+                updateTransmissionType = listOfCars.Rows[rowselect].Cells[7].Value.ToString();
+                updateSeats = listOfCars.Rows[rowselect].Cells[8].Value.ToString();
+                updateBranchID = listOfCars.Rows[rowselect].Cells[9].Value.ToString();
+                updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
+        }
 
-            private void listOfCars_RowHeaderSelect(object sender, DataGridViewCellEventArgs e)
+            private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
             {
-                id = listOfCars.Rows[e.RowIndex].Cells[0].Value.ToString();
+                listOfCars.RowsDefaultCellStyle.SelectionBackColor = Color.Red;
+                int rowselect = e.RowIndex;
+                updateCarID = listOfCars.Rows[rowselect].Cells[0].Value.ToString();
+                updateCarType = listOfCars.Rows[rowselect].Cells[1].Value.ToString();
+                updateMake = listOfCars.Rows[rowselect].Cells[2].Value.ToString();
+                updateModel = listOfCars.Rows[rowselect].Cells[3].Value.ToString();
+                updateYear = listOfCars.Rows[rowselect].Cells[4].Value.ToString();
+                updateLicensePlate = listOfCars.Rows[rowselect].Cells[5].Value.ToString();
+                updateCurrentMileage = listOfCars.Rows[rowselect].Cells[6].Value.ToString();
+                updateTransmissionType = listOfCars.Rows[rowselect].Cells[7].Value.ToString();
+                updateSeats = listOfCars.Rows[rowselect].Cells[8].Value.ToString();
+                updateBranchID = listOfCars.Rows[rowselect].Cells[9].Value.ToString();
+                updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
             }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -128,19 +175,22 @@ namespace CarRental
             }
             myReader.Close();
             //Retrieve carTypeID
-            myCommand.CommandText = "select carTypeID from CarType where carClass = '" + CarClass + "'";
-            myReader = myCommand.ExecuteReader();
-            while (myReader.Read())
-            {
-                carTypeID = myReader["carTypeID"].ToString();
-            }
-            myReader.Close();
+            carTypeID = readCarTypeID(CarClass);
             //Add to Database
             myCommand.CommandText = "insert into Car values (" + "'" + licensePlate.Text + "','" + status.Text + "'," + currentMileage.Text + ",'" + transmissionType.Text + "'," +
                                             seats.Text + "," + year.Text + ",'" + make.Text + "','" + model.Text + "'," +
                                             carTypeID + "," + branchID + ")";
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
+            //Clear All of the Textbox in the Add Form
+            foreach(Control childControl in addForm.Controls)
+            {
+                if (childControl is TextBox)
+                {
+                    childControl.ResetText();
+                }
+            }
+            DisplayData();
         }
 
         private void loadButton_Click(object sender, EventArgs e)
@@ -195,20 +245,22 @@ namespace CarRental
                     myCommand.CommandText = "delete from Car where carID = " + id;
                     myCommand.ExecuteNonQuery();
                     //Load the display
-                    myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
-                    myReader = myCommand.ExecuteReader();
-                    listOfCars.Rows.Clear();
-                    while (myReader.Read())
-                    {
-                        listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
-                                                myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
-                                                myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
-                    }
-                    myReader.Close();
+                    DisplayData();
 
                 }
- 
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string carTypeID = readCarTypeID(updateCarType);
+            myCommand.CommandText = "UPDATE Car SET licensePlate = '" + updateLicensePlate + "', status = '" + updateStatus + "', currentMileage = " +
+                                    updateCurrentMileage + ", transmissionType = '" + updateTransmissionType + "', seats = " + updateSeats +
+                                    ", year = " + updateYear + ", make = '" + updateMake + "', model = '" + updateModel + "', carTypeID = " +
+                                    carTypeID + ", branchID = " + updateBranchID + " where carID = " + updateCarID;
+            MessageBox.Show(myCommand.CommandText);
+            myCommand.ExecuteNonQuery();
+            MessageBox.Show("Car Record with carID = " + updateCarID + " has been successfully updated.");
         }
     }
     }

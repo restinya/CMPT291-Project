@@ -48,7 +48,7 @@ namespace CarRental
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.addForm = new System.Windows.Forms.GroupBox();
             this.status = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@ namespace CarRental
             this.tabControl1.SuspendLayout();
             this.EmployeeLOC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfCars)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.addForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -102,7 +102,7 @@ namespace CarRental
             this.EmployeeLOC.Controls.Add(this.button7);
             this.EmployeeLOC.Controls.Add(this.button6);
             this.EmployeeLOC.Controls.Add(this.button5);
-            this.EmployeeLOC.Controls.Add(this.groupBox1);
+            this.EmployeeLOC.Controls.Add(this.addForm);
             this.EmployeeLOC.Controls.Add(this.deleteButton);
             this.EmployeeLOC.Controls.Add(this.button3);
             this.EmployeeLOC.Controls.Add(this.vehicleClass);
@@ -247,35 +247,35 @@ namespace CarRental
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // groupBox1
+            // addForm
             // 
-            this.groupBox1.Controls.Add(this.status);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.licensePlate);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.carClass);
-            this.groupBox1.Controls.Add(this.branchName);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.currentMileage);
-            this.groupBox1.Controls.Add(this.make);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.model);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.year);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.transmissionType);
-            this.groupBox1.Controls.Add(this.seats);
-            this.groupBox1.Location = new System.Drawing.Point(609, 128);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(355, 447);
-            this.groupBox1.TabIndex = 33;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "NEW CAR RECORD";
+            this.addForm.Controls.Add(this.status);
+            this.addForm.Controls.Add(this.label14);
+            this.addForm.Controls.Add(this.label4);
+            this.addForm.Controls.Add(this.label13);
+            this.addForm.Controls.Add(this.licensePlate);
+            this.addForm.Controls.Add(this.label12);
+            this.addForm.Controls.Add(this.label5);
+            this.addForm.Controls.Add(this.carClass);
+            this.addForm.Controls.Add(this.branchName);
+            this.addForm.Controls.Add(this.label6);
+            this.addForm.Controls.Add(this.currentMileage);
+            this.addForm.Controls.Add(this.make);
+            this.addForm.Controls.Add(this.label11);
+            this.addForm.Controls.Add(this.label7);
+            this.addForm.Controls.Add(this.label10);
+            this.addForm.Controls.Add(this.model);
+            this.addForm.Controls.Add(this.label9);
+            this.addForm.Controls.Add(this.year);
+            this.addForm.Controls.Add(this.label8);
+            this.addForm.Controls.Add(this.transmissionType);
+            this.addForm.Controls.Add(this.seats);
+            this.addForm.Location = new System.Drawing.Point(609, 128);
+            this.addForm.Name = "addForm";
+            this.addForm.Size = new System.Drawing.Size(355, 447);
+            this.addForm.TabIndex = 33;
+            this.addForm.TabStop = false;
+            this.addForm.Text = "NEW CAR RECORD";
             // 
             // status
             // 
@@ -463,6 +463,7 @@ namespace CarRental
             this.button3.TabIndex = 8;
             this.button3.Text = "Modify";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // vehicleClass
             // 
@@ -532,8 +533,8 @@ namespace CarRental
             this.EmployeeLOC.ResumeLayout(false);
             this.EmployeeLOC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfCars)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.addForm.ResumeLayout(false);
+            this.addForm.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -542,7 +543,7 @@ namespace CarRental
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage EmployeeLOC;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox addForm;
         private System.Windows.Forms.TextBox status;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
