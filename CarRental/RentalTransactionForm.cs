@@ -14,6 +14,7 @@ namespace CarRental
         public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
+        public bool eligible = true;
 
         public void DisplayCustomers()
         {
@@ -59,6 +60,17 @@ namespace CarRental
                 }
             }
             return idNo;
+        }
+
+        public bool Eligible(ComboBox box, string idNoCheck)
+        {
+            bool flag = true;
+            string idNo = extractID(box);
+            if (idNo == idNoCheck)
+            {
+                flag = false;   //if the requestedCarTypeID matches the idNo passed in as a parameter, then gold member is not eligible for upgrade
+            }
+            return flag;
         }
 
         public RentalTransactionForm()
@@ -269,8 +281,8 @@ namespace CarRental
                 MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
             }
 
-            //Retrieve pricing for requested carType for goldMember
-            if (requestedClass.Text != "")
+            //Retrieve pricing for requested carType for goldMember if eligible for free upgrade
+            if (requestedClass.Text != "" && eligible == true)
             {
                 try
                 {
@@ -322,6 +334,7 @@ namespace CarRental
                 }
                 estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
             }
+            //Check if customer is planning to return to another branch location
             if (returnBranch.Text != "")
             {
                 float changeBranch = 0;
@@ -349,10 +362,6 @@ namespace CarRental
 
         }
 
-        private void carID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -364,12 +373,22 @@ namespace CarRental
                                     "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
             myReader = myCommand.ExecuteReader();
             availableCars.Rows.Clear();
+            eligible = true;
             while (myReader.Read())
             {
                 availableCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(),
                                         myReader["weeklyPricing"].ToString(), myReader["monthlyPricing"].ToString(), myReader["lateFee"].ToString(), myReader["changeBranch"].ToString());
+                //if a car record matches the requested car type of the gold member, then they are not eligible for a free upgrade
+                if (Eligible(requestedClass, myReader["carTypeID"].ToString()) == false)
+                {
+                    eligible = false;
+                }
             }
             myReader.Close();
+            if (eligible == true)
+            {
+                MessageBox.Show("Requested Car Type is not available in the period selected. Gold Member is eligible for a free upgrade.");
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

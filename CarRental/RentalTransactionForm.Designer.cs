@@ -71,6 +71,9 @@ namespace CarRental
             this.empID = new System.Windows.Forms.ComboBox();
             this.requestCar = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.returnBranch = new System.Windows.Forms.ComboBox();
+            this.returnBranchID = new System.Windows.Forms.Label();
+            this.changeBranchCheck = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -88,9 +91,6 @@ namespace CarRental
             this.monthlyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.changeBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changeBranchCheck = new System.Windows.Forms.CheckBox();
-            this.returnBranchID = new System.Windows.Forms.Label();
-            this.returnBranch = new System.Windows.Forms.ComboBox();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -497,6 +497,36 @@ namespace CarRental
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             // 
+            // returnBranch
+            // 
+            this.returnBranch.FormattingEnabled = true;
+            this.returnBranch.Location = new System.Drawing.Point(176, 37);
+            this.returnBranch.Name = "returnBranch";
+            this.returnBranch.Size = new System.Drawing.Size(121, 23);
+            this.returnBranch.TabIndex = 32;
+            this.returnBranch.Visible = false;
+            // 
+            // returnBranchID
+            // 
+            this.returnBranchID.AutoSize = true;
+            this.returnBranchID.Location = new System.Drawing.Point(176, 19);
+            this.returnBranchID.Name = "returnBranchID";
+            this.returnBranchID.Size = new System.Drawing.Size(96, 15);
+            this.returnBranchID.TabIndex = 31;
+            this.returnBranchID.Text = "Return Branch ID";
+            this.returnBranchID.Visible = false;
+            // 
+            // changeBranchCheck
+            // 
+            this.changeBranchCheck.AutoSize = true;
+            this.changeBranchCheck.Location = new System.Drawing.Point(15, 66);
+            this.changeBranchCheck.Name = "changeBranchCheck";
+            this.changeBranchCheck.Size = new System.Drawing.Size(194, 19);
+            this.changeBranchCheck.TabIndex = 30;
+            this.changeBranchCheck.Text = "Select If Different Return Branch";
+            this.changeBranchCheck.UseVisualStyleBackColor = true;
+            this.changeBranchCheck.CheckedChanged += new System.EventHandler(this.changeBranchCheck_CheckedChanged);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(446, 357);
@@ -584,6 +614,7 @@ namespace CarRental
             this.availableCars.Location = new System.Drawing.Point(14, 402);
             this.availableCars.Name = "availableCars";
             this.availableCars.RowTemplate.Height = 25;
+            this.availableCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.availableCars.Size = new System.Drawing.Size(560, 150);
             this.availableCars.TabIndex = 47;
             this.availableCars.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -637,36 +668,6 @@ namespace CarRental
             // 
             this.changeBranch.HeaderText = "Different Branch Fee";
             this.changeBranch.Name = "changeBranch";
-            // 
-            // changeBranchCheck
-            // 
-            this.changeBranchCheck.AutoSize = true;
-            this.changeBranchCheck.Location = new System.Drawing.Point(15, 66);
-            this.changeBranchCheck.Name = "changeBranchCheck";
-            this.changeBranchCheck.Size = new System.Drawing.Size(194, 19);
-            this.changeBranchCheck.TabIndex = 30;
-            this.changeBranchCheck.Text = "Select If Different Return Branch";
-            this.changeBranchCheck.UseVisualStyleBackColor = true;
-            this.changeBranchCheck.CheckedChanged += new System.EventHandler(this.changeBranchCheck_CheckedChanged);
-            // 
-            // returnBranchID
-            // 
-            this.returnBranchID.AutoSize = true;
-            this.returnBranchID.Location = new System.Drawing.Point(176, 19);
-            this.returnBranchID.Name = "returnBranchID";
-            this.returnBranchID.Size = new System.Drawing.Size(96, 15);
-            this.returnBranchID.TabIndex = 31;
-            this.returnBranchID.Text = "Return Branch ID";
-            this.returnBranchID.Visible = false;
-            // 
-            // returnBranch
-            // 
-            this.returnBranch.FormattingEnabled = true;
-            this.returnBranch.Location = new System.Drawing.Point(176, 37);
-            this.returnBranch.Name = "returnBranch";
-            this.returnBranch.Size = new System.Drawing.Size(121, 23);
-            this.returnBranch.TabIndex = 32;
-            this.returnBranch.Visible = false;
             // 
             // RentalTransactionForm
             // 
