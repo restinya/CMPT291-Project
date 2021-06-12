@@ -314,7 +314,8 @@ namespace CarRental
             availableCars.Rows.Clear();
             while (myReader.Read())
             {
-                availableCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString());
+                availableCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(),
+                                        myReader["weeklyPricing"].ToString(), myReader["monthlyPricing"].ToString(), myReader["lateFee"].ToString(), myReader["changeBranch"].ToString());
             }
             myReader.Close();
         }

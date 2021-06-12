@@ -75,6 +75,8 @@ namespace CarRental
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
+            this.membership = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,8 +84,10 @@ namespace CarRental
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
-            this.membership = new System.Windows.Forms.TextBox();
+            this.weeklyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthlyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -540,6 +544,23 @@ namespace CarRental
             this.s.TabStop = false;
             this.s.Text = "NEW RENTAL RESERVATION";
             // 
+            // membership
+            // 
+            this.membership.Location = new System.Drawing.Point(193, 149);
+            this.membership.Name = "membership";
+            this.membership.Size = new System.Drawing.Size(40, 23);
+            this.membership.TabIndex = 49;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 145);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 29);
+            this.button3.TabIndex = 48;
+            this.button3.Text = "Check Gold Membership";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // availableCars
             // 
             this.availableCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -549,7 +570,11 @@ namespace CarRental
             this.Make,
             this.Model,
             this.Year,
-            this.dailyPricing});
+            this.dailyPricing,
+            this.weeklyPricing,
+            this.monthlyPricing,
+            this.lateFee,
+            this.changeBranch});
             this.availableCars.Location = new System.Drawing.Point(15, 416);
             this.availableCars.Name = "availableCars";
             this.availableCars.RowTemplate.Height = 25;
@@ -564,7 +589,7 @@ namespace CarRental
             // 
             // CarType
             // 
-            this.CarType.HeaderText = "CarType";
+            this.CarType.HeaderText = "Car Type";
             this.CarType.Name = "CarType";
             // 
             // Make
@@ -584,25 +609,28 @@ namespace CarRental
             // 
             // dailyPricing
             // 
-            this.dailyPricing.HeaderText = "dailyPricing";
+            this.dailyPricing.HeaderText = "Daily Price";
             this.dailyPricing.Name = "dailyPricing";
             // 
-            // button3
+            // weeklyPricing
             // 
-            this.button3.Location = new System.Drawing.Point(17, 145);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 29);
-            this.button3.TabIndex = 48;
-            this.button3.Text = "Check Gold Membership";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.weeklyPricing.HeaderText = "Weekly Price";
+            this.weeklyPricing.Name = "weeklyPricing";
             // 
-            // membership
+            // monthlyPricing
             // 
-            this.membership.Location = new System.Drawing.Point(193, 149);
-            this.membership.Name = "membership";
-            this.membership.Size = new System.Drawing.Size(40, 23);
-            this.membership.TabIndex = 49;
+            this.monthlyPricing.HeaderText = "Monthly Price";
+            this.monthlyPricing.Name = "monthlyPricing";
+            // 
+            // lateFee
+            // 
+            this.lateFee.HeaderText = "Late Fee";
+            this.lateFee.Name = "lateFee";
+            // 
+            // changeBranch
+            // 
+            this.changeBranch.HeaderText = "Different Branch Fee";
+            this.changeBranch.Name = "changeBranch";
             // 
             // RentalTransactionForm
             // 
@@ -681,15 +709,19 @@ namespace CarRental
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox member;
         private System.Windows.Forms.DataGridView availableCars;
+        private System.Windows.Forms.GroupBox s;
+        private System.Windows.Forms.TextBox hi;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox membership;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Make;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyPricing;
-        private System.Windows.Forms.GroupBox s;
-        private System.Windows.Forms.TextBox hi;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox membership;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weeklyPricing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monthlyPricing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lateFee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn changeBranch;
     }
 }
