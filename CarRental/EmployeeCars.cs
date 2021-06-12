@@ -14,7 +14,7 @@ namespace CarRental
         public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
-        public string id;
+        public string id = "";
 
         public EmployeeCars()
         {
@@ -186,12 +186,28 @@ namespace CarRental
 
         private void button4_Click(object sender, EventArgs e)
         {
+            String id = listOfCars.SelectedRows[0].Cells[0].Value.ToString();
             if (id != "")
             {
-                myCommand.CommandText = "delete from Car where carID = " + id;
-                MessageBox.Show(myCommand.CommandText);
-                myCommand.ExecuteNonQuery();
-                
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?","Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    myCommand.CommandText = "delete from Car where carID = " + id;
+                    myCommand.ExecuteNonQuery();
+                    //Load the display
+                    myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID";
+                    myReader = myCommand.ExecuteReader();
+                    listOfCars.Rows.Clear();
+                    while (myReader.Read())
+                    {
+                        listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
+                                                myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
+                                                myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
+                    }
+                    myReader.Close();
+
+                }
+ 
             }
         }
     }

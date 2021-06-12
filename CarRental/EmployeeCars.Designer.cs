@@ -147,6 +147,7 @@ namespace CarRental
             this.listOfCars.Location = new System.Drawing.Point(31, 136);
             this.listOfCars.Name = "listOfCars";
             this.listOfCars.RowTemplate.Height = 25;
+            this.listOfCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listOfCars.Size = new System.Drawing.Size(558, 439);
             this.listOfCars.TabIndex = 37;
             this.listOfCars.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
