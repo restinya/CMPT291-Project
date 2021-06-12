@@ -15,6 +15,18 @@ namespace CarRental
         public SqlCommand myCommand;
         public SqlDataReader myReader;
 
+        public void DisplayCustomers()
+        {
+            customerID.Items.Clear();
+            myCommand.CommandText = "select customerID, fName, lName from Customer";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                customerID.Items.Add(myReader["customerID"].ToString() + " - " + myReader["fName"].ToString() + " " + myReader["lName"].ToString());
+            }
+            myReader.Close();
+        }
+
         public RentalTransactionForm()
         {
             InitializeComponent();
@@ -40,35 +52,29 @@ namespace CarRental
             try
             {
                 //Retrieving customerIDs
-                myCommand.CommandText = "select customerID from Customer";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    customerID.Items.Add(myReader["customerID"].ToString());
-                }
-                myReader.Close();
+                DisplayCustomers();
                 //Retrieving branchIDs
-                myCommand.CommandText = "select branchID from Branch";
+                myCommand.CommandText = "select branchID, branchName from Branch";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    pickUpBranch.Items.Add(myReader["branchID"].ToString());
+                    pickUpBranch.Items.Add(myReader["branchID"].ToString() + " - " + myReader["branchName"].ToString());
                 }
                 myReader.Close();
                 //Retrieving carTypeIDs
-                myCommand.CommandText = "select carClass from CarType";
+                myCommand.CommandText = "select carTypeID, carClass from CarType";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    requestedClass.Items.Add(myReader["carClass"].ToString());
+                    requestedClass.Items.Add(myReader["carTypeID"].ToString() + " - " + myReader["carClass"].ToString());
                 }
                 myReader.Close();
                 //Retrieving employeeIDs
-                myCommand.CommandText = "select empID from Employee";
+                myCommand.CommandText = "select empID, fName, lName from Employee";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    empID.Items.Add(myReader["empID"].ToString());
+                    empID.Items.Add(myReader["empID"].ToString() + " - " + myReader["fName"].ToString() + " " + myReader["lName"].ToString());
                 }
                 myReader.Close();
             }
@@ -165,14 +171,8 @@ namespace CarRental
 
             try
             {
-                customerID.Items.Clear();
-                myCommand.CommandText = "select customerID from Customer";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    customerID.Items.Add(myReader["customerID"].ToString());
-                }
-                myReader.Close();
+                //Display updated customers in the customerID drop down menu
+                DisplayCustomers();
             }
             catch (Exception e3)
             {
