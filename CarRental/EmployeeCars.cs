@@ -72,19 +72,19 @@ namespace CarRental
             try
             {
                 //Retrieving branchIDs
-                myCommand.CommandText = "select branchID from Branch";
+                myCommand.CommandText = "select branchID, branchName from Branch";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    branch.Items.Add(myReader["branchID"].ToString());
+                    branch.Items.Add(myReader["branchID"].ToString() + " - " + myReader["branchName"].ToString());
                 }
                 myReader.Close();
                 //Retrieving Vehicle Classes
-                myCommand.CommandText = "select carClass from CarType";
+                myCommand.CommandText = "select carTypeID, carClass from CarType";
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    vehicleClass.Items.Add(myReader["carClass"].ToString());
+                    vehicleClass.Items.Add(myReader["carTypeID"].ToString() + " - " + myReader["carClass"].ToString());
                 }
                 myReader.Close();
                 //Retrieving current car records
