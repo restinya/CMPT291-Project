@@ -128,7 +128,10 @@ namespace CarRental
 
             private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
             {
-                listOfCars.RowsDefaultCellStyle.SelectionBackColor = Color.Red;
+            }
+    
+            private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+            {
                 int rowselect = e.RowIndex;
                 updateCarID = listOfCars.Rows[rowselect].Cells[0].Value.ToString();
                 updateCarType = listOfCars.Rows[rowselect].Cells[1].Value.ToString();
@@ -142,23 +145,6 @@ namespace CarRental
                 updateBranchID = listOfCars.Rows[rowselect].Cells[9].Value.ToString();
                 updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
         }
-
-            private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-            {
-                listOfCars.RowsDefaultCellStyle.SelectionBackColor = Color.Red;
-                int rowselect = e.RowIndex;
-                updateCarID = listOfCars.Rows[rowselect].Cells[0].Value.ToString();
-                updateCarType = listOfCars.Rows[rowselect].Cells[1].Value.ToString();
-                updateMake = listOfCars.Rows[rowselect].Cells[2].Value.ToString();
-                updateModel = listOfCars.Rows[rowselect].Cells[3].Value.ToString();
-                updateYear = listOfCars.Rows[rowselect].Cells[4].Value.ToString();
-                updateLicensePlate = listOfCars.Rows[rowselect].Cells[5].Value.ToString();
-                updateCurrentMileage = listOfCars.Rows[rowselect].Cells[6].Value.ToString();
-                updateTransmissionType = listOfCars.Rows[rowselect].Cells[7].Value.ToString();
-                updateSeats = listOfCars.Rows[rowselect].Cells[8].Value.ToString();
-                updateBranchID = listOfCars.Rows[rowselect].Cells[9].Value.ToString();
-                updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
-            }
 
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -253,14 +239,22 @@ namespace CarRental
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string carTypeID = readCarTypeID(updateCarType);
-            myCommand.CommandText = "UPDATE Car SET licensePlate = '" + updateLicensePlate + "', status = '" + updateStatus + "', currentMileage = " +
+            /*String id = listOfCars.SelectedRows[0].Cells[0].Value.ToString();*/
+            if (updateCarID != "")
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to update this record?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    string carTypeID = readCarTypeID(updateCarType);
+                    myCommand.CommandText = "UPDATE Car SET licensePlate = '" + updateLicensePlate + "', status = '" + updateStatus + "', currentMileage = " +
                                     updateCurrentMileage + ", transmissionType = '" + updateTransmissionType + "', seats = " + updateSeats +
                                     ", year = " + updateYear + ", make = '" + updateMake + "', model = '" + updateModel + "', carTypeID = " +
                                     carTypeID + ", branchID = " + updateBranchID + " where carID = " + updateCarID;
-            MessageBox.Show(myCommand.CommandText);
-            myCommand.ExecuteNonQuery();
-            MessageBox.Show("Car Record with carID = " + updateCarID + " has been successfully updated.");
+                    MessageBox.Show(myCommand.CommandText);
+                    myCommand.ExecuteNonQuery();
+                    MessageBox.Show("Car Record with carID = " + updateCarID + " has been successfully updated.");
+                }
+            }
         }
     }
     }
