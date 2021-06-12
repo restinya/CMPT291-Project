@@ -27,6 +27,40 @@ namespace CarRental
             myReader.Close();
         }
 
+        public void DisplayReturnBranch()
+        {
+            returnBranch.Items.Clear();
+            myCommand.CommandText = "select branchID, branchName from Branch";
+            myReader = myCommand.ExecuteReader();
+            string pickUpBranchID = extractID(pickUpBranch);
+            while (myReader.Read())
+            {
+                if (myReader["branchID"].ToString() == pickUpBranchID)
+                {
+                    continue;
+                }
+                returnBranch.Items.Add(myReader["branchID"].ToString() + " - " + myReader["branchName"].ToString());
+            }
+            myReader.Close();
+        }
+
+        public string extractID(ComboBox box)
+        {
+            string[] words = box.Text.Split(' ');
+            string idNo = "";
+            foreach (var word in words)
+            {
+                int myInt;
+                bool isNumerical = int.TryParse(word, out myInt);
+                if (isNumerical)
+                {
+                    idNo = word;
+                    break;
+                }
+            }
+            return idNo;
+        }
+
         public RentalTransactionForm()
         {
             InitializeComponent();
@@ -102,19 +136,16 @@ namespace CarRental
             {
                 if (requestedClass.Text != "")
                 {
-                    myCommand.CommandText = "select carTypeID from CarType where carClass = '" + requestedClass.Text + "'";
-                    myReader = myCommand.ExecuteReader();
-                    while (myReader.Read())
-                    {
-                        RequestedClass = "," + myReader["carTypeID"].ToString() + ",";
-
-                    }
-                    myReader.Close();
+                    string carClassID = extractID(requestedClass);
+                    RequestedClass = "," + carClassID + ",";
                 }
+                string custID = extractID(customerID);
+                string employeeID = extractID(empID);
+                string branchID = extractID(pickUpBranch);
 
                 myCommand.CommandText = "insert into Rental values ('" + pickUpDate.Text + "','" + expectedDate.Text +
                                         "'," + "NULL,NULL," + result.Text + ",NULL," +
-                                        customerID.Text + "," + empID.Text + RequestedClass + availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + pickUpBranch.Text + ",NULL" + ")";
+                                        custID + "," + employeeID + RequestedClass + availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + branchID + ",NULL" + ")";
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
             }
@@ -243,7 +274,8 @@ namespace CarRental
             {
                 try
                 {
-                    myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from CarType where carClass = '" + requestedClass.Text + "'";
+                    string carClassID = extractID(requestedClass);
+                    myCommand.CommandText = "select dailyPricing, weeklyPricing, monthlyPricing from CarType where carTypeID = '" + carClassID + "'";
                     myReader = myCommand.ExecuteReader();
                     while (myReader.Read())
                     {
@@ -290,6 +322,24 @@ namespace CarRental
                 }
                 estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
             }
+            if (returnBranch.Text != "")
+            {
+                float changeBranch = 0;
+                try
+                {
+                    myCommand.CommandText = "select changeBranch from Car, CarType where Car.cartypeID = CarType.cartypeID and Car.carID = " + availableCars.SelectedRows[0].Cells[0].Value.ToString();
+                    myReader = myCommand.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        changeBranch = Convert.ToSingle(myReader["changeBranch"]);
+                    }
+                    estimatedCost += changeBranch;
+                }
+                catch (Exception e3)
+                {
+                    MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
+                }
+            }
             result.Text = estimatedCost.ToString();
         }
 
@@ -306,8 +356,9 @@ namespace CarRental
         private void button1_Click_1(object sender, EventArgs e)
         {
             //Retrieving available carIDs based on branchID selected
+            string branchID = extractID(pickUpBranch);
             myCommand.CommandText = "select * from Car, Branch, CarType where Car.branchID = Branch.branchID and Car.cartypeID = CarType.cartypeID and " +
-                                    "Branch.branchID = " + pickUpBranch.Text + " and Car.carID not in " +
+                                    "Branch.branchID = " + branchID + " and Car.carID not in " +
                                     "((select carID from Rental where pickUpDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "') UNION " +
                                     "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
             myReader = myCommand.ExecuteReader();
@@ -340,21 +391,42 @@ namespace CarRental
         private void button3_Click(object sender, EventArgs e)
         {
             //Retrieving goldMembership
-            myCommand.CommandText = "select goldMember from Customer where customerID = " + customerID.Text;
-            myReader = myCommand.ExecuteReader();
-            while (myReader.Read())
+            string idNo = extractID(customerID);
+            if (idNo != "")
             {
-                if (myReader["goldMember"] == DBNull.Value)
+                myCommand.CommandText = "select goldMember from Customer where customerID = " + idNo;
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
                 {
-                    membership.Text = "No";
+                    if (myReader["goldMember"] == DBNull.Value)
+                    {
+                        membership.Text = "No";
+                    }
+                    else
+                    {
+                        membership.Text = "Yes";
+                        requestCar.Visible = true;
+                    }
                 }
-                else
-                {
-                    membership.Text = "Yes";
-                    requestCar.Visible = true;
-                }
+                myReader.Close();
             }
-            myReader.Close();
+        }
+
+        private void changeBranchCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (changeBranchCheck.Checked)
+            {
+                returnBranchID.Visible = true;
+                returnBranch.Visible = true;
+                returnBranch.Text = "";
+                DisplayReturnBranch();
+            }
+            if (changeBranchCheck.Checked == false)
+            {
+                returnBranchID.Visible = false;
+                returnBranch.Visible = false;
+                returnBranch.Items.Clear();
+            }
         }
     }
 }
