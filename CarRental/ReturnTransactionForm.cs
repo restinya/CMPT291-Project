@@ -110,6 +110,11 @@ namespace CarRental
 
         private void loadButton_Click(object sender, EventArgs e)
         {
+            if (customerIDBox.Text == "")
+            {
+                MessageBox.Show("Select Customer first.");
+                return;
+            }
             string custID = extractID(customerIDBox);
             myCommand.CommandText = "select * from Car,CarType,Rental,Customer where Car.carTypeID = CarType.carTypeID and Car.carID = Rental.carID and Customer.customerID = Rental.customerID and Rental.customerID = " + custID +
                                     " and Rental.returnDate is NULL";
@@ -140,6 +145,16 @@ namespace CarRental
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            if (returnBranch.Text == "" || mileageUsed.Text == "" || (listOfRentals.SelectedRows.Count < 1))
+            {
+                MessageBox.Show("Some fields are not filled.");
+                return;
+            }
+            if (returnDate.Value < Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1]))
+            {
+                MessageBox.Show("Return Date is not valid.");
+                return;
+            }
             bool goldMembership = checkMembership(customerIDBox);
 
             //Initialize variables
@@ -222,6 +237,22 @@ namespace CarRental
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (result.Text == "")
+            {
+                MessageBox.Show("Calculate Total Fee first before submitting.");
+                return;
+            }
+            if (returnBranch.Text == "" || mileageUsed.Text == "" || (listOfRentals.SelectedRows.Count < 1))
+            {
+                MessageBox.Show("Some fields are not filled.");
+                return;
+            }
+            if (returnDate.Value < Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1]))
+            {
+                MessageBox.Show("Return Date is not valid.");
+                return;
+            }
+            //Initialize variables
             string rentalID = listOfRentals.SelectedRows[0].Cells[0].Value.ToString();
             string carID = listOfRentals.SelectedRows[0].Cells[4].Value.ToString();
             string branchID = extractID(returnBranch);

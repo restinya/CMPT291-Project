@@ -144,9 +144,24 @@ namespace CarRental
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (empID.Text == "" || customerID.Text == "" || pickUpBranch.Text == "" || availableCars.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Some fields are not filled.");
+                return;
+            }
+            else if (expectedDate.Value <= pickUpDate.Value)
+            {
+                MessageBox.Show("Expected Return Date needs to be at least one day ahead of Pick Up Date.");
+                return;
+            }
             String RequestedClass = ",NULL,";
             try
             {
+                if (result.Text == "")
+                {
+                    MessageBox.Show("Calculate Estimated Cost first before submitting.");
+                    return;
+                }
                 if (requestedClass.Text != "" && eligible == true)
                 {
                     string carClassID = extractID(requestedClass);
@@ -161,16 +176,16 @@ namespace CarRental
                                         custID + "," + employeeID + RequestedClass + availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + branchID + ",NULL" + ")";
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
+
+                this.Hide();
+                EmployeeCars e1 = new EmployeeCars();
+                e1.ShowDialog();
             }
 
             catch (Exception e2) 
             {
                 MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
             }
-
-            this.Hide();
-            EmployeeCars e1 = new EmployeeCars();
-            e1.ShowDialog();
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -240,16 +255,6 @@ namespace CarRental
             }
         }
 
-        private void radioButtonYes_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void customerID_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -258,6 +263,18 @@ namespace CarRental
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            //Check if fields are properly filled
+            if (empID.Text == "" || customerID.Text == "" || pickUpBranch.Text == "" || availableCars.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Some fields are not filled.");
+                return;
+            }
+            else if (expectedDate.Value <= pickUpDate.Value)
+            {
+                MessageBox.Show("Expected Return Date needs to be at least one day ahead of Pick Up Date.");
+                return;
+            }
+
             //Initialize variables
             float dayPricing = 0;
             float weekPricing = 0;
@@ -370,6 +387,7 @@ namespace CarRental
                     MessageBox.Show(e3.ToString(), "Error: Missing some fields.");
                 }
             }
+            //Display final result
             result.Text = estimatedCost.ToString();
         }
 
@@ -381,6 +399,18 @@ namespace CarRental
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //Check if fields are properly filled
+            if (empID.Text == "" || customerID.Text == "" || pickUpBranch.Text == "")
+            {
+                MessageBox.Show("Some fields are not filled.");
+                return;
+            }
+            else if (expectedDate.Value <= pickUpDate.Value)
+            {
+                MessageBox.Show("Expected Return Date needs to be at least one day ahead of Pick Up Date.");
+                return;
+            }
+
             //Retrieving available carIDs based on branchID selected
             string branchID = extractID(pickUpBranch);
             myCommand.CommandText = "select * from Car, Branch, CarType where Car.branchID = Branch.branchID and Car.cartypeID = CarType.cartypeID and " +
@@ -433,6 +463,12 @@ namespace CarRental
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Check if customerID field is filled
+            if (customerID.Text == "")
+            {
+                MessageBox.Show("Select a Customer.");
+                return;
+            }
             //Retrieving goldMembership
             string idNo = extractID(customerID);
             if (idNo != "")
