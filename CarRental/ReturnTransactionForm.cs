@@ -95,7 +95,6 @@ namespace CarRental
             string custID = extractID(customerIDBox);
             myCommand.CommandText = "select * from Car,CarType,Rental,Customer where Car.carTypeID = CarType.carTypeID and Car.carID = Rental.carID and Customer.customerID = Rental.customerID and Rental.customerID = " + custID +
                                     " and Rental.returnDate is NULL";
-            MessageBox.Show(myCommand.CommandText);
             myReader = myCommand.ExecuteReader();
             listOfRentals.Rows.Clear();
             listOfRentals.Columns[1].DefaultCellStyle.Format = "dd-MM-yyyy";
@@ -145,6 +144,7 @@ namespace CarRental
             float lateFee = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[11].Value);
             float changeBranch = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[12].Value);
             string requestedClass = listOfRentals.SelectedRows[0].Cells[14].Value.ToString();
+            string returnBranchID = extractID(returnBranch);
 
             //If gold member had a requested car during rental transaction, then override current car price with the requested one
             if (goldMembership == true && requestedClass != "")
@@ -190,16 +190,11 @@ namespace CarRental
                 int lateDays = (returnDate.Value - expectedDate).Days;
                 estimatedCost += (lateDays * lateFee);
             }
-            if (goldMembership != true && pickUpBranch != returnBranch.Text)
+            if (goldMembership != true && pickUpBranch != returnBranchID)
             {
                 estimatedCost += changeBranch;
             }
             result.Text = estimatedCost.ToString();
-
-
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -207,16 +202,17 @@ namespace CarRental
             string rentalID = listOfRentals.SelectedRows[0].Cells[0].Value.ToString();
             string carID = listOfRentals.SelectedRows[0].Cells[4].Value.ToString();
             string branchID = extractID(returnBranch);
+            string custID = extractID(customerIDBox);
+            string goldID = "";
             int currentMileage = 0;
             try
             {
                 //Update Rental Transaction
                 myCommand.CommandText = "UPDATE Rental SET returnDate = '" + returnDate.Text + "', mileageUsed = " + mileageUsed.Text + ",totalFee = " + result.Text + ", returnBranchID = " +
                                         branchID + " where rentalID = " + rentalID;
-                MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
 
-                //Update Car Record for current mileage
+                //Update Car Record for current mileage and branch location
                 myCommand.CommandText = "select currentMileage from Car where carID = " + carID;
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
@@ -225,8 +221,7 @@ namespace CarRental
                 }
                 myReader.Close();
                 currentMileage += Convert.ToInt32(mileageUsed.Text);
-                myCommand.CommandText = "UPDATE Car SET currentMileage = " + currentMileage.ToString() + " where carID = " + carID;
-
+                myCommand.CommandText = "UPDATE Car SET currentMileage = " + currentMileage.ToString() + ", branchID = " + branchID + " where carID = " + carID;
                 MessageBox.Show("RentalID = " + rentalID + " record has been successfully updated.");
             }
             catch (Exception e2)
@@ -234,7 +229,34 @@ namespace CarRental
                 MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
             }
 
-
+            //Update Customer to Gold Member Status if Applicable
+            try
+            {
+                //Find the non-gold member customer with number of closed rental transactions to be 3 in the same year
+                myCommand.CommandText = "select Customer.customerID, year(returnDate) as rentalYear from Customer,Rental " +
+                                        "where Customer.customerID = Rental.customerID and Customer.customerID = " + custID + " and returnDate is not NULL and Customer.goldMember is NULL " +
+                                        "group by Customer.customerID, year(returnDate) having count(*) = 3";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    goldID = myReader["customerID"].ToString();
+                }
+                myReader.Close();
+                //If there is an applicable customer, then update customer to gold member status
+                if (goldID != "")
+                {
+                    myCommand.CommandText = "UPDATE Customer SET goldMember = '1' where customerID = " + goldID;
+                    myCommand.ExecuteNonQuery();
+                    MessageBox.Show("Customer with Customer ID = " + goldID + " has rented 3 times in the same year and has been successfully upgraded to Gold Member Status");
+                }
+            }
+            catch (Exception e2)
+            {
+                MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
+            }
+            this.Hide();
+            EmployeeCars e1 = new EmployeeCars();
+            e1.ShowDialog();
         }
     }
 }
