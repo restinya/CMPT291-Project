@@ -38,15 +38,17 @@ namespace CarRental
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.addForm = new System.Windows.Forms.GroupBox();
-            this.status = new System.Windows.Forms.TextBox();
+            this.seats = new System.Windows.Forms.ComboBox();
+            this.status = new System.Windows.Forms.ComboBox();
+            this.branchName = new System.Windows.Forms.ComboBox();
+            this.transmissionType = new System.Windows.Forms.ComboBox();
+            this.carClass = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.licensePlate = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.carClass = new System.Windows.Forms.TextBox();
-            this.branchName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.currentMileage = new System.Windows.Forms.TextBox();
             this.make = new System.Windows.Forms.TextBox();
@@ -57,8 +59,6 @@ namespace CarRental
             this.label9 = new System.Windows.Forms.Label();
             this.year = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.transmissionType = new System.Windows.Forms.TextBox();
-            this.seats = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.vehicleClass = new System.Windows.Forms.ComboBox();
@@ -74,10 +74,10 @@ namespace CarRental
             this.year2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.licensePlate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentMileage2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transmissionType2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seats2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transmissionType2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.seats2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.BranchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabControl1.SuspendLayout();
             this.EmployeeLOC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfCars)).BeginInit();
@@ -131,6 +131,7 @@ namespace CarRental
             // 
             // listOfCars
             // 
+            this.listOfCars.AllowUserToAddRows = false;
             this.listOfCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listOfCars.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CarID,
@@ -196,15 +197,17 @@ namespace CarRental
             // 
             // addForm
             // 
+            this.addForm.Controls.Add(this.seats);
             this.addForm.Controls.Add(this.status);
+            this.addForm.Controls.Add(this.branchName);
+            this.addForm.Controls.Add(this.transmissionType);
+            this.addForm.Controls.Add(this.carClass);
             this.addForm.Controls.Add(this.label14);
             this.addForm.Controls.Add(this.label4);
             this.addForm.Controls.Add(this.label13);
             this.addForm.Controls.Add(this.licensePlate);
             this.addForm.Controls.Add(this.label12);
             this.addForm.Controls.Add(this.label5);
-            this.addForm.Controls.Add(this.carClass);
-            this.addForm.Controls.Add(this.branchName);
             this.addForm.Controls.Add(this.label6);
             this.addForm.Controls.Add(this.currentMileage);
             this.addForm.Controls.Add(this.make);
@@ -215,8 +218,6 @@ namespace CarRental
             this.addForm.Controls.Add(this.label9);
             this.addForm.Controls.Add(this.year);
             this.addForm.Controls.Add(this.label8);
-            this.addForm.Controls.Add(this.transmissionType);
-            this.addForm.Controls.Add(this.seats);
             this.addForm.Location = new System.Drawing.Point(609, 128);
             this.addForm.Name = "addForm";
             this.addForm.Size = new System.Drawing.Size(355, 447);
@@ -224,12 +225,58 @@ namespace CarRental
             this.addForm.TabStop = false;
             this.addForm.Text = "NEW CAR RECORD";
             // 
+            // seats
+            // 
+            this.seats.FormattingEnabled = true;
+            this.seats.Items.AddRange(new object[] {
+            "2",
+            "4",
+            "5",
+            "7",
+            "8"});
+            this.seats.Location = new System.Drawing.Point(146, 268);
+            this.seats.Name = "seats";
+            this.seats.Size = new System.Drawing.Size(196, 23);
+            this.seats.TabIndex = 37;
+            // 
             // status
             // 
-            this.status.Location = new System.Drawing.Point(145, 382);
+            this.status.FormattingEnabled = true;
+            this.status.Items.AddRange(new object[] {
+            "Available",
+            "Repair",
+            "Maintenance"});
+            this.status.Location = new System.Drawing.Point(146, 385);
             this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(197, 23);
-            this.status.TabIndex = 34;
+            this.status.Size = new System.Drawing.Size(196, 23);
+            this.status.TabIndex = 36;
+            // 
+            // branchName
+            // 
+            this.branchName.FormattingEnabled = true;
+            this.branchName.Location = new System.Drawing.Point(146, 345);
+            this.branchName.Name = "branchName";
+            this.branchName.Size = new System.Drawing.Size(196, 23);
+            this.branchName.TabIndex = 35;
+            // 
+            // transmissionType
+            // 
+            this.transmissionType.FormattingEnabled = true;
+            this.transmissionType.Items.AddRange(new object[] {
+            "Automatic",
+            "Manual"});
+            this.transmissionType.Location = new System.Drawing.Point(145, 229);
+            this.transmissionType.Name = "transmissionType";
+            this.transmissionType.Size = new System.Drawing.Size(197, 23);
+            this.transmissionType.TabIndex = 34;
+            // 
+            // carClass
+            // 
+            this.carClass.FormattingEnabled = true;
+            this.carClass.Location = new System.Drawing.Point(145, 76);
+            this.carClass.Name = "carClass";
+            this.carClass.Size = new System.Drawing.Size(197, 23);
+            this.carClass.TabIndex = 33;
             // 
             // label14
             // 
@@ -282,20 +329,6 @@ namespace CarRental
             this.label5.Size = new System.Drawing.Size(36, 15);
             this.label5.TabIndex = 14;
             this.label5.Text = "Make";
-            // 
-            // carClass
-            // 
-            this.carClass.Location = new System.Drawing.Point(145, 76);
-            this.carClass.Name = "carClass";
-            this.carClass.Size = new System.Drawing.Size(197, 23);
-            this.carClass.TabIndex = 15;
-            // 
-            // branchName
-            // 
-            this.branchName.Location = new System.Drawing.Point(145, 342);
-            this.branchName.Name = "branchName";
-            this.branchName.Size = new System.Drawing.Size(197, 23);
-            this.branchName.TabIndex = 28;
             // 
             // label6
             // 
@@ -377,20 +410,6 @@ namespace CarRental
             this.label8.Size = new System.Drawing.Size(29, 15);
             this.label8.TabIndex = 23;
             this.label8.Text = "Year";
-            // 
-            // transmissionType
-            // 
-            this.transmissionType.Location = new System.Drawing.Point(146, 226);
-            this.transmissionType.Name = "transmissionType";
-            this.transmissionType.Size = new System.Drawing.Size(197, 23);
-            this.transmissionType.TabIndex = 21;
-            // 
-            // seats
-            // 
-            this.seats.Location = new System.Drawing.Point(146, 265);
-            this.seats.Name = "seats";
-            this.seats.Size = new System.Drawing.Size(197, 23);
-            this.seats.TabIndex = 22;
             // 
             // deleteButton
             // 
@@ -478,6 +497,7 @@ namespace CarRental
             // 
             this.CarType.HeaderText = "CarType";
             this.CarType.Name = "CarType";
+            this.CarType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // make2
             // 
@@ -507,22 +527,42 @@ namespace CarRental
             // transmissionType2
             // 
             this.transmissionType2.HeaderText = "Transmission Type";
+            this.transmissionType2.Items.AddRange(new object[] {
+            "Automatic",
+            "Manual"});
             this.transmissionType2.Name = "transmissionType2";
+            this.transmissionType2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.transmissionType2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // seats2
             // 
             this.seats2.HeaderText = "Seats";
+            this.seats2.Items.AddRange(new object[] {
+            "2",
+            "4",
+            "5",
+            "7",
+            "8"});
             this.seats2.Name = "seats2";
+            this.seats2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.seats2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // BranchID
             // 
             this.BranchID.HeaderText = "BranchID";
             this.BranchID.Name = "BranchID";
+            this.BranchID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // status2
             // 
             this.status2.HeaderText = "Status";
+            this.status2.Items.AddRange(new object[] {
+            "Available",
+            "Repair",
+            "Maintenance"});
             this.status2.Name = "status2";
+            this.status2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.status2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // EmployeeCars
             // 
@@ -547,7 +587,6 @@ namespace CarRental
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage EmployeeLOC;
         private System.Windows.Forms.GroupBox addForm;
-        private System.Windows.Forms.TextBox status;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label13;
@@ -555,7 +594,6 @@ namespace CarRental
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox branchName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox4;
@@ -581,14 +619,16 @@ namespace CarRental
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridView listOfCars;
-        private System.Windows.Forms.TextBox carClass;
         private System.Windows.Forms.TextBox make;
         private System.Windows.Forms.TextBox model;
         private System.Windows.Forms.TextBox currentMileage;
-        private System.Windows.Forms.TextBox transmissionType;
-        private System.Windows.Forms.TextBox seats;
         private System.Windows.Forms.TextBox ranc;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox seats;
+        private System.Windows.Forms.ComboBox status;
+        private System.Windows.Forms.ComboBox branchName;
+        private System.Windows.Forms.ComboBox transmissionType;
+        private System.Windows.Forms.ComboBox carClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarType;
         private System.Windows.Forms.DataGridViewTextBoxColumn make2;
@@ -596,9 +636,9 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn year2;
         private System.Windows.Forms.DataGridViewTextBoxColumn licensePlate2;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentMileage2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn transmissionType2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn seats2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn transmissionType2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn seats2;
         private System.Windows.Forms.DataGridViewTextBoxColumn BranchID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn status2;
     }
 }
