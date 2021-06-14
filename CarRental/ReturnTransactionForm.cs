@@ -38,6 +38,7 @@ namespace CarRental
                 this.Close();
             }
 
+            //Populate the items in the following comboboxes
             try
             {
                 //Retrieving customerIDs
@@ -63,6 +64,7 @@ namespace CarRental
             }
         }
 
+        /* Helper function that will extract the ID number from the combo box text */
         public string extractID(ComboBox box)
         {
             string[] words = box.Text.Split(' ');
@@ -80,6 +82,7 @@ namespace CarRental
             return idNo;
         }
 
+        /* Helper function that will check if customer is a gold Member */
         public bool checkMembership(ComboBox box)
         {
             bool goldMembership = false;
@@ -108,6 +111,7 @@ namespace CarRental
 
         }
 
+        /* Load Button */
         private void loadButton_Click(object sender, EventArgs e)
         {
             if (customerIDBox.Text == "")
@@ -131,6 +135,7 @@ namespace CarRental
             myReader.Close();
         }
 
+        /* Back Button */
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -143,6 +148,7 @@ namespace CarRental
            
         }
 
+        /* Calculate Button */
         private void calculateButton_Click(object sender, EventArgs e)
         {
             if (returnBranch.Text == "" || mileageUsed.Text == "" || (listOfRentals.SelectedRows.Count < 1))
@@ -235,6 +241,7 @@ namespace CarRental
             result.Text = estimatedCost.ToString();
         }
 
+        /* Submit Button */
         private void button2_Click(object sender, EventArgs e)
         {
             if (result.Text == "")
@@ -313,6 +320,7 @@ namespace CarRental
             e1.ShowDialog();
         }
 
+        /* Function that will pop a message indicating if customer is eligible to have their return branch fee waived */
         private void returnBranch_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool eligible = checkMembership(customerIDBox);

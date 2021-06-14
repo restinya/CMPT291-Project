@@ -17,6 +17,7 @@ namespace CarRental
         public string id = "", updateCarID, updateCarType, updateMake, updateModel, updateYear, updateLicensePlate;
         public string updateCurrentMileage, updateTransmissionType, updateSeats, updateBranchID, updateStatus;
 
+        /* Helper function that will display all of the car records in the data grid view */
         public void DisplayData()
         {
             listOfCars.Rows.Clear();
@@ -31,6 +32,7 @@ namespace CarRental
             myReader.Close();
         }
 
+        /* Helper function that will parse a string and extract the id number */
         public string extractID(string box)
         {
             string[] words = box.Split(' ');
@@ -70,6 +72,7 @@ namespace CarRental
                 this.Close();
             }
 
+            //Populate the items in the following comboboxes
             try
             {
                 //Retrieving branchIDs
@@ -100,6 +103,7 @@ namespace CarRental
             }
         }
 
+            /* Helper function that will retrieve all of the items for the BranchID combobox in data grid view */
             private DataTable GetBranchTable()
             {
                 DataTable l_dtBranch = new DataTable();
@@ -116,6 +120,7 @@ namespace CarRental
                 return l_dtBranch;
             }
 
+            /* Helper function that will retrieve all of the items for the CarType combobox in data grid view */
             private DataTable GetVehicleClassTable()
             {
                 DataTable l_dtVehicleClass = new DataTable();
@@ -132,8 +137,7 @@ namespace CarRental
                 return l_dtVehicleClass;
             }
 
-
-
+        /* Button linking to Rental Transaction Form */
         private void button5_Click(object sender, EventArgs e)
             {
                 this.Hide();
@@ -141,6 +145,7 @@ namespace CarRental
                 r1.ShowDialog();
             }
 
+            /* Button linking to Return Transaction Form */
             private void button6_Click(object sender, EventArgs e)
             {
                 this.Hide();
@@ -148,6 +153,7 @@ namespace CarRental
                 r1.ShowDialog();
             }
 
+            /* Button linking to Reports Form */
             private void button7_Click(object sender, EventArgs e)
             {
                 this.Hide();
@@ -155,6 +161,7 @@ namespace CarRental
                 r1.ShowDialog();
             }
 
+            /* Back Button */
             private void button8_Click(object sender, EventArgs e)
             {
                 this.Hide();
@@ -162,6 +169,7 @@ namespace CarRental
                 w1.ShowDialog();
             }
 
+        /* Helper function that will connect the populated combobox to the data grid view */
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex > -1)
@@ -186,6 +194,7 @@ namespace CarRental
             }
         }
     
+            /* Helper function that will retrieve the modified values once the data grid view is done being edited */
             private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
             {
                 int rowselect = e.RowIndex;
@@ -202,6 +211,7 @@ namespace CarRental
                 updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
         }
 
+        /* Add Button */
         private void addButton_Click(object sender, EventArgs e)
         {
             //Check if all of the fields are filled
@@ -228,7 +238,13 @@ namespace CarRental
             }
             myReader.Close();
             //Retrieve carTypeID
-            carTypeID = extractID(carClass.Text);
+            myCommand.CommandText = "select carTypeID from CarType where carClass = '" + carClass.Text + "'";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                carTypeID = myReader["carTypeID"].ToString();
+            }
+            myReader.Close();
             //Add to Database
             myCommand.CommandText = "insert into Car values (" + "'" + licensePlate.Text + "','" + status.Text + "'," + currentMileage.Text + ",'" + transmissionType.Text + "'," +
                                             seats.Text + "," + year.Text + ",'" + make.Text + "','" + model.Text + "'," +
@@ -239,7 +255,7 @@ namespace CarRental
             myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-                string carID = myReader["customerID"].ToString();
+                string carID = myReader["carID"].ToString();
                 MessageBox.Show("Car ID " + carID + " is created.");
 
             }
@@ -247,7 +263,7 @@ namespace CarRental
             //Clear All of the Textbox in the Add Form
             foreach (Control childControl in addForm.Controls)
             {
-                if (childControl is TextBox)
+                if (childControl is TextBox || childControl is ComboBox)
                 {
                     childControl.ResetText();
                 }
@@ -255,6 +271,7 @@ namespace CarRental
             DisplayData();
         }
 
+        /* Load Button */
         private void loadButton_Click(object sender, EventArgs e)
         {
             listOfCars.Rows.Clear();
@@ -301,12 +318,14 @@ namespace CarRental
 
         }
 
+        /* Clear Filters Button */
         private void button1_Click(object sender, EventArgs e)
         {
             branch.Text = "";
             vehicleClass.Text = "";
         }
 
+        /* Delete Button */
         private void button4_Click(object sender, EventArgs e)
         {
             if (listOfCars.SelectedRows.Count < 1)
@@ -329,6 +348,7 @@ namespace CarRental
             }
         }
 
+        /* Modify Button */
         private void button3_Click(object sender, EventArgs e)
         {
             if (listOfCars.SelectedRows.Count < 1)

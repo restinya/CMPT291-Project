@@ -16,6 +16,7 @@ namespace CarRental
         public SqlDataReader myReader;
         public bool eligible = false;
 
+        /* Helper function that will display all of the customers */
         public void DisplayCustomers()
         {
             customerID.Items.Clear();
@@ -28,6 +29,7 @@ namespace CarRental
             myReader.Close();
         }
 
+        /* Helper function that will display all of the items in the return branch combobox */
         public void DisplayReturnBranch()
         {
             returnBranch.Items.Clear();
@@ -45,6 +47,7 @@ namespace CarRental
             myReader.Close();
         }
 
+        /* Helper function that will extract the ID from a combobox text */
         public string extractID(ComboBox box)
         {
             string[] words = box.Text.Split(' ');
@@ -62,6 +65,7 @@ namespace CarRental
             return idNo;
         }
 
+        /* Helper function that checks if customer is a Gold Member and is eligible for a car upgrade during car selection */.
         public bool Eligible(ComboBox box, string idNoCheck)
         {
             bool flag = true;
@@ -96,6 +100,7 @@ namespace CarRental
                 this.Close();
             }
 
+            //Populate the following comboboxes
             try
             {
                 //Retrieving customerIDs
@@ -132,16 +137,7 @@ namespace CarRental
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /* Function that will add the new rental record to the database */
         private void button1_Click(object sender, EventArgs e)
         {
             if (empID.Text == "" || customerID.Text == "" || pickUpBranch.Text == "" || availableCars.SelectedRows.Count == 0)
@@ -149,7 +145,7 @@ namespace CarRental
                 MessageBox.Show("Some fields are not filled.");
                 return;
             }
-            else if (expectedDate.Value <= pickUpDate.Value)
+            if (expectedDate.Value <= pickUpDate.Value)
             {
                 MessageBox.Show("Expected Return Date needs to be at least one day ahead of Pick Up Date.");
                 return;
@@ -188,6 +184,7 @@ namespace CarRental
             }
         }
 
+        /* Function that will add the new customer details to the database */
         private void addButton_Click(object sender, EventArgs e)
         {
             String custID = "sample";
@@ -239,6 +236,7 @@ namespace CarRental
             }
         }
 
+        /* Function that will check if user wants to add a new customer */
         private void checkBoxCustomer_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxCustomer.Checked)
@@ -261,6 +259,7 @@ namespace CarRental
             
         }
 
+        /* Function that will calculate the estimated cost of the rental transaction */
         private void calculateButton_Click(object sender, EventArgs e)
         {
             //Check if fields are properly filled
@@ -396,7 +395,7 @@ namespace CarRental
 
         }
 
-
+        /* Function that will populate data grid view of available cars based on parameters selected */
         private void button1_Click_1(object sender, EventArgs e)
         {
             //Check if fields are properly filled
@@ -419,6 +418,7 @@ namespace CarRental
                                     "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
             myReader = myCommand.ExecuteReader();
             availableCars.Rows.Clear();
+            //Initialize eligible variable based on the content of the requested Class box
             if (requestedClass.Text != "")
             {
                 eligible = true;
@@ -438,6 +438,7 @@ namespace CarRental
                 }
             }
             myReader.Close();
+            //If customer matches all criteria for car upgrade, then show message box
             if (eligible == true)
             {
                 MessageBox.Show("Requested Car Type is not available in the period selected. Gold Member is eligible for a free upgrade.");
@@ -449,6 +450,7 @@ namespace CarRental
 
         }
 
+        /* Back Button */
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -461,6 +463,7 @@ namespace CarRental
 
         }
 
+        /*Function that checks if a customer is a gold member */
         private void button3_Click(object sender, EventArgs e)
         {
             //Check if customerID field is filled
@@ -494,6 +497,7 @@ namespace CarRental
             }
         }
 
+        /*Function that will check if customer is returning car to a different branch*/
         private void changeBranchCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (changeBranchCheck.Checked)
