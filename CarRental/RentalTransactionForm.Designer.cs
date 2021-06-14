@@ -75,6 +75,8 @@ namespace CarRental
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
+            this.membership = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,8 +84,6 @@ namespace CarRental
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
-            this.membership = new System.Windows.Forms.TextBox();
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -388,6 +388,7 @@ namespace CarRental
             this.street.Name = "street";
             this.street.Size = new System.Drawing.Size(397, 23);
             this.street.TabIndex = 40;
+            this.street.TextChanged += new System.EventHandler(this.street_TextChanged);
             // 
             // label13
             // 
@@ -461,6 +462,7 @@ namespace CarRental
             this.empID.Name = "empID";
             this.empID.Size = new System.Drawing.Size(121, 23);
             this.empID.TabIndex = 39;
+            this.empID.SelectedIndexChanged += new System.EventHandler(this.empID_SelectedIndexChanged);
             // 
             // requestCar
             // 
@@ -540,6 +542,23 @@ namespace CarRental
             this.s.TabStop = false;
             this.s.Text = "NEW RENTAL RESERVATION";
             // 
+            // membership
+            // 
+            this.membership.Location = new System.Drawing.Point(193, 149);
+            this.membership.Name = "membership";
+            this.membership.Size = new System.Drawing.Size(40, 23);
+            this.membership.TabIndex = 49;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 145);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 29);
+            this.button3.TabIndex = 48;
+            this.button3.Text = "Check Gold Membership";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // availableCars
             // 
             this.availableCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -586,23 +605,6 @@ namespace CarRental
             // 
             this.dailyPricing.HeaderText = "dailyPricing";
             this.dailyPricing.Name = "dailyPricing";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(17, 145);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 29);
-            this.button3.TabIndex = 48;
-            this.button3.Text = "Check Gold Membership";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // membership
-            // 
-            this.membership.Location = new System.Drawing.Point(193, 149);
-            this.membership.Name = "membership";
-            this.membership.Size = new System.Drawing.Size(40, 23);
-            this.membership.TabIndex = 49;
             // 
             // RentalTransactionForm
             // 

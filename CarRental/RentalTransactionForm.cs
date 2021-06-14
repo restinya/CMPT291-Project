@@ -47,6 +47,7 @@ namespace CarRental
                     customerID.Items.Add(myReader["customerID"].ToString());
                 }
                 myReader.Close();
+
                 //Retrieving branchIDs
                 myCommand.CommandText = "select branchID from Branch";
                 myReader = myCommand.ExecuteReader();
@@ -353,6 +354,16 @@ namespace CarRental
                 }
             }
             myReader.Close();
+        }
+
+        private void street_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void empID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
