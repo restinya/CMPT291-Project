@@ -65,7 +65,7 @@ namespace CarRental
             return idNo;
         }
 
-        /* Helper function that checks if customer is a Gold Member and is eligible for a car upgrade during car selection */.
+        /* Helper function that checks if customer is a Gold Member and is eligible for a car upgrade during car selection */
         public bool Eligible(ComboBox box, string idNoCheck)
         {
             bool flag = true;
@@ -137,7 +137,7 @@ namespace CarRental
 
         }
 
-        /* Function that will add the new rental record to the database */
+        /* Submit Button */
         private void button1_Click(object sender, EventArgs e)
         {
             if (empID.Text == "" || customerID.Text == "" || pickUpBranch.Text == "" || availableCars.SelectedRows.Count == 0)
@@ -170,8 +170,18 @@ namespace CarRental
                 myCommand.CommandText = "insert into Rental values ('" + pickUpDate.Text + "','" + expectedDate.Text +
                                         "'," + "NULL,NULL," + result.Text + ",NULL," +
                                         custID + "," + employeeID + RequestedClass + availableCars.SelectedRows[0].Cells[0].Value.ToString() + "," + branchID + ",NULL" + ")";
-                MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
+
+                //Retrive the newly created rentalID
+                myCommand.CommandText = "select rentalID from Rental where rentalID = (select max(rentalID) from Rental)";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string rentalID = myReader["rentalID"].ToString();
+                    MessageBox.Show("Rental ID " + rentalID + " is created.");
+
+                }
+                myReader.Close();
 
                 this.Hide();
                 EmployeeCars e1 = new EmployeeCars();

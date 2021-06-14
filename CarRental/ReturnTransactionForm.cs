@@ -151,12 +151,14 @@ namespace CarRental
         /* Calculate Button */
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            //Check if all fields are properly filled
             if (returnBranch.Text == "" || mileageUsed.Text == "" || (listOfRentals.SelectedRows.Count < 1))
             {
                 MessageBox.Show("Some fields are not filled.");
                 return;
             }
-            if (returnDate.Value < Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1]))
+            DateTime pickUpDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1].Value.ToString());
+            if (returnDate.Value < pickUpDate)
             {
                 MessageBox.Show("Return Date is not valid.");
                 return;
@@ -164,7 +166,6 @@ namespace CarRental
             bool goldMembership = checkMembership(customerIDBox);
 
             //Initialize variables
-            DateTime pickUpDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1].Value.ToString());
             DateTime expectedDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[2].Value.ToString());
             string pickUpBranch = listOfRentals.SelectedRows[0].Cells[3].Value.ToString();
             float dailyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[8].Value);
@@ -254,7 +255,8 @@ namespace CarRental
                 MessageBox.Show("Some fields are not filled.");
                 return;
             }
-            if (returnDate.Value < Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1]))
+            DateTime pickUpDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1].Value.ToString());
+            if (returnDate.Value < pickUpDate)
             {
                 MessageBox.Show("Return Date is not valid.");
                 return;
@@ -283,7 +285,7 @@ namespace CarRental
                 myReader.Close();
                 currentMileage += Convert.ToInt32(mileageUsed.Text);
                 myCommand.CommandText = "UPDATE Car SET currentMileage = " + currentMileage.ToString() + ", branchID = " + branchID + " where carID = " + carID;
-                MessageBox.Show("RentalID = " + rentalID + " record has been successfully updated.");
+                MessageBox.Show("RentalID = " + rentalID + " record has been successfully updated and closed.");
             }
             catch (Exception e2)
             {
@@ -326,7 +328,7 @@ namespace CarRental
             bool eligible = checkMembership(customerIDBox);
 
             string branchID = extractID(returnBranch);
-            if (eligible == true && listOfRentals.SelectedRows[0].Cells[4].Value.ToString() != branchID)
+            if (eligible == true && (listOfRentals.SelectedRows[0].Cells[3].Value.ToString() != branchID))
             {
                 MessageBox.Show("Different Return Branch Fee is waived for Gold Member Customer.");
             }
