@@ -14,7 +14,7 @@ namespace CarRental
         public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
-        public bool eligible = true;
+        public bool eligible = false;
 
         public void DisplayCustomers()
         {
@@ -83,6 +83,7 @@ namespace CarRental
                                         "database=CarRental; " +
                                         "connection timeout=30");
 
+            //Connect to Database
             try
             {
                 myConnection.Open();
@@ -337,6 +338,18 @@ namespace CarRental
             //Check if customer is planning to return to another branch location
             if (returnBranch.Text != "")
             {
+                string custID = extractID(customerID);
+                string goldMembership = "Yes";
+                myCommand.CommandText = "select goldMember from Customer where customerID = " + custID;
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    if (myReader["goldMember"] == DBNull.Value)
+                    {
+                        goldMembership = "No";
+                    }
+                }
+                myReader.Close();
                 float changeBranch = 0;
                 try
                 {
@@ -346,7 +359,10 @@ namespace CarRental
                     {
                         changeBranch = Convert.ToSingle(myReader["changeBranch"]);
                     }
-                    estimatedCost += changeBranch;
+                    if (goldMembership == "No")
+                    {
+                        estimatedCost += changeBranch;
+                    }
                     myReader.Close();
                 }
                 catch (Exception e3)
@@ -373,7 +389,14 @@ namespace CarRental
                                     "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
             myReader = myCommand.ExecuteReader();
             availableCars.Rows.Clear();
-            eligible = true;
+            if (requestedClass.Text != "")
+            {
+                eligible = true;
+            }
+            else
+            {
+                eligible = false;
+            }
             while (myReader.Read())
             {
                 availableCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(),
@@ -421,10 +444,13 @@ namespace CarRental
                     if (myReader["goldMember"] == DBNull.Value)
                     {
                         membership.Text = "No";
+                        requestCar.Visible = false;
+                        requestedClass.Text = "";
                     }
                     else
                     {
                         membership.Text = "Yes";
+                        requestedClass.Text = "";
                         requestCar.Visible = true;
                     }
                 }

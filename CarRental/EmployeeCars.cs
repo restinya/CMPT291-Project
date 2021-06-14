@@ -56,7 +56,7 @@ namespace CarRental
                                         "server=localhost;" +
                                         "database=CarRental; " +
                                         "connection timeout=30");
-
+            //Connect to Database
             try
             {
                 myConnection.Open();
