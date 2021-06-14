@@ -443,13 +443,13 @@ namespace CarRental
                 {
                     if (myReader["goldMember"] == DBNull.Value)
                     {
-                        membership.Text = "No";
+                        MessageBox.Show("Customer is not a Gold Member.");
                         requestCar.Visible = false;
                         requestedClass.Text = "";
                     }
                     else
                     {
-                        membership.Text = "Yes";
+                        MessageBox.Show("Customer is a Gold Member. Enter Customer's requested Car Type.");
                         requestedClass.Text = "";
                         requestCar.Visible = true;
                     }

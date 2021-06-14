@@ -78,7 +78,6 @@ namespace CarRental
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
-            this.membership = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -473,7 +472,7 @@ namespace CarRental
             // 
             this.requestCar.Controls.Add(this.label9);
             this.requestCar.Controls.Add(this.requestedClass);
-            this.requestCar.Location = new System.Drawing.Point(250, 134);
+            this.requestCar.Location = new System.Drawing.Point(202, 134);
             this.requestCar.Name = "requestCar";
             this.requestCar.Size = new System.Drawing.Size(162, 61);
             this.requestCar.TabIndex = 40;
@@ -559,7 +558,6 @@ namespace CarRental
             // 
             // s
             // 
-            this.s.Controls.Add(this.membership);
             this.s.Controls.Add(this.button3);
             this.s.Controls.Add(this.availableCars);
             this.s.Controls.Add(this.label22);
@@ -579,13 +577,6 @@ namespace CarRental
             this.s.TabIndex = 48;
             this.s.TabStop = false;
             this.s.Text = "NEW RENTAL RESERVATION";
-            // 
-            // membership
-            // 
-            this.membership.Location = new System.Drawing.Point(193, 149);
-            this.membership.Name = "membership";
-            this.membership.Size = new System.Drawing.Size(40, 23);
-            this.membership.TabIndex = 49;
             // 
             // button3
             // 
@@ -683,7 +674,7 @@ namespace CarRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 854);
+            this.ClientSize = new System.Drawing.Size(1134, 757);
             this.Controls.Add(this.s);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.addButton);
@@ -759,7 +750,6 @@ namespace CarRental
         private System.Windows.Forms.GroupBox s;
         private System.Windows.Forms.TextBox hi;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox membership;
         private System.Windows.Forms.ComboBox returnBranch;
         private System.Windows.Forms.Label returnBranchID;
         private System.Windows.Forms.CheckBox changeBranchCheck;
