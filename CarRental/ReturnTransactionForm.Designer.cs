@@ -60,6 +60,7 @@ namespace CarRental
             this.lateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.changeBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestedClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfRentals)).BeginInit();
@@ -110,6 +111,7 @@ namespace CarRental
             this.backButton.TabIndex = 10;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // label5
             // 
@@ -181,6 +183,7 @@ namespace CarRental
             this.calculateButton.TabIndex = 14;
             this.calculateButton.Text = "Calculate Total Fee";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // groupBox2
             // 
@@ -246,12 +249,14 @@ namespace CarRental
             this.monthlyPricing,
             this.lateFee,
             this.changeBranch,
-            this.employeeID});
+            this.employeeID,
+            this.requestedClass});
             this.listOfRentals.Location = new System.Drawing.Point(18, 90);
             this.listOfRentals.Name = "listOfRentals";
             this.listOfRentals.RowTemplate.Height = 25;
             this.listOfRentals.Size = new System.Drawing.Size(636, 226);
             this.listOfRentals.TabIndex = 13;
+            this.listOfRentals.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listOfRentals_CellContentClick);
             // 
             // rentalID
             // 
@@ -318,6 +323,11 @@ namespace CarRental
             this.employeeID.HeaderText = "Employee ID";
             this.employeeID.Name = "employeeID";
             // 
+            // requestedClass
+            // 
+            this.requestedClass.HeaderText = "Requested Car Type ID";
+            this.requestedClass.Name = "requestedClass";
+            // 
             // ReturnTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -356,6 +366,8 @@ namespace CarRental
         private System.Windows.Forms.TextBox result;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button checkButton;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.ComboBox rn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalID;
         private System.Windows.Forms.DataGridViewTextBoxColumn pickUpDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn expectedDate;
@@ -369,7 +381,6 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn lateFee;
         private System.Windows.Forms.DataGridViewTextBoxColumn changeBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeID;
-        private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.ComboBox rn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requestedClass;
     }
 }
