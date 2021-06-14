@@ -88,8 +88,8 @@ create table Rental(
 	expectedDate date,
 	returnDate date,
 	mileageUsed int,
-	estimatedCost int, /*derived attribute*/
-	totalFee int, /*derived attribute*/
+	estimatedCost float, /*derived attribute*/
+	totalFee float, /*derived attribute*/
 	customerID int,
 	employeeID int,
 	expectedCarTypeID int,
