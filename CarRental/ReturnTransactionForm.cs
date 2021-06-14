@@ -90,11 +90,6 @@ namespace CarRental
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void loadButton_Click(object sender, EventArgs e)
         {
             string custID = extractID(customerIDBox);
@@ -108,7 +103,7 @@ namespace CarRental
             while (myReader.Read())
             {
                 listOfRentals.Rows.Add(myReader["rentalID"].ToString(), Convert.ToDateTime(myReader["pickUpDate"]).ToShortDateString(), Convert.ToDateTime(myReader["expectedDate"]).ToShortDateString(), myReader["pickUpBranchID"].ToString(),
-                                    myReader["carTypeID"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(), myReader["weeklyPricing"].ToString(),
+                                    myReader["carID"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(), myReader["weeklyPricing"].ToString(),
                                     myReader["monthlyPricing"].ToString(), myReader["lateFee"].ToString(), myReader["changeBranch"].ToString(), myReader["employeeID"].ToString(), myReader["expectedCarTypeID"].ToString());
             }
             myReader.Close();
@@ -203,6 +198,41 @@ namespace CarRental
 
 
 
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string rentalID = listOfRentals.SelectedRows[0].Cells[0].Value.ToString();
+            string carID = listOfRentals.SelectedRows[0].Cells[4].Value.ToString();
+            string branchID = extractID(returnBranch);
+            int currentMileage = 0;
+            try
+            {
+                //Update Rental Transaction
+                myCommand.CommandText = "UPDATE Rental SET returnDate = '" + returnDate.Text + "', mileageUsed = " + mileageUsed.Text + ",totalFee = " + result.Text + ", returnBranchID = " +
+                                        branchID + " where rentalID = " + rentalID;
+                MessageBox.Show(myCommand.CommandText);
+                myCommand.ExecuteNonQuery();
+
+                //Update Car Record for current mileage
+                myCommand.CommandText = "select currentMileage from Car where carID = " + carID;
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    currentMileage = Convert.ToInt32(myReader["currentMileage"]);
+                }
+                myReader.Close();
+                currentMileage += Convert.ToInt32(mileageUsed.Text);
+                myCommand.CommandText = "UPDATE Car SET currentMileage = " + currentMileage.ToString() + " where carID = " + carID;
+
+                MessageBox.Show("RentalID = " + rentalID + " record has been successfully updated.");
+            }
+            catch (Exception e2)
+            {
+                MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
+            }
 
 
         }
