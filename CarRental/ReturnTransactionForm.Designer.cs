@@ -50,6 +50,7 @@ namespace CarRental
             this.rentalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pickUpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expectedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pickUpBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.carType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.make = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,6 +241,7 @@ namespace CarRental
             this.rentalID,
             this.pickUpDate,
             this.expectedDate,
+            this.pickUpBranch,
             this.carType,
             this.make,
             this.model,
@@ -272,6 +274,11 @@ namespace CarRental
             // 
             this.expectedDate.HeaderText = "Expected Date";
             this.expectedDate.Name = "expectedDate";
+            // 
+            // pickUpBranch
+            // 
+            this.pickUpBranch.HeaderText = "Pick-Up Branch";
+            this.pickUpBranch.Name = "pickUpBranch";
             // 
             // carType
             // 
@@ -371,6 +378,7 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalID;
         private System.Windows.Forms.DataGridViewTextBoxColumn pickUpDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn expectedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pickUpBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn carType;
         private System.Windows.Forms.DataGridViewTextBoxColumn make;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;

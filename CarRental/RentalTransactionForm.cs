@@ -147,7 +147,7 @@ namespace CarRental
             String RequestedClass = ",NULL,";
             try
             {
-                if (requestedClass.Text != "")
+                if (requestedClass.Text != "" && eligible == true)
                 {
                     string carClassID = extractID(requestedClass);
                     RequestedClass = "," + carClassID + ",";

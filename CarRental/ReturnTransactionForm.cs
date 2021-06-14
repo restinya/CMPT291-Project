@@ -48,6 +48,14 @@ namespace CarRental
                     customerIDBox.Items.Add(myReader["customerID"].ToString() + " - " + myReader["fname"].ToString() + " " + myReader["lname"].ToString());
                 }
                 myReader.Close();
+                //Retrieving branchIDs
+                myCommand.CommandText = "select * from Branch";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    returnBranch.Items.Add(myReader["branchID"].ToString() + " - " + myReader["branchName"].ToString());
+                }
+                myReader.Close();
             }
             catch (Exception e3)
             {
@@ -99,9 +107,9 @@ namespace CarRental
             listOfRentals.Columns[2].DefaultCellStyle.Format = "dd-MM-yyyy";
             while (myReader.Read())
             {
-                listOfRentals.Rows.Add(myReader["rentalID"].ToString(), Convert.ToDateTime(myReader["pickUpDate"]).ToShortDateString(), Convert.ToDateTime(myReader["expectedDate"]).ToShortDateString(), myReader["carTypeID"].ToString(),
-                                    myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(), myReader["weeklyPricing"].ToString(),
-                                    myReader["monthlyPricing"].ToString(), myReader["lateFee"].ToString(), myReader["changeBranch"].ToString(), myReader["employeeID"].ToString(), myReader["estimatedCost"].ToString());
+                listOfRentals.Rows.Add(myReader["rentalID"].ToString(), Convert.ToDateTime(myReader["pickUpDate"]).ToShortDateString(), Convert.ToDateTime(myReader["expectedDate"]).ToShortDateString(), myReader["pickUpBranchID"].ToString(),
+                                    myReader["carTypeID"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(), myReader["year"].ToString(), myReader["dailyPricing"].ToString(), myReader["weeklyPricing"].ToString(),
+                                    myReader["monthlyPricing"].ToString(), myReader["lateFee"].ToString(), myReader["changeBranch"].ToString(), myReader["employeeID"].ToString(), myReader["expectedCarTypeID"].ToString());
             }
             myReader.Close();
         }
@@ -121,7 +129,6 @@ namespace CarRental
         private void calculateButton_Click(object sender, EventArgs e)
         {
             bool goldMembership = false;
-            int requestedClass = 0;
             string custID = extractID(customerIDBox);
             myCommand.CommandText = "select goldMember from Customer where customerID = " + custID;
             myReader = myCommand.ExecuteReader();
@@ -136,14 +143,17 @@ namespace CarRental
 
             DateTime pickUpDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1].Value.ToString());
             DateTime expectedDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[2].Value.ToString());
-            float dailyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[7].Value);
-            float weeklyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[8].Value);
-            float monthlyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[9].Value);
+            string pickUpBranch = listOfRentals.SelectedRows[0].Cells[3].Value.ToString();
+            float dailyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[8].Value);
+            float weeklyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[9].Value);
+            float monthlyPricing = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[10].Value);
+            float lateFee = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[11].Value);
+            float changeBranch = Convert.ToSingle(listOfRentals.SelectedRows[0].Cells[12].Value);
+            string requestedClass = listOfRentals.SelectedRows[0].Cells[14].Value.ToString();
 
-            //If gold member, then override 
-            if (goldMembership == true)
+            //If gold member had a requested car during rental transaction, then override current car price with the requested one
+            if (goldMembership == true && requestedClass != "")
             {
-                requestedClass = Convert.ToInt32(listOfRentals.SelectedRows[0].Cells[13].Value);
                 myCommand.CommandText = "select * from CarType where carTypeID = " + requestedClass;
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
@@ -154,18 +164,19 @@ namespace CarRental
                 }
                 myReader.Close();
             }
-            
+
             //Calculate total fee
+            float estimatedCost = 0;
             int days = (returnDate.Value - pickUpDate).Days;
             if (days < 7)
             {
-                estimatedCost = days * dayPricing;
+                estimatedCost = days * dailyPricing;
             }
             if (days >= 7 & days < 30)
             {
                 int weeks = days / 7;
                 int leftDays = days - (weeks * 7);
-                estimatedCost = (weeks * weekPricing) + (leftDays * dayPricing);
+                estimatedCost = (weeks * weeklyPricing) + (leftDays * dailyPricing);
             }
             if (days >= 30)
             {
@@ -177,8 +188,19 @@ namespace CarRental
                     weeks = leftDays / 7;
                     leftDays = leftDays - (weeks * 7);
                 }
-                estimatedCost = (months * monthPricing) + (weeks * weekPricing) + (leftDays * dayPricing);
+                estimatedCost = (months * monthlyPricing) + (weeks * weeklyPricing) + (leftDays * dailyPricing);
             }
+            if (returnDate.Value > expectedDate)
+            {
+                int lateDays = (returnDate.Value - expectedDate).Days;
+                estimatedCost += (lateDays * lateFee);
+            }
+            if (goldMembership != true && pickUpBranch != returnBranch.Text)
+            {
+                estimatedCost += changeBranch;
+            }
+            result.Text = estimatedCost.ToString();
+
 
 
 
