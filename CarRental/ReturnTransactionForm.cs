@@ -80,6 +80,24 @@ namespace CarRental
             return idNo;
         }
 
+        public bool checkMembership(ComboBox box)
+        {
+            bool goldMembership = false;
+            string custID = extractID(box);
+            myCommand.CommandText = "select goldMember from Customer where customerID = " + custID;
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                if (myReader["goldMember"] != DBNull.Value)
+                {
+                    goldMembership = true;
+                }
+            }
+            myReader.Close();
+
+            return goldMembership;
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -122,19 +140,9 @@ namespace CarRental
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            bool goldMembership = false;
-            string custID = extractID(customerIDBox);
-            myCommand.CommandText = "select goldMember from Customer where customerID = " + custID;
-            myReader = myCommand.ExecuteReader();
-            while (myReader.Read())
-            {
-                if (myReader["goldMember"] != DBNull.Value)
-                {
-                    goldMembership = true;
-                }
-            }
-            myReader.Close();
+            bool goldMembership = checkMembership(customerIDBox);
 
+            //Initialize variables
             DateTime pickUpDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[1].Value.ToString());
             DateTime expectedDate = Convert.ToDateTime(listOfRentals.SelectedRows[0].Cells[2].Value.ToString());
             string pickUpBranch = listOfRentals.SelectedRows[0].Cells[3].Value.ToString();
@@ -185,15 +193,30 @@ namespace CarRental
                 }
                 estimatedCost = (months * monthlyPricing) + (weeks * weeklyPricing) + (leftDays * dailyPricing);
             }
+            baseCost.Text = estimatedCost.ToString();
+            //Check for late cost
             if (returnDate.Value > expectedDate)
             {
                 int lateDays = (returnDate.Value - expectedDate).Days;
-                estimatedCost += (lateDays * lateFee);
+                float lateTotalCost = (lateDays * lateFee);
+                estimatedCost += lateTotalCost;
+                lateCost.Text = lateTotalCost.ToString();
             }
+            else
+            {
+                lateCost.Text = "0.00";
+            }
+            //Check for different return branch cost
             if (goldMembership != true && pickUpBranch != returnBranchID)
             {
                 estimatedCost += changeBranch;
+                changeBranchCost.Text = changeBranch.ToString();
             }
+            else
+            {
+                changeBranchCost.Text = "0.00";
+            }
+            //Display Final Result
             result.Text = estimatedCost.ToString();
         }
 
@@ -257,6 +280,17 @@ namespace CarRental
             this.Hide();
             EmployeeCars e1 = new EmployeeCars();
             e1.ShowDialog();
+        }
+
+        private void returnBranch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool eligible = checkMembership(customerIDBox);
+
+            string branchID = extractID(returnBranch);
+            if (eligible == true && listOfRentals.SelectedRows[0].Cells[4].Value.ToString() != branchID)
+            {
+                MessageBox.Show("Different Return Branch Fee is waived for Gold Member Customer.");
+            }
         }
     }
 }

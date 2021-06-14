@@ -623,51 +623,61 @@ namespace CarRental
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "CarID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // CarType
             // 
             this.CarType.HeaderText = "Car Type";
             this.CarType.Name = "CarType";
+            this.CarType.ReadOnly = true;
             // 
             // Make
             // 
             this.Make.HeaderText = "Make";
             this.Make.Name = "Make";
+            this.Make.ReadOnly = true;
             // 
             // Model
             // 
             this.Model.HeaderText = "Model";
             this.Model.Name = "Model";
+            this.Model.ReadOnly = true;
             // 
             // Year
             // 
             this.Year.HeaderText = "Year";
             this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
             // 
             // dailyPricing
             // 
             this.dailyPricing.HeaderText = "Daily Price";
             this.dailyPricing.Name = "dailyPricing";
+            this.dailyPricing.ReadOnly = true;
             // 
             // weeklyPricing
             // 
             this.weeklyPricing.HeaderText = "Weekly Price";
             this.weeklyPricing.Name = "weeklyPricing";
+            this.weeklyPricing.ReadOnly = true;
             // 
             // monthlyPricing
             // 
             this.monthlyPricing.HeaderText = "Monthly Price";
             this.monthlyPricing.Name = "monthlyPricing";
+            this.monthlyPricing.ReadOnly = true;
             // 
             // lateFee
             // 
             this.lateFee.HeaderText = "Late Fee";
             this.lateFee.Name = "lateFee";
+            this.lateFee.ReadOnly = true;
             // 
             // changeBranch
             // 
             this.changeBranch.HeaderText = "Different Branch Fee";
             this.changeBranch.Name = "changeBranch";
+            this.changeBranch.ReadOnly = true;
             // 
             // RentalTransactionForm
             // 
@@ -750,6 +760,9 @@ namespace CarRental
         private System.Windows.Forms.TextBox hi;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox membership;
+        private System.Windows.Forms.ComboBox returnBranch;
+        private System.Windows.Forms.Label returnBranchID;
+        private System.Windows.Forms.CheckBox changeBranchCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Make;
@@ -760,8 +773,5 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn monthlyPricing;
         private System.Windows.Forms.DataGridViewTextBoxColumn lateFee;
         private System.Windows.Forms.DataGridViewTextBoxColumn changeBranch;
-        private System.Windows.Forms.ComboBox returnBranch;
-        private System.Windows.Forms.Label returnBranchID;
-        private System.Windows.Forms.CheckBox changeBranchCheck;
     }
 }
