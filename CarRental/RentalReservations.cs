@@ -88,7 +88,32 @@ namespace CarRental
 
         private void loadButton_Click(object sender, EventArgs e)
         {
+            listOfRentals.Rows.Clear();
+            myCommand = new SqlCommand("SELECT * FROM Rental, Customer, Employee, Car, CarType WHERE Rental.customerID = @customerID " +
+                "AND Rental.empID = @empID " +
+                "AND Customer.customerID = @customerID " +
+                "AND Customer.empID = @empID " +
+                "AND Rental.carID = Car.carID " +
+                "AND Rental.expectedCarTypeID = CarType.carTypeID ", myConnection);
+            myConnection.Open();
+            myCommand.Parameters.AddWithValue("@customerID", customerList.SelectedValue);
+            myCommand.Parameters.AddWithValue("@empID", employeeList.SelectedValue);
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                listOfRentals.Rows.Add(myReader["rentalID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
+                                    myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
+                                    myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
+            }
+            myReader.Close();
+            myConnection.Close();
+        }
 
+        private void clearFiltersButton_Click(object sender, EventArgs e)
+        {
+            customerList.ResetText();
+            employeeList.ResetText();
+            DisplayData();
         }
     }
 }
