@@ -104,6 +104,14 @@ namespace CarRental
             try
             {
                 //Retrieving customerIDs
+                myCommand.CommandText = "select customerID from Customer";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    customerID.Items.Add(myReader["customerID"].ToString());
+                }
+                myReader.Close();
+
                 DisplayCustomers();
                 //Retrieving branchIDs
                 myCommand.CommandText = "select branchID, branchName from Branch";
@@ -524,6 +532,16 @@ namespace CarRental
                 returnBranch.Items.Clear();
                 returnBranch.Text = "";
             }
+        }
+
+        private void street_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void empID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

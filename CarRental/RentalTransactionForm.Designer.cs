@@ -395,6 +395,7 @@ namespace CarRental
             this.street.Name = "street";
             this.street.Size = new System.Drawing.Size(397, 23);
             this.street.TabIndex = 40;
+            this.street.TextChanged += new System.EventHandler(this.street_TextChanged);
             // 
             // label13
             // 
@@ -468,6 +469,7 @@ namespace CarRental
             this.empID.Name = "empID";
             this.empID.Size = new System.Drawing.Size(121, 23);
             this.empID.TabIndex = 39;
+            this.empID.SelectedIndexChanged += new System.EventHandler(this.empID_SelectedIndexChanged);
             // 
             // requestCar
             // 
