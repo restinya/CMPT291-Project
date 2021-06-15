@@ -42,6 +42,7 @@ namespace CarRental
                                      myReader["postalcode"].ToString());
             }
             myReader.Close();
+            myConnection.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace CarRental
                 "AND postalcode = @postalcode", myConnection);
             myConnection.Open();
             myCommand.Parameters.AddWithValue("@empID", empIDBox);
-            myCommand.Parameters.AddWithValue("@branchID", branchCombo.SelectedItem);
+            myCommand.Parameters.AddWithValue("@branchID", branchBox.Text);
             myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
             myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
             myCommand.Parameters.AddWithValue("@street", streetBox.Text);
@@ -106,7 +107,7 @@ namespace CarRental
             editLNameBox.Text = empDataView.Rows[e.RowIndex].Cells[3].Value.ToString();
             editStreetBox.Text = empDataView.Rows[e.RowIndex].Cells[4].Value.ToString();
             editCityBox.Text = empDataView.Rows[e.RowIndex].Cells[5].Value.ToString();
-            editBranchCombo.SelectedItem = empDataView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            editBranchBox.Text = empDataView.Rows[e.RowIndex].Cells[1].Value.ToString();
             editPostalBox.Text = empDataView.Rows[e.RowIndex].Cells[7].Value.ToString();
         }
 
@@ -118,11 +119,11 @@ namespace CarRental
                 "lName = @lName," +
                 "street = @street," +
                 "city = @city," +
-                "postalcode = @postalcode" +
+                "postalcode = @postalcode " +
                 "WHERE empID = @empID", myConnection);
             myConnection.Open();
             myCommand.Parameters.AddWithValue("@empID", editEmpIDBox.Text);
-            myCommand.Parameters.AddWithValue("@branchID", editBranchCombo.SelectedItem);
+            myCommand.Parameters.AddWithValue("@branchID", editBranchBox.Text);
             myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
             myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
             myCommand.Parameters.AddWithValue("@street", streetBox.Text);
