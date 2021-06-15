@@ -102,7 +102,7 @@ namespace CarRental
 
         private void empDataView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            empIDBox.Text = empDataView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            editEmpIDBox.Text = empDataView.Rows[e.RowIndex].Cells[0].Value.ToString();
             editFNameBox.Text = empDataView.Rows[e.RowIndex].Cells[2].Value.ToString();
             editLNameBox.Text = empDataView.Rows[e.RowIndex].Cells[3].Value.ToString();
             editStreetBox.Text = empDataView.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -124,11 +124,11 @@ namespace CarRental
             myConnection.Open();
             myCommand.Parameters.AddWithValue("@empID", editEmpIDBox.Text);
             myCommand.Parameters.AddWithValue("@branchID", editBranchBox.Text);
-            myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
-            myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
-            myCommand.Parameters.AddWithValue("@street", streetBox.Text);
-            myCommand.Parameters.AddWithValue("@city", cityBox.Text);
-            myCommand.Parameters.AddWithValue("@postalcode", postalBox.Text);
+            myCommand.Parameters.AddWithValue("@fName", editFNameBox.Text); 
+            myCommand.Parameters.AddWithValue("@lName", editLNameBox.Text);
+            myCommand.Parameters.AddWithValue("@street", editStreetBox.Text);
+            myCommand.Parameters.AddWithValue("@city", editCityBox.Text); 
+            myCommand.Parameters.AddWithValue("@postalcode", editPostalBox.Text);
             myCommand.ExecuteNonQuery();
             MessageBox.Show("Employee Record Updated Successfully.");
             myConnection.Close();
