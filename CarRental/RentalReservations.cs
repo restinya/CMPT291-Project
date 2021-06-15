@@ -65,11 +65,30 @@ namespace CarRental
             }
         }
 
+        public void DisplayData()
+        {
+            listOfRentals.Rows.Clear();
+            myCommand.CommandText = "select * from Rental, Customer, Employee, Car, CarType where Rental.carID = Car.carID and Rental.customerID = Customer.customerID and Rental.expectedCarTypeID = CarType.carTypeID and Rental.employeeID = Employee.empID";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                listOfRentals.Rows.Add(myReader["rentalID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
+                                    myReader["year"].ToString(), myReader["licensePlate"].ToString(), myReader["currentMileage"].ToString(),
+                                    myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
+            }
+            myReader.Close();
+        }
+
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             EmployeeCars r1 = new EmployeeCars();
             r1.ShowDialog();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

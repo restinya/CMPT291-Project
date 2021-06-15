@@ -31,8 +31,6 @@ namespace CarRental
         {
             this.backButton = new System.Windows.Forms.Button();
             this.listOfRentals = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.customerList = new System.Windows.Forms.ComboBox();
             this.rentalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pickUpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +45,8 @@ namespace CarRental
             this.estimatedCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.customerList = new System.Windows.Forms.ComboBox();
             this.employeeList = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.loadButton = new System.Windows.Forms.Button();
@@ -87,23 +87,6 @@ namespace CarRental
             this.listOfRentals.RowTemplate.Height = 25;
             this.listOfRentals.Size = new System.Drawing.Size(998, 424);
             this.listOfRentals.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Customer";
-            // 
-            // customerList
-            // 
-            this.customerList.FormattingEnabled = true;
-            this.customerList.Location = new System.Drawing.Point(29, 84);
-            this.customerList.Name = "customerList";
-            this.customerList.Size = new System.Drawing.Size(121, 23);
-            this.customerList.TabIndex = 3;
             // 
             // rentalID
             // 
@@ -175,6 +158,23 @@ namespace CarRental
             this.employee.HeaderText = "Employee";
             this.employee.Name = "employee";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Customer";
+            // 
+            // customerList
+            // 
+            this.customerList.FormattingEnabled = true;
+            this.customerList.Location = new System.Drawing.Point(29, 84);
+            this.customerList.Name = "customerList";
+            this.customerList.Size = new System.Drawing.Size(121, 23);
+            this.customerList.TabIndex = 3;
+            // 
             // employeeList
             // 
             this.employeeList.FormattingEnabled = true;
@@ -200,6 +200,7 @@ namespace CarRental
             this.loadButton.TabIndex = 6;
             this.loadButton.Text = "Load Rental Reservations";
             this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // clearFiltersButton
             // 
