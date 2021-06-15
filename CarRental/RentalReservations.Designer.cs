@@ -210,6 +210,7 @@ namespace CarRental
             this.clearFiltersButton.TabIndex = 7;
             this.clearFiltersButton.Text = "Clear Filters";
             this.clearFiltersButton.UseVisualStyleBackColor = true;
+            this.clearFiltersButton.Click += new System.EventHandler(this.clearFiltersButton_Click);
             // 
             // RentalReservations
             // 
