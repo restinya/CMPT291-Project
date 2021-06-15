@@ -37,7 +37,6 @@ namespace CarRental
             this.empIDBox = new System.Windows.Forms.TextBox();
             this.postalBox = new System.Windows.Forms.TextBox();
             this.cityBox = new System.Windows.Forms.TextBox();
-            this.branchCombo = new System.Windows.Forms.ComboBox();
             this.empDataView = new System.Windows.Forms.DataGridView();
             this.empID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.branchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +50,12 @@ namespace CarRental
             this.editEmpIDBox = new System.Windows.Forms.TextBox();
             this.editPostalBox = new System.Windows.Forms.TextBox();
             this.editCityBox = new System.Windows.Forms.TextBox();
-            this.editBranchCombo = new System.Windows.Forms.ComboBox();
             this.editLNameBox = new System.Windows.Forms.TextBox();
             this.editStreetBox = new System.Windows.Forms.TextBox();
             this.editFNameBox = new System.Windows.Forms.TextBox();
             this.backButton = new System.Windows.Forms.Button();
+            this.branchBox = new System.Windows.Forms.TextBox();
+            this.editBranchBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empDataView)).BeginInit();
             this.editEmployee.SuspendLayout();
@@ -99,11 +99,11 @@ namespace CarRental
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.branchBox);
             this.groupBox1.Controls.Add(this.empIDBox);
             this.groupBox1.Controls.Add(this.postalBox);
             this.groupBox1.Controls.Add(this.cityBox);
             this.groupBox1.Controls.Add(this.empSearchButton);
-            this.groupBox1.Controls.Add(this.branchCombo);
             this.groupBox1.Controls.Add(this.lNameBox);
             this.groupBox1.Controls.Add(this.streetBox);
             this.groupBox1.Controls.Add(this.fNameBox);
@@ -138,15 +138,6 @@ namespace CarRental
             this.cityBox.Size = new System.Drawing.Size(100, 23);
             this.cityBox.TabIndex = 6;
             this.cityBox.Text = "City";
-            // 
-            // branchCombo
-            // 
-            this.branchCombo.FormattingEnabled = true;
-            this.branchCombo.Location = new System.Drawing.Point(110, 81);
-            this.branchCombo.Name = "branchCombo";
-            this.branchCombo.Size = new System.Drawing.Size(101, 23);
-            this.branchCombo.TabIndex = 5;
-            this.branchCombo.Text = "Branch No.";
             // 
             // empDataView
             // 
@@ -222,11 +213,11 @@ namespace CarRental
             // 
             // editEmployee
             // 
+            this.editEmployee.Controls.Add(this.editBranchBox);
             this.editEmployee.Controls.Add(this.editEmpIDBox);
             this.editEmployee.Controls.Add(this.editPostalBox);
             this.editEmployee.Controls.Add(this.editButton);
             this.editEmployee.Controls.Add(this.editCityBox);
-            this.editEmployee.Controls.Add(this.editBranchCombo);
             this.editEmployee.Controls.Add(this.editLNameBox);
             this.editEmployee.Controls.Add(this.editStreetBox);
             this.editEmployee.Controls.Add(this.editFNameBox);
@@ -261,15 +252,6 @@ namespace CarRental
             this.editCityBox.Size = new System.Drawing.Size(100, 23);
             this.editCityBox.TabIndex = 6;
             this.editCityBox.Text = "City";
-            // 
-            // editBranchCombo
-            // 
-            this.editBranchCombo.FormattingEnabled = true;
-            this.editBranchCombo.Location = new System.Drawing.Point(110, 81);
-            this.editBranchCombo.Name = "editBranchCombo";
-            this.editBranchCombo.Size = new System.Drawing.Size(101, 23);
-            this.editBranchCombo.TabIndex = 5;
-            this.editBranchCombo.Text = "Branch No.";
             // 
             // editLNameBox
             // 
@@ -307,6 +289,22 @@ namespace CarRental
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // branchBox
+            // 
+            this.branchBox.Location = new System.Drawing.Point(110, 81);
+            this.branchBox.Name = "branchBox";
+            this.branchBox.Size = new System.Drawing.Size(100, 23);
+            this.branchBox.TabIndex = 9;
+            this.branchBox.Text = "Branch ID";
+            // 
+            // editBranchBox
+            // 
+            this.editBranchBox.Location = new System.Drawing.Point(110, 81);
+            this.editBranchBox.Name = "editBranchBox";
+            this.editBranchBox.Size = new System.Drawing.Size(100, 23);
+            this.editBranchBox.TabIndex = 9;
+            this.editBranchBox.Text = "Branch ID";
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -333,7 +331,6 @@ namespace CarRental
         private System.Windows.Forms.TextBox fNameBox;
         private System.Windows.Forms.TextBox lNameBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox branchCombo;
         private System.Windows.Forms.DataGridView empDataView;
         private System.Windows.Forms.TextBox postalBox;
         private System.Windows.Forms.TextBox cityBox;
@@ -348,12 +345,13 @@ namespace CarRental
         private System.Windows.Forms.GroupBox editEmployee;
         private System.Windows.Forms.TextBox editPostalBox;
         private System.Windows.Forms.TextBox editCityBox;
-        private System.Windows.Forms.ComboBox editBranchCombo;
         private System.Windows.Forms.TextBox editLNameBox;
         private System.Windows.Forms.TextBox editStreetBox;
         private System.Windows.Forms.TextBox editFNameBox;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.TextBox empIDBox;
         private System.Windows.Forms.TextBox editEmpIDBox;
+        private System.Windows.Forms.TextBox branchBox;
+        private System.Windows.Forms.TextBox editBranchBox;
     }
 }
