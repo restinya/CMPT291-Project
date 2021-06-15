@@ -62,6 +62,11 @@ namespace CarRental
         {
         }
 
+        /// <summary>
+        /// Displays an editable form with the data from the selected row 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void updateCus_Click(object sender, EventArgs e)
         {
             if (customerRecords.SelectedRows.Count > 0) // make sure user select at least 1 row 
@@ -98,6 +103,11 @@ namespace CarRental
                 edit = true;
             }
         }
+
+        /// <summary>
+        /// Updates customer record inside the mysql database
+        /// </summary>
+        /// <param name="cusID"> The customer ID of the customer to be edited</param>
         private void updateCusRecord(String cusID)
         {
             myCommand.Parameters.Clear();
@@ -106,6 +116,7 @@ namespace CarRental
             {
                 goldMem = 1;
             }
+
             String bDay = dateOfBirthBox.Value.ToString();
             myCommand.CommandText = "UPDATE Customer SET fName = @fn,dateOfBirth = @dob, goldMember = @gold,lName = @ln,city = @city, state = @state , street = @street ,postalCode = @postal where customerID = '" + cusID + "'";
             myCommand.Parameters.AddWithValue("@ln", lNameBox.Text);
@@ -120,6 +131,9 @@ namespace CarRental
 
         }
 
+        /// <summary>
+        /// Adds a new customer to the mysql database
+        /// </summary>
         private void addCusRecord()
         {
             myCommand.Parameters.Clear();
@@ -143,12 +157,21 @@ namespace CarRental
             myCommand.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Handles when the user submits the customer information form.
+        /// Updates a customers records in the database if a record
+        /// is being updated and adds a customer to the record if a new
+        /// customer is being added.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submitForm_Click(object sender, EventArgs e)
         {
+            //Edit a customer record
             if (edit == true)
             {
                 updateCusRecord(cusID.Text);
-                //Retrieving Customer records
+                //Retrieving changed customer records
                 myCommand.CommandText = "select * from customer";
                 myReader = myCommand.ExecuteReader();
                 customerRecords.Rows.Clear();
@@ -167,11 +190,12 @@ namespace CarRental
                 edit = false;
 
             }
+            //Add a new customer record
             else
             {
                 addCusRecord();
                 customerRecords.Rows.Clear();
-                //Retrieving Customer records
+                //Retrieving changed customer records
                 myCommand.CommandText = "select * from customer";
                 myReader = myCommand.ExecuteReader();
                 customerRecords.Rows.Clear();
@@ -202,6 +226,9 @@ namespace CarRental
             customerForm.Visible = true;
             submitForm.Visible = true;
         }
+        /// <summary>
+        /// Reset all text fields for user entry
+        /// </summary>
         private void resetFields()
         {
             lNameBox.Clear();
@@ -219,7 +246,11 @@ namespace CarRental
         {
 
         }
-
+        /// <summary>
+        /// Display the phone table for the selected customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void customerRecords_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             phoneRecords.Rows.Clear();
@@ -227,6 +258,7 @@ namespace CarRental
             {
                 if (customerRecords.SelectedRows.Count > 0)
                 {
+                    //display selected customer records phones
                     string customerID = customerRecords.SelectedRows[0].Cells[0].Value + string.Empty;
                     myCommand.CommandText = "select phoneNum from PhoneNum where customerID = '" + customerID + "'";
                     myReader = myCommand.ExecuteReader();
@@ -252,7 +284,11 @@ namespace CarRental
         {
 
         }
-
+        /// <summary>
+        /// Displays the add phone form when add phone button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addPhone_Click(object sender, EventArgs e)
         {
             editPhone = false;
@@ -264,9 +300,18 @@ namespace CarRental
 
         }
 
+        /// <summary>
+        /// Handles when the user submits the phone form.
+        /// Updates a phone record in the database if a record
+        /// is being updated and adds a phone to the customers 
+        /// phone record if a new customer is being added.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submitPhone_Click(object sender, EventArgs e)
         {
             string customerID = customerRecords.SelectedRows[0].Cells[0].Value + string.Empty;
+            //Edit the currently selected phone record
             if (editPhone == true)
             {
                 phoneRecords.Rows.Clear();
@@ -283,7 +328,7 @@ namespace CarRental
                 phoneForm.Visible = false;
                 confirm.Text = "Selected phone number has been updated!";
             }
-
+            //Add a new phone record the customers phone records
             else
             {
                 phoneRecords.Rows.Clear();
@@ -301,7 +346,11 @@ namespace CarRental
                 confirm.Text = "Phone number has been added!";
             }
         }
-
+        /// <summary>
+        /// Update phone number button displays the edit phone form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void updatePhone_Click(object sender, EventArgs e)
         {
             if (phoneRecords.SelectedRows.Count > 0) // make sure user select at least 1 row 
@@ -322,7 +371,11 @@ namespace CarRental
 
         }
 
-
+        /// <summary>
+        /// Updates a phone record in the mysql database
+        /// </summary>
+        /// <param name="cusID"></param>
+        /// <param name="Num"></param>
         private void updatePhoneRecord(String cusID, String Num)
         {
             myCommand.Parameters.Clear();
@@ -331,7 +384,10 @@ namespace CarRental
             myCommand.ExecuteNonQuery();
 
         }
-
+        /// <summary>
+        /// Add a phone record in the mysql database
+        /// </summary>
+        /// <param name="cusID"></param>
         private void addPhoneRecord(String cusID)
         {
             myCommand.Parameters.Clear();
