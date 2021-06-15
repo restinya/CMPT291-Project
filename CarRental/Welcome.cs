@@ -85,8 +85,8 @@ namespace CarRental
                     else
                     {
                         this.Hide();
-                        //EmployeeCars e1 = new EmployeeCars();
-                        CustomerRecordsScreen e1 = new CustomerRecordsScreen();
+                        EmployeeCars e1 = new EmployeeCars();
+                        //CustomerRecordsScreen e1 = new CustomerRecordsScreen();
                         e1.ShowDialog();
                     }
 

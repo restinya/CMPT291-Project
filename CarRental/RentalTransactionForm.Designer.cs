@@ -78,14 +78,8 @@ namespace CarRental
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
-<<<<<<< HEAD
-            this.membership = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-||||||| c6f533b
-=======
             //this.membership = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
->>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,16 +87,10 @@ namespace CarRental
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-<<<<<<< HEAD
-||||||| c6f533b
-            this.button3 = new System.Windows.Forms.Button();
-            this.membership = new System.Windows.Forms.TextBox();
-=======
             this.weeklyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthlyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.changeBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
->>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -593,26 +581,6 @@ namespace CarRental
             this.s.TabStop = false;
             this.s.Text = "NEW RENTAL RESERVATION";
             // 
-<<<<<<< HEAD
-            // membership
-            // 
-            this.membership.Location = new System.Drawing.Point(193, 149);
-            this.membership.Name = "membership";
-            this.membership.Size = new System.Drawing.Size(40, 23);
-            this.membership.TabIndex = 49;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(17, 145);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 29);
-            this.button3.TabIndex = 48;
-            this.button3.Text = "Check Gold Membership";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-||||||| c6f533b
-=======
             // membership
             // 
            /* this.membership.Location = new System.Drawing.Point(193, 149);
@@ -630,7 +598,6 @@ namespace CarRental
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
->>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             // availableCars
             // 
             this.availableCars.AllowUserToDeleteRows = false;
@@ -690,26 +657,6 @@ namespace CarRental
             this.dailyPricing.Name = "dailyPricing";
             this.dailyPricing.ReadOnly = true;
             // 
-<<<<<<< HEAD
-||||||| c6f533b
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(17, 145);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 29);
-            this.button3.TabIndex = 48;
-            this.button3.Text = "Check Gold Membership";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // membership
-            // 
-            this.membership.Location = new System.Drawing.Point(193, 149);
-            this.membership.Name = "membership";
-            this.membership.Size = new System.Drawing.Size(40, 23);
-            this.membership.TabIndex = 49;
-            // 
-=======
             // weeklyPricing
             // 
             this.weeklyPricing.HeaderText = "Weekly Price";
@@ -734,7 +681,6 @@ namespace CarRental
             this.changeBranch.Name = "changeBranch";
             this.changeBranch.ReadOnly = true;
             // 
->>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             // RentalTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
