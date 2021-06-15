@@ -2,7 +2,7 @@
 
 ### Booking a New Rental Reservation:
 
-![image-20210614155313607](C:\Users\josep\AppData\Roaming\Typora\typora-user-images\image-20210614155313607.png)
+![img](https://i.imgur.com/RCNY4iP.png)
 
 1. Click on "New Rental Transaction" from the Employee Display Screen.
 
@@ -10,11 +10,11 @@
 
 3. Click on the dropdown menu for the list of existing customers. If it is a new customer, select the checkbox "Select If New Customer" and a form for customers will pop on the side. Fill out the form for the new customer's details and hit "Add". A message string will be generated with the newly created customer ID. You can now select the new customer in the drop down menu for Customer ID.
 
-   ![image-20210614155426082](C:\Users\josep\AppData\Roaming\Typora\typora-user-images\image-20210614155426082.png)
+   ![img](https://i.imgur.com/ujx05Ta.png)
 
 4. Click on "Check Gold Membership" to check if an existing customer is a gold member. If so, the requested Vehicle Class drop down menu will be available for the user to select.
 
-   ![image-20210614155841409](C:\Users\josep\AppData\Roaming\Typora\typora-user-images\image-20210614155841409.png)
+   ![img](https://i.imgur.com/W94WPWq.png)
 
 5. Select the "Pick-Up Branch ID" and click on the checkbox "Select If Different Return Branch" to select the returning branch ID if the customer is planning to return the rental car to another branch.
 
@@ -28,7 +28,7 @@
 
 ### Returning a Rental Car:
 
-![image-20210614155626764](C:\Users\josep\AppData\Roaming\Typora\typora-user-images\image-20210614155626764.png)
+![img](https://i.imgur.com/tmwGYDP.png)
 
 1. Click on the dropdown menu for Customer ID to select the customer that is returning the rental car.
 2. Click on "Load Ongoing Rentals" to display the ongoing rental records that have not been closed yet and select the record corresponding to the right rental car.
@@ -38,7 +38,7 @@
 
 ### Viewing and Modifying Car Records
 
-![image-20210614155723941](C:\Users\josep\AppData\Roaming\Typora\typora-user-images\image-20210614155723941.png)
+![img](https://i.imgur.com/0GU99DC.png)
 
 ###### Adding a New Car Record:
 
@@ -51,7 +51,8 @@
 ###### Modifying Car Records:
 
 - Select the record to be modified on the table and double click on the cell that needs to be modified. Once all of the values for the selected record is updated, click on "Modify". There will be a confirmation message that will pop up. Select "Yes" and the record will be updated in the database.
-- ![image-20210614160649239](C:\Users\josep\AppData\Roaming\Typora\typora-user-images\image-20210614160649239.png)
+
+  ![img](https://i.imgur.com/XqhCDwG.png)
 
 ###### Deleting Car Records:
 
