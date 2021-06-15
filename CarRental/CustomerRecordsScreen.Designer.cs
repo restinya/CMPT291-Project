@@ -74,6 +74,7 @@ namespace CarRental
             this.phoneForm = new System.Windows.Forms.GroupBox();
             this.oldNumber = new System.Windows.Forms.Label();
             this.oldLabel = new System.Windows.Forms.Label();
+            this.backBtn = new System.Windows.Forms.Button();
             this.customerForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerRecords)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phoneRecords)).BeginInit();
@@ -506,11 +507,22 @@ namespace CarRental
             this.oldLabel.Text = "Old Number";
             this.oldLabel.Visible = false;
             // 
+            // backBtn
+            // 
+            this.backBtn.Location = new System.Drawing.Point(851, 772);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(75, 23);
+            this.backBtn.TabIndex = 65;
+            this.backBtn.Text = "Go Back";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CustomerRecordsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 797);
+            this.Controls.Add(this.backBtn);
             this.Controls.Add(this.phoneForm);
             this.Controls.Add(this.addPhone);
             this.Controls.Add(this.updatePhone);
@@ -581,5 +593,6 @@ namespace CarRental
         private System.Windows.Forms.GroupBox phoneForm;
         private System.Windows.Forms.Label oldNumber;
         private System.Windows.Forms.Label oldLabel;
+        private System.Windows.Forms.Button backBtn;
     }
 }
