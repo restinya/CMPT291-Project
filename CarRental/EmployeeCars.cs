@@ -153,8 +153,24 @@ namespace CarRental
                 r1.ShowDialog();
             }
 
-            /* Button linking to Reports Form */
-            private void button7_Click(object sender, EventArgs e)
+        /* Customer Records Button */
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            CustomerRecordsScreen r1 = new CustomerRecordsScreen();
+            r1.ShowDialog();
+        }
+
+        /* Employee Records Button */
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Employees r1 = new Employees();
+            r1.ShowDialog();
+        }
+
+        /* Button linking to Reports Form */
+        private void button7_Click(object sender, EventArgs e)
             {
                 this.Hide();
                 Reports r1 = new Reports();
