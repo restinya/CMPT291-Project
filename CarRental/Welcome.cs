@@ -47,7 +47,7 @@ namespace CarRental
             if (selectedIndex == 0)
             {
                 this.Hide();
-                Selection s1 = new Selection();
+                carTypeSel s1 = new carTypeSel();
                 s1.ShowDialog();
             };
 
