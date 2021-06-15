@@ -78,6 +78,7 @@ namespace CarRental
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
+            this.membership = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -578,6 +579,13 @@ namespace CarRental
             this.s.TabStop = false;
             this.s.Text = "NEW RENTAL RESERVATION";
             // 
+            // membership
+            // 
+            this.membership.Location = new System.Drawing.Point(193, 149);
+            this.membership.Name = "membership";
+            this.membership.Size = new System.Drawing.Size(40, 23);
+            this.membership.TabIndex = 49;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(17, 145);
@@ -590,6 +598,7 @@ namespace CarRental
             // 
             // availableCars
             // 
+            this.availableCars.AllowUserToDeleteRows = false;
             this.availableCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.availableCars.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
