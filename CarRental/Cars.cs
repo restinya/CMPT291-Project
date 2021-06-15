@@ -79,7 +79,7 @@ namespace CarRental
         private void Back_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Selection s1 = new Selection();
+            carTypeSel s1 = new carTypeSel();
             s1.ShowDialog();
         }
     }

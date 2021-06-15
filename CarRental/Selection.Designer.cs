@@ -1,7 +1,7 @@
 ﻿
 namespace CarRental
 {
-    partial class Selection
+    partial class carTypeSel
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@ namespace CarRental
             this.returnDate = new System.Windows.Forms.DateTimePicker();
             this.returnDateLabel = new System.Windows.Forms.Label();
             this.vehicleClass = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.checkAvailability = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -63,7 +63,7 @@ namespace CarRental
             this.pickupLocLabel.AutoSize = true;
             this.pickupLocLabel.Location = new System.Drawing.Point(52, 108);
             this.pickupLocLabel.Name = "pickupLocLabel";
-            this.pickupLocLabel.Size = new System.Drawing.Size(144, 15);
+            this.pickupLocLabel.Size = new System.Drawing.Size(143, 15);
             this.pickupLocLabel.TabIndex = 1;
             this.pickupLocLabel.Text = "Pick-Up / Return Location";
             // 
@@ -130,6 +130,7 @@ namespace CarRental
             this.pickupLocation.Name = "pickupLocation";
             this.pickupLocation.Size = new System.Drawing.Size(121, 23);
             this.pickupLocation.TabIndex = 7;
+            this.pickupLocation.SelectedIndexChanged += new System.EventHandler(this.pickupLocation_SelectedIndexChanged);
             // 
             // returnCheckbox
             // 
@@ -186,7 +187,7 @@ namespace CarRental
             this.returnDateLabel.AutoSize = true;
             this.returnDateLabel.Location = new System.Drawing.Point(255, 224);
             this.returnDateLabel.Name = "returnDateLabel";
-            this.returnDateLabel.Size = new System.Drawing.Size(69, 15);
+            this.returnDateLabel.Size = new System.Drawing.Size(70, 15);
             this.returnDateLabel.TabIndex = 12;
             this.returnDateLabel.Text = "Return Date";
             // 
@@ -203,15 +204,15 @@ namespace CarRental
             this.vehicleClass.Size = new System.Drawing.Size(121, 23);
             this.vehicleClass.TabIndex = 14;
             // 
-            // button1
+            // checkAvailability
             // 
-            this.button1.Location = new System.Drawing.Point(255, 327);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 41);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Check Availability";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.checkAvailability.Location = new System.Drawing.Point(255, 327);
+            this.checkAvailability.Name = "checkAvailability";
+            this.checkAvailability.Size = new System.Drawing.Size(123, 41);
+            this.checkAvailability.TabIndex = 15;
+            this.checkAvailability.Text = "Check Availability";
+            this.checkAvailability.UseVisualStyleBackColor = true;
+            this.checkAvailability.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -223,13 +224,13 @@ namespace CarRental
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Selection
+            // carTypeSel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 428);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.checkAvailability);
             this.Controls.Add(this.vehicleClass);
             this.Controls.Add(this.returnDate);
             this.Controls.Add(this.returnDateLabel);
@@ -245,8 +246,10 @@ namespace CarRental
             this.Controls.Add(this.pickupDateLabel);
             this.Controls.Add(this.pickupLocLabel);
             this.Controls.Add(this.step1Label);
-            this.Name = "Selection";
+            this.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Name = "carTypeSel";
             this.Text = "Selection";
+            this.Load += new System.EventHandler(this.Selection_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,7 +272,7 @@ namespace CarRental
         private System.Windows.Forms.DateTimePicker returnDate;
         private System.Windows.Forms.Label returnDateLabel;
         private System.Windows.Forms.ComboBox vehicleClass;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button checkAvailability;
         private System.Windows.Forms.Button button2;
     }
 }
