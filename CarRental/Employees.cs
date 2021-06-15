@@ -101,13 +101,13 @@ namespace CarRental
 
         private void empDataView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            empIDBox.Text = empDataView.Rows.[e.RowIndex].Cells[0].Value.ToString();
+            empIDBox.Text = empDataView.Rows[e.RowIndex].Cells[0].Value.ToString();
             editFNameBox.Text = empDataView.Rows[e.RowIndex].Cells[2].Value.ToString();
             editLNameBox.Text = empDataView.Rows[e.RowIndex].Cells[3].Value.ToString();
             editStreetBox.Text = empDataView.Rows[e.RowIndex].Cells[4].Value.ToString();
             editCityBox.Text = empDataView.Rows[e.RowIndex].Cells[5].Value.ToString();
             editBranchCombo.SelectedItem = empDataView.Rows[e.RowIndex].Cells[1].Value.ToString();
-            editPostalBox.Text = empDataView.Rows[e.RowIndex].Cells[7].Value.ToString();
+            editPostalBox.Text = empDataView.Rows[e.RowIndex].Cells[6].Value.ToString();
         }
 
         private void editButton_Click(object sender, EventArgs e)
