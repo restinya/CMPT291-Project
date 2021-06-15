@@ -105,14 +105,6 @@ create table Rental(
 	foreign key(returnBranchID) references Branch(branchID)
 );
 
-create table Test(
-	rentalID int primary key, 
-	pickUpDate varchar(10),
-	expectedDate varchar(10),
-	requestedClass varchar(10),
-	goldMember varchar(10)
-);
-
 -- Insert Branches
 insert into Branch values (1, 'Edmonton', 'Edmonton', 'Millwoods Drive', 'T6L5M5', '7806049803');
 insert into Branch values (2, 'Calgary', 'Calgary', '11 Ave SW', 'T2R0E6', '7802348675');
