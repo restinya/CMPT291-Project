@@ -107,7 +107,7 @@ namespace CarRental
             editLNameBox.Text = empDataView.Rows[e.RowIndex].Cells[3].Value.ToString();
             editStreetBox.Text = empDataView.Rows[e.RowIndex].Cells[4].Value.ToString();
             editCityBox.Text = empDataView.Rows[e.RowIndex].Cells[5].Value.ToString();
-            editBranchCombo.SelectedItem = empDataView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            editBranchBox.Text = empDataView.Rows[e.RowIndex].Cells[1].Value.ToString();
             editPostalBox.Text = empDataView.Rows[e.RowIndex].Cells[6].Value.ToString();
         }
 
