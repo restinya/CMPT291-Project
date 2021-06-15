@@ -99,11 +99,11 @@ namespace CarRental
             }
         }
 
-        /* Helper function that will retrieve all of the items for the BranchID combobox in data grid view */
-        private DataTable GetBranchTable()
-        {
-            DataTable l_dtBranch = new DataTable();
-            l_dtBranch.Columns.Add("BranchID", typeof(string));
+            /* Helper function that will retrieve all of the items for the BranchID combobox in data grid view */
+            private DataTable GetBranchTable()
+            {
+                DataTable l_dtBranch = new DataTable();
+                l_dtBranch.Columns.Add("BranchID", typeof(string));
 
             myCommand.CommandText = "select branchID, branchName from Branch";
             myReader = myCommand.ExecuteReader();
@@ -113,14 +113,14 @@ namespace CarRental
             }
             myReader.Close();
 
-            return l_dtBranch;
-        }
+                return l_dtBranch;
+            }
 
-        /* Helper function that will retrieve all of the items for the CarType combobox in data grid view */
-        private DataTable GetVehicleClassTable()
-        {
-            DataTable l_dtVehicleClass = new DataTable();
-            l_dtVehicleClass.Columns.Add("CarType", typeof(string));
+            /* Helper function that will retrieve all of the items for the CarType combobox in data grid view */
+            private DataTable GetVehicleClassTable()
+            {
+                DataTable l_dtVehicleClass = new DataTable();
+                l_dtVehicleClass.Columns.Add("CarType", typeof(string));
 
             myCommand.CommandText = "select carClass from CarType";
             myReader = myCommand.ExecuteReader();
@@ -130,8 +130,8 @@ namespace CarRental
             }
             myReader.Close();
 
-            return l_dtVehicleClass;
-        }
+                return l_dtVehicleClass;
+            }
 
         /* Button linking to Rental Transaction Form */
         private void button5_Click(object sender, EventArgs e)
@@ -191,6 +191,7 @@ namespace CarRental
         /* Helper function that will connect the populated combobox to the data grid view */
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             if (e.ColumnIndex > -1)
             {
                 if (listOfCars.Columns[e.ColumnIndex].Name.Contains("BranchID"))
@@ -210,7 +211,7 @@ namespace CarRental
                     objGridDropbox.ValueMember = "CarType";
                     objGridDropbox.DisplayMember = "CarType";
                 }
-            }
+            }*/
         }
 
         /* Helper function that will retrieve the modified values once the data grid view is done being edited */
