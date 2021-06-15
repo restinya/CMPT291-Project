@@ -30,6 +30,7 @@ namespace CarRental
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@ namespace CarRental
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,16 @@ namespace CarRental
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 392);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Back";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // comboBox4
             // 
@@ -138,16 +148,6 @@ namespace CarRental
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 392);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -155,7 +155,6 @@ namespace CarRental
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Name = "Reports";
-            this.Text = "Reports";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

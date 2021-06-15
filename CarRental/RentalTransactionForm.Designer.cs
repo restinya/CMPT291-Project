@@ -71,12 +71,21 @@ namespace CarRental
             this.empID = new System.Windows.Forms.ComboBox();
             this.requestCar = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.returnBranch = new System.Windows.Forms.ComboBox();
+            this.returnBranchID = new System.Windows.Forms.Label();
+            this.changeBranchCheck = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.membership = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+||||||| c6f533b
+=======
+            //this.membership = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+>>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             this.availableCars = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CarType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +93,16 @@ namespace CarRental
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+<<<<<<< HEAD
+||||||| c6f533b
+            this.button3 = new System.Windows.Forms.Button();
+            this.membership = new System.Windows.Forms.TextBox();
+=======
+            this.weeklyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthlyPricing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+>>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             this.customerForm.SuspendLayout();
             this.requestCar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,7 +113,7 @@ namespace CarRental
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 72);
+            this.label1.Location = new System.Drawing.Point(13, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 0;
@@ -103,7 +122,7 @@ namespace CarRental
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 127);
+            this.label3.Location = new System.Drawing.Point(258, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 15);
             this.label3.TabIndex = 3;
@@ -111,7 +130,7 @@ namespace CarRental
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(535, 732);
+            this.submitButton.Location = new System.Drawing.Point(535, 715);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 9;
@@ -186,7 +205,7 @@ namespace CarRental
             // pickUpDate
             // 
             this.pickUpDate.CustomFormat = "YYYYMMDD";
-            this.pickUpDate.Location = new System.Drawing.Point(15, 91);
+            this.pickUpDate.Location = new System.Drawing.Point(14, 115);
             this.pickUpDate.Name = "pickUpDate";
             this.pickUpDate.Size = new System.Drawing.Size(200, 23);
             this.pickUpDate.TabIndex = 28;
@@ -194,7 +213,7 @@ namespace CarRental
             // expectedDate
             // 
             this.expectedDate.CustomFormat = "YYYYMMDD";
-            this.expectedDate.Location = new System.Drawing.Point(16, 146);
+            this.expectedDate.Location = new System.Drawing.Point(258, 114);
             this.expectedDate.Name = "expectedDate";
             this.expectedDate.Size = new System.Drawing.Size(200, 23);
             this.expectedDate.TabIndex = 29;
@@ -202,7 +221,7 @@ namespace CarRental
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(412, 572);
+            this.calculateButton.Location = new System.Drawing.Point(411, 558);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(163, 40);
             this.calculateButton.TabIndex = 32;
@@ -212,7 +231,7 @@ namespace CarRental
             // 
             // result
             // 
-            this.result.Location = new System.Drawing.Point(142, 627);
+            this.result.Location = new System.Drawing.Point(141, 613);
             this.result.Name = "result";
             this.result.Size = new System.Drawing.Size(166, 23);
             this.result.TabIndex = 33;
@@ -468,7 +487,7 @@ namespace CarRental
             // 
             this.requestCar.Controls.Add(this.label9);
             this.requestCar.Controls.Add(this.requestedClass);
-            this.requestCar.Location = new System.Drawing.Point(250, 134);
+            this.requestCar.Location = new System.Drawing.Point(202, 134);
             this.requestCar.Name = "requestCar";
             this.requestCar.Size = new System.Drawing.Size(162, 61);
             this.requestCar.TabIndex = 40;
@@ -477,6 +496,9 @@ namespace CarRental
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.returnBranch);
+            this.groupBox1.Controls.Add(this.returnBranchID);
+            this.groupBox1.Controls.Add(this.changeBranchCheck);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.pickUpBranch);
             this.groupBox1.Controls.Add(this.label1);
@@ -485,13 +507,43 @@ namespace CarRental
             this.groupBox1.Controls.Add(this.expectedDate);
             this.groupBox1.Location = new System.Drawing.Point(17, 198);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 183);
+            this.groupBox1.Size = new System.Drawing.Size(557, 153);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             // 
+            // returnBranch
+            // 
+            this.returnBranch.FormattingEnabled = true;
+            this.returnBranch.Location = new System.Drawing.Point(176, 37);
+            this.returnBranch.Name = "returnBranch";
+            this.returnBranch.Size = new System.Drawing.Size(121, 23);
+            this.returnBranch.TabIndex = 32;
+            this.returnBranch.Visible = false;
+            // 
+            // returnBranchID
+            // 
+            this.returnBranchID.AutoSize = true;
+            this.returnBranchID.Location = new System.Drawing.Point(176, 19);
+            this.returnBranchID.Name = "returnBranchID";
+            this.returnBranchID.Size = new System.Drawing.Size(96, 15);
+            this.returnBranchID.TabIndex = 31;
+            this.returnBranchID.Text = "Return Branch ID";
+            this.returnBranchID.Visible = false;
+            // 
+            // changeBranchCheck
+            // 
+            this.changeBranchCheck.AutoSize = true;
+            this.changeBranchCheck.Location = new System.Drawing.Point(15, 66);
+            this.changeBranchCheck.Name = "changeBranchCheck";
+            this.changeBranchCheck.Size = new System.Drawing.Size(194, 19);
+            this.changeBranchCheck.TabIndex = 30;
+            this.changeBranchCheck.Text = "Select If Different Return Branch";
+            this.changeBranchCheck.UseVisualStyleBackColor = true;
+            this.changeBranchCheck.CheckedChanged += new System.EventHandler(this.changeBranchCheck_CheckedChanged);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(155, 377);
+            this.button1.Location = new System.Drawing.Point(446, 357);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 29);
             this.button1.TabIndex = 43;
@@ -513,7 +565,7 @@ namespace CarRental
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(17, 627);
+            this.label2.Location = new System.Drawing.Point(16, 613);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 21);
             this.label2.TabIndex = 46;
@@ -521,7 +573,6 @@ namespace CarRental
             // 
             // s
             // 
-            this.s.Controls.Add(this.membership);
             this.s.Controls.Add(this.button3);
             this.s.Controls.Add(this.availableCars);
             this.s.Controls.Add(this.label22);
@@ -537,11 +588,12 @@ namespace CarRental
             this.s.Controls.Add(this.result);
             this.s.Location = new System.Drawing.Point(24, 55);
             this.s.Name = "s";
-            this.s.Size = new System.Drawing.Size(586, 671);
+            this.s.Size = new System.Drawing.Size(586, 654);
             this.s.TabIndex = 48;
             this.s.TabStop = false;
             this.s.Text = "NEW RENTAL RESERVATION";
             // 
+<<<<<<< HEAD
             // membership
             // 
             this.membership.Location = new System.Drawing.Point(193, 149);
@@ -559,8 +611,29 @@ namespace CarRental
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+||||||| c6f533b
+=======
+            // membership
+            // 
+           /* this.membership.Location = new System.Drawing.Point(193, 149);
+            this.membership.Name = "membership";
+            this.membership.Size = new System.Drawing.Size(40, 23);
+            this.membership.TabIndex = 49;*/
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 145);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 29);
+            this.button3.TabIndex = 48;
+            this.button3.Text = "Check Gold Membership";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+>>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             // availableCars
             // 
+            this.availableCars.AllowUserToDeleteRows = false;
             this.availableCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.availableCars.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -568,10 +641,15 @@ namespace CarRental
             this.Make,
             this.Model,
             this.Year,
-            this.dailyPricing});
-            this.availableCars.Location = new System.Drawing.Point(15, 416);
+            this.dailyPricing,
+            this.weeklyPricing,
+            this.monthlyPricing,
+            this.lateFee,
+            this.changeBranch});
+            this.availableCars.Location = new System.Drawing.Point(14, 402);
             this.availableCars.Name = "availableCars";
             this.availableCars.RowTemplate.Height = 25;
+            this.availableCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.availableCars.Size = new System.Drawing.Size(560, 150);
             this.availableCars.TabIndex = 47;
             this.availableCars.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -580,37 +658,88 @@ namespace CarRental
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "CarID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // CarType
             // 
-            this.CarType.HeaderText = "CarType";
+            this.CarType.HeaderText = "Car Type";
             this.CarType.Name = "CarType";
+            this.CarType.ReadOnly = true;
             // 
             // Make
             // 
             this.Make.HeaderText = "Make";
             this.Make.Name = "Make";
+            this.Make.ReadOnly = true;
             // 
             // Model
             // 
             this.Model.HeaderText = "Model";
             this.Model.Name = "Model";
+            this.Model.ReadOnly = true;
             // 
             // Year
             // 
             this.Year.HeaderText = "Year";
             this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
             // 
             // dailyPricing
             // 
-            this.dailyPricing.HeaderText = "dailyPricing";
+            this.dailyPricing.HeaderText = "Daily Price";
             this.dailyPricing.Name = "dailyPricing";
+            this.dailyPricing.ReadOnly = true;
             // 
+<<<<<<< HEAD
+||||||| c6f533b
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 145);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 29);
+            this.button3.TabIndex = 48;
+            this.button3.Text = "Check Gold Membership";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // membership
+            // 
+            this.membership.Location = new System.Drawing.Point(193, 149);
+            this.membership.Name = "membership";
+            this.membership.Size = new System.Drawing.Size(40, 23);
+            this.membership.TabIndex = 49;
+            // 
+=======
+            // weeklyPricing
+            // 
+            this.weeklyPricing.HeaderText = "Weekly Price";
+            this.weeklyPricing.Name = "weeklyPricing";
+            this.weeklyPricing.ReadOnly = true;
+            // 
+            // monthlyPricing
+            // 
+            this.monthlyPricing.HeaderText = "Monthly Price";
+            this.monthlyPricing.Name = "monthlyPricing";
+            this.monthlyPricing.ReadOnly = true;
+            // 
+            // lateFee
+            // 
+            this.lateFee.HeaderText = "Late Fee";
+            this.lateFee.Name = "lateFee";
+            this.lateFee.ReadOnly = true;
+            // 
+            // changeBranch
+            // 
+            this.changeBranch.HeaderText = "Different Branch Fee";
+            this.changeBranch.Name = "changeBranch";
+            this.changeBranch.ReadOnly = true;
+            // 
+>>>>>>> 3cb803b339d2061d138a10ee67282e58fec921c7
             // RentalTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 854);
+            this.ClientSize = new System.Drawing.Size(1134, 757);
             this.Controls.Add(this.s);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.addButton);
@@ -683,15 +812,21 @@ namespace CarRental
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox member;
         private System.Windows.Forms.DataGridView availableCars;
+        private System.Windows.Forms.GroupBox s;
+        private System.Windows.Forms.TextBox hi;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox returnBranch;
+        private System.Windows.Forms.Label returnBranchID;
+        private System.Windows.Forms.CheckBox changeBranchCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CarType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Make;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyPricing;
-        private System.Windows.Forms.GroupBox s;
-        private System.Windows.Forms.TextBox hi;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox membership;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weeklyPricing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monthlyPricing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lateFee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn changeBranch;
     }
 }
