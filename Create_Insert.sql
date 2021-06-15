@@ -59,9 +59,10 @@ create table CarType(
 
 /*Creating Customer PhoneNum table*/
 create table PhoneNum(
-	customerID int primary key,
+	customerID int,
 	phoneNum varchar(10),
-	foreign key(customerID) references Customer(customerID)
+	foreign key(customerID) references Customer(customerID),
+	constraint PK_PhoneNum primary key (customerID,phoneNum)
 );
 
 /* Creating Cars table*/
