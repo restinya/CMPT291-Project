@@ -43,7 +43,7 @@ namespace CarRental
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(30, 24);
+            this.label1.Location = new System.Drawing.Point(33, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 25);
             this.label1.TabIndex = 0;
@@ -53,7 +53,7 @@ namespace CarRental
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 52);
+            this.label2.Location = new System.Drawing.Point(33, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace CarRental
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 87);
+            this.label3.Location = new System.Drawing.Point(33, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace CarRental
             this.userSelectBox.Items.AddRange(new object[] {
             "Customer",
             "Employee"});
-            this.userSelectBox.Location = new System.Drawing.Point(116, 87);
+            this.userSelectBox.Location = new System.Drawing.Point(116, 67);
             this.userSelectBox.Name = "userSelectBox";
             this.userSelectBox.Size = new System.Drawing.Size(121, 23);
             this.userSelectBox.TabIndex = 4;
@@ -92,7 +92,7 @@ namespace CarRental
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 125);
+            this.label5.Location = new System.Drawing.Point(33, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 15);
             this.label5.TabIndex = 5;
@@ -100,7 +100,7 @@ namespace CarRental
             // 
             // empIdBox
             // 
-            this.empIdBox.Location = new System.Drawing.Point(116, 125);
+            this.empIdBox.Location = new System.Drawing.Point(116, 101);
             this.empIdBox.Name = "empIdBox";
             this.empIdBox.Size = new System.Drawing.Size(100, 23);
             this.empIdBox.TabIndex = 6;
@@ -108,7 +108,7 @@ namespace CarRental
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(33, 203);
+            this.button1.Location = new System.Drawing.Point(33, 148);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
