@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -69,7 +64,7 @@ namespace CarRental
         /// <param name="e"></param>
         private void updateCus_Click(object sender, EventArgs e)
         {
-            if (customerRecords.SelectedRows.Count > 0) // make sure user select at least 1 row 
+            if (customerRecords.SelectedRows.Count == 1) // make sure user select at least 1 row 
             {
                 customerForm.Visible = true;
                 submitForm.Visible = true;
@@ -256,7 +251,7 @@ namespace CarRental
             phoneRecords.Rows.Clear();
             try
             {
-                if (customerRecords.SelectedRows.Count > 0)
+                if (customerRecords.SelectedRows.Count == 1)
                 {
                     //display selected customer records phones
                     string customerID = customerRecords.SelectedRows[0].Cells[0].Value + string.Empty;
@@ -353,7 +348,7 @@ namespace CarRental
         /// <param name="e"></param>
         private void updatePhone_Click(object sender, EventArgs e)
         {
-            if (phoneRecords.SelectedRows.Count > 0) // make sure user select at least 1 row 
+            if (phoneRecords.SelectedRows.Count == 1) // make sure user select at least 1 row 
             {
                 phoneForm.Visible = true;
                 submitPhone.Visible = true;

@@ -421,7 +421,9 @@ namespace CarRental
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage UserLOC;
+#pragma warning disable CS0169 // The field 'Cars.listBox2' is never used
         private System.Windows.Forms.ListBox listBox2;
+#pragma warning restore CS0169 // The field 'Cars.listBox2' is never used
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label15;

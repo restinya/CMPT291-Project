@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace CarRental
 {
@@ -97,7 +92,7 @@ namespace CarRental
 
         private void empDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void empDataView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -124,10 +119,10 @@ namespace CarRental
             myConnection.Open();
             myCommand.Parameters.AddWithValue("@empID", editEmpIDBox.Text);
             myCommand.Parameters.AddWithValue("@branchID", editBranchBox.Text);
-            myCommand.Parameters.AddWithValue("@fName", editFNameBox.Text); 
+            myCommand.Parameters.AddWithValue("@fName", editFNameBox.Text);
             myCommand.Parameters.AddWithValue("@lName", editLNameBox.Text);
             myCommand.Parameters.AddWithValue("@street", editStreetBox.Text);
-            myCommand.Parameters.AddWithValue("@city", editCityBox.Text); 
+            myCommand.Parameters.AddWithValue("@city", editCityBox.Text);
             myCommand.Parameters.AddWithValue("@postalcode", editPostalBox.Text);
             myCommand.ExecuteNonQuery();
             MessageBox.Show("Employee Record Updated Successfully.");

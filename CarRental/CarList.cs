@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -40,7 +35,7 @@ namespace CarRental
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-   
+
         }
 
         private void CarList_Load(object sender, EventArgs e)

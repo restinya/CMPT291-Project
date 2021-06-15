@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -14,7 +9,7 @@ namespace CarRental
         public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
-        
+
 
         public ReturnTransactionForm()
         {
@@ -145,7 +140,7 @@ namespace CarRental
 
         private void listOfRentals_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         /* Calculate Button */

@@ -668,19 +668,31 @@ namespace CarRental
         private System.Windows.Forms.TextBox licensePlate;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label5;
+#pragma warning disable CS0169 // The field 'EmployeeCars.textBox3' is never used
         private System.Windows.Forms.TextBox textBox3;
+#pragma warning restore CS0169 // The field 'EmployeeCars.textBox3' is never used
         private System.Windows.Forms.Label label6;
+#pragma warning disable CS0169 // The field 'EmployeeCars.textBox9' is never used
         private System.Windows.Forms.TextBox textBox9;
+#pragma warning restore CS0169 // The field 'EmployeeCars.textBox9' is never used
+#pragma warning disable CS0169 // The field 'EmployeeCars.textBox4' is never used
         private System.Windows.Forms.TextBox textBox4;
+#pragma warning restore CS0169 // The field 'EmployeeCars.textBox4' is never used
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
+#pragma warning disable CS0169 // The field 'EmployeeCars.textBox5' is never used
         private System.Windows.Forms.TextBox textBox5;
+#pragma warning restore CS0169 // The field 'EmployeeCars.textBox5' is never used
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox year;
         private System.Windows.Forms.Label label8;
+#pragma warning disable CS0169 // The field 'EmployeeCars.textBox7' is never used
         private System.Windows.Forms.TextBox textBox7;
+#pragma warning restore CS0169 // The field 'EmployeeCars.textBox7' is never used
+#pragma warning disable CS0169 // The field 'EmployeeCars.textBox8' is never used
         private System.Windows.Forms.TextBox textBox8;
+#pragma warning restore CS0169 // The field 'EmployeeCars.textBox8' is never used
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox vehicleClass;
@@ -697,7 +709,9 @@ namespace CarRental
         private System.Windows.Forms.TextBox make;
         private System.Windows.Forms.TextBox model;
         private System.Windows.Forms.TextBox currentMileage;
+#pragma warning disable CS0169 // The field 'EmployeeCars.ranc' is never used
         private System.Windows.Forms.TextBox ranc;
+#pragma warning restore CS0169 // The field 'EmployeeCars.ranc' is never used
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox seats;
         private System.Windows.Forms.ComboBox status;
