@@ -89,10 +89,10 @@ namespace CarRental
         private void loadButton_Click(object sender, EventArgs e)
         {
             listOfRentals.Rows.Clear();
-            myCommand = new SqlCommand("SELECT * FROM Rental, Customer, Employee, Car, CarType WHERE Rental.customerID = @customerID " +
-                "AND Rental.empID = @empID " +
+            myCommand = new SqlCommand("SELECT * FROM Rental, Customer, Employee, Car, CarType WHERE Rental.customerID = Customer.customerID " +
+                "AND Rental.empID = Employee.empID " +
                 "AND Customer.customerID = @customerID " +
-                "AND Customer.empID = @empID " +
+                "AND Employee.empID = @empID " +
                 "AND Rental.carID = Car.carID " +
                 "AND Rental.expectedCarTypeID = CarType.carTypeID ", myConnection);
             myConnection.Open();
