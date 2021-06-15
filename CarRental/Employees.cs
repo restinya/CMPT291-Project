@@ -60,18 +60,18 @@ namespace CarRental
             //Generate list of employees given query
             myCommand = new SqlCommand("SELECT * FROM Employee WHERE empID = @empID " +
                 "AND branchID = @branchID " +
-                "AND fName LIKE @fName% " +
-                "AND lName LIKE @lName% " +
-                "AND street LIKE @street% " +
-                "AND city LIKE @city% " +
+                "AND fName LIKE @fName " +
+                "AND lName LIKE @lName " +
+                "AND street LIKE @street " +
+                "AND city LIKE @city " +
                 "AND postalcode = @postalcode", myConnection);
             myConnection.Open();
-            myCommand.Parameters.AddWithValue("@empID", empIDBox);
+            myCommand.Parameters.AddWithValue("@empID", empIDBox.Text);
             myCommand.Parameters.AddWithValue("@branchID", branchBox.Text);
-            myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
-            myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
-            myCommand.Parameters.AddWithValue("@street", streetBox.Text);
-            myCommand.Parameters.AddWithValue("@city", cityBox.Text);
+            myCommand.Parameters.AddWithValue("@fName", fNameBox.Text + '%');
+            myCommand.Parameters.AddWithValue("@lName", lNameBox.Text + '%');
+            myCommand.Parameters.AddWithValue("@street", streetBox.Text + '%');
+            myCommand.Parameters.AddWithValue("@city", cityBox.Text + '%');
             myCommand.Parameters.AddWithValue("@postalcode", postalBox.Text);
             //myCommand.CommandText = "SELECT * FROM Employee WHERE Employee.branchID =" + branchCombo.Text + " AND " +
             //                        "Employee.fName LIKE '" + fNameBox.Text + "%' AND " +
