@@ -11,18 +11,37 @@ namespace CarRental
 {
     public partial class Employees : Form
     {
-        public SqlConnection myConnection;
         public SqlCommand myCommand;
         public SqlDataReader myReader;
+        SqlConnection myConnection = new SqlConnection("user id=admin291;" +
+                "password=cmpt291;" +
+                "server=localhost;" +
+                "database=CarRental; " +
+                "connection timeout=30");
 
         public Employees()
         {
             InitializeComponent();
-            SqlConnection myConnection = new SqlConnection("user id=admin291;" +
-                            "password=cmpt291;" +
-                            "server=localhost;" +
-                            "database=CarRental; " +
-                            "connection timeout=30");
+            DisplayEmployees();
+        }
+
+        private void DisplayEmployees()
+        {
+            myConnection.Open();
+            myCommand = new SqlCommand("SELECT * FROM Employee", myConnection);
+            myReader = myCommand.ExecuteReader();
+            empDataView.Rows.Clear();
+            while (myReader.Read())
+            {
+                empDataView.Rows.Add(myReader["empID"].ToString(),
+                                     myReader["branchID"].ToString(),
+                                     myReader["fName"].ToString(),
+                                     myReader["lName"].ToString(),
+                                     myReader["street"].ToString(),
+                                     myReader["city"].ToString(),
+                                     myReader["postalcode"].ToString());
+            }
+            myReader.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -38,13 +57,15 @@ namespace CarRental
         private void empSearchButton_Click(object sender, EventArgs e)
         {
             //Generate list of employees given query
-            myCommand = new SqlCommand("SELECT * FROM Employee WHERE branchID = @branchID " +
+            myCommand = new SqlCommand("SELECT * FROM Employee WHERE empID = @empID " +
+                "AND branchID = @branchID " +
                 "AND fName LIKE @fName% " +
                 "AND lName LIKE @lName% " +
                 "AND street LIKE @street% " +
                 "AND city LIKE @city% " +
                 "AND postalcode = @postalcode", myConnection);
             myConnection.Open();
+            myCommand.Parameters.AddWithValue("@empID", empIDBox);
             myCommand.Parameters.AddWithValue("@branchID", branchCombo.SelectedItem);
             myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
             myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
@@ -70,6 +91,7 @@ namespace CarRental
                                      myReader["postalcode"].ToString());
             }
             myReader.Close();
+            myConnection.Close();
         }
 
         private void empDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -79,6 +101,7 @@ namespace CarRental
 
         private void empDataView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            empIDBox.Text = empDataView.Rows.[e.RowIndex].Cells[0].Value.ToString();
             editFNameBox.Text = empDataView.Rows[e.RowIndex].Cells[2].Value.ToString();
             editLNameBox.Text = empDataView.Rows[e.RowIndex].Cells[3].Value.ToString();
             editStreetBox.Text = empDataView.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -88,6 +111,37 @@ namespace CarRental
         }
 
         private void editButton_Click(object sender, EventArgs e)
+        {
+            //update selected row
+            myCommand = new SqlCommand("update Employee set branchID = @branchID," +
+                "fName = @fName," +
+                "lName = @lName," +
+                "street = @street," +
+                "city = @city," +
+                "postalcode = @postalcode" +
+                "WHERE empID = @empID", myConnection);
+            myConnection.Open();
+            myCommand.Parameters.AddWithValue("@empID", editEmpIDBox.Text);
+            myCommand.Parameters.AddWithValue("@branchID", editBranchCombo.SelectedItem);
+            myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
+            myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
+            myCommand.Parameters.AddWithValue("@street", streetBox.Text);
+            myCommand.Parameters.AddWithValue("@city", cityBox.Text);
+            myCommand.Parameters.AddWithValue("@postalcode", postalBox.Text);
+            myCommand.ExecuteNonQuery();
+            MessageBox.Show("Employee Record Updated Successfully.");
+            myConnection.Close();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EmployeeCars e1 = new EmployeeCars();
+            e1.ShowDialog();
+        }
+
+        private void editFNameBox_TextChanged(object sender, EventArgs e)
         {
 
         }
