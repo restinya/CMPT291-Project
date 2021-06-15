@@ -46,8 +46,16 @@ namespace CarRental
             this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.postalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editButton = new System.Windows.Forms.Button();
+            this.editEmployee = new System.Windows.Forms.GroupBox();
+            this.editPostalBox = new System.Windows.Forms.TextBox();
+            this.editCityBox = new System.Windows.Forms.TextBox();
+            this.editBranchCombo = new System.Windows.Forms.ComboBox();
+            this.editLNameBox = new System.Windows.Forms.TextBox();
+            this.editStreetBox = new System.Windows.Forms.TextBox();
+            this.editFNameBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empDataView)).BeginInit();
+            this.editEmployee.SuspendLayout();
             this.SuspendLayout();
             // 
             // empSearchButton
@@ -124,7 +132,7 @@ namespace CarRental
             this.branchCombo.FormattingEnabled = true;
             this.branchCombo.Location = new System.Drawing.Point(112, 22);
             this.branchCombo.Name = "branchCombo";
-            this.branchCombo.Size = new System.Drawing.Size(93, 23);
+            this.branchCombo.Size = new System.Drawing.Size(101, 23);
             this.branchCombo.TabIndex = 5;
             this.branchCombo.Text = "Branch No.";
             // 
@@ -191,7 +199,7 @@ namespace CarRental
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(655, 526);
+            this.editButton.Location = new System.Drawing.Point(7, 139);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(100, 23);
             this.editButton.TabIndex = 7;
@@ -199,12 +207,78 @@ namespace CarRental
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
+            // editEmployee
+            // 
+            this.editEmployee.Controls.Add(this.editPostalBox);
+            this.editEmployee.Controls.Add(this.editButton);
+            this.editEmployee.Controls.Add(this.editCityBox);
+            this.editEmployee.Controls.Add(this.editBranchCombo);
+            this.editEmployee.Controls.Add(this.editLNameBox);
+            this.editEmployee.Controls.Add(this.editStreetBox);
+            this.editEmployee.Controls.Add(this.editFNameBox);
+            this.editEmployee.Location = new System.Drawing.Point(649, 378);
+            this.editEmployee.Name = "editEmployee";
+            this.editEmployee.Size = new System.Drawing.Size(221, 171);
+            this.editEmployee.TabIndex = 8;
+            this.editEmployee.TabStop = false;
+            this.editEmployee.Text = "Edit Selected Employee";
+            // 
+            // editPostalBox
+            // 
+            this.editPostalBox.Location = new System.Drawing.Point(113, 52);
+            this.editPostalBox.Name = "editPostalBox";
+            this.editPostalBox.Size = new System.Drawing.Size(100, 23);
+            this.editPostalBox.TabIndex = 7;
+            this.editPostalBox.Text = "Postal Code";
+            // 
+            // editCityBox
+            // 
+            this.editCityBox.Location = new System.Drawing.Point(7, 110);
+            this.editCityBox.Name = "editCityBox";
+            this.editCityBox.Size = new System.Drawing.Size(100, 23);
+            this.editCityBox.TabIndex = 6;
+            this.editCityBox.Text = "City";
+            // 
+            // editBranchCombo
+            // 
+            this.editBranchCombo.FormattingEnabled = true;
+            this.editBranchCombo.Location = new System.Drawing.Point(112, 22);
+            this.editBranchCombo.Name = "editBranchCombo";
+            this.editBranchCombo.Size = new System.Drawing.Size(101, 23);
+            this.editBranchCombo.TabIndex = 5;
+            this.editBranchCombo.Text = "Branch No.";
+            // 
+            // editLNameBox
+            // 
+            this.editLNameBox.Location = new System.Drawing.Point(6, 51);
+            this.editLNameBox.Name = "editLNameBox";
+            this.editLNameBox.Size = new System.Drawing.Size(100, 23);
+            this.editLNameBox.TabIndex = 4;
+            this.editLNameBox.Text = "Last Name";
+            // 
+            // editStreetBox
+            // 
+            this.editStreetBox.Location = new System.Drawing.Point(6, 80);
+            this.editStreetBox.Name = "editStreetBox";
+            this.editStreetBox.Size = new System.Drawing.Size(100, 23);
+            this.editStreetBox.TabIndex = 2;
+            this.editStreetBox.Text = "Street";
+            // 
+            // editFNameBox
+            // 
+            this.editFNameBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.editFNameBox.Location = new System.Drawing.Point(6, 22);
+            this.editFNameBox.Name = "editFNameBox";
+            this.editFNameBox.Size = new System.Drawing.Size(100, 23);
+            this.editFNameBox.TabIndex = 3;
+            this.editFNameBox.Text = "First Name";
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 561);
-            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.editEmployee);
             this.Controls.Add(this.empDataView);
             this.Controls.Add(this.groupBox1);
             this.Name = "Employees";
@@ -212,6 +286,8 @@ namespace CarRental
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empDataView)).EndInit();
+            this.editEmployee.ResumeLayout(false);
+            this.editEmployee.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -234,5 +310,12 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn City;
         private System.Windows.Forms.DataGridViewTextBoxColumn postalCode;
         private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.GroupBox editEmployee;
+        private System.Windows.Forms.TextBox editPostalBox;
+        private System.Windows.Forms.TextBox editCityBox;
+        private System.Windows.Forms.ComboBox editBranchCombo;
+        private System.Windows.Forms.TextBox editLNameBox;
+        private System.Windows.Forms.TextBox editStreetBox;
+        private System.Windows.Forms.TextBox editFNameBox;
     }
 }

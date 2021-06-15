@@ -18,6 +18,11 @@ namespace CarRental
         public Employees()
         {
             InitializeComponent();
+            SqlConnection myConnection = new SqlConnection("user id=admin291;" +
+                            "password=cmpt291;" +
+                            "server=localhost;" +
+                            "database=CarRental; " +
+                            "connection timeout=30");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -33,12 +38,25 @@ namespace CarRental
         private void empSearchButton_Click(object sender, EventArgs e)
         {
             //Generate list of employees given query
-            myCommand.CommandText = "SELECT * FROM Employee, Branch WHERE Employee.branchID = Branch.branchID AND " +
-                                    "Employee.fName LIKE '" + fNameBox.Text + "%' AND " +
-                                    "Employee.lName LIKE '" + lNameBox.Text + "%' AND " +
-                                    "Employee.street LIKE '" + streetBox.Text + "%' AND " +
-                                    "Employee.city LIKE '" + cityBox.Text +  "%' AND " +
-                                    "Employee.postalcode = '" + postalBox.Text + "'";
+            myCommand = new SqlCommand("SELECT * FROM Employee WHERE branchID = @branchID " +
+                "AND fName LIKE @fName% " +
+                "AND lName LIKE @lName% " +
+                "AND street LIKE @street% " +
+                "AND city LIKE @city% " +
+                "AND postalcode = @postalcode", myConnection);
+            myConnection.Open();
+            myCommand.Parameters.AddWithValue("@branchID", branchCombo.SelectedItem);
+            myCommand.Parameters.AddWithValue("@fName", fNameBox.Text);
+            myCommand.Parameters.AddWithValue("@lName", lNameBox.Text);
+            myCommand.Parameters.AddWithValue("@street", streetBox.Text);
+            myCommand.Parameters.AddWithValue("@city", cityBox.Text);
+            myCommand.Parameters.AddWithValue("@postalcode", postalBox.Text);
+            //myCommand.CommandText = "SELECT * FROM Employee WHERE Employee.branchID =" + branchCombo.Text + " AND " +
+            //                        "Employee.fName LIKE '" + fNameBox.Text + "%' AND " +
+            //                        "Employee.lName LIKE '" + lNameBox.Text + "%' AND " +
+            //                        "Employee.street LIKE '" + streetBox.Text + "%' AND " +
+            //                        "Employee.city LIKE '" + cityBox.Text +  "%' AND " +
+            //                        "Employee.postalcode = '" + postalBox.Text + "'";
             myReader = myCommand.ExecuteReader();
             empDataView.Rows.Clear();
             while (myReader.Read())
@@ -56,7 +74,17 @@ namespace CarRental
 
         private void empDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
 
+        private void empDataView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            editFNameBox.Text = empDataView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            editLNameBox.Text = empDataView.Rows[e.RowIndex].Cells[3].Value.ToString();
+            editStreetBox.Text = empDataView.Rows[e.RowIndex].Cells[4].Value.ToString();
+            editCityBox.Text = empDataView.Rows[e.RowIndex].Cells[5].Value.ToString();
+            editBranchCombo.SelectedItem = empDataView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            editPostalBox.Text = empDataView.Rows[e.RowIndex].Cells[7].Value.ToString();
         }
 
         private void editButton_Click(object sender, EventArgs e)
