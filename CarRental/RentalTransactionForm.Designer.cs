@@ -1,4 +1,4 @@
-﻿
+
 namespace CarRental
 {
     partial class RentalTransactionForm
