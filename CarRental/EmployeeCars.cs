@@ -169,6 +169,13 @@ namespace CarRental
             r1.ShowDialog();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentalReservations r1 = new RentalReservations();
+            r1.ShowDialog();
+        }
+
         /* Button linking to Reports Form */
         private void button7_Click(object sender, EventArgs e)
             {

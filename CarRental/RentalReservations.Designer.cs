@@ -30,9 +30,7 @@ namespace CarRental
         private void InitializeComponent()
         {
             this.backButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.listOfRentals = new System.Windows.Forms.DataGridView();
             this.rentalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pickUpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,11 +45,13 @@ namespace CarRental
             this.estimatedCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.customerList = new System.Windows.Forms.ComboBox();
+            this.employeeList = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.loadButton = new System.Windows.Forms.Button();
+            this.clearFiltersButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.listOfRentals)).BeginInit();
             this.SuspendLayout();
             // 
             // backButton
@@ -62,11 +62,12 @@ namespace CarRental
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // dataGridView1
+            // listOfRentals
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.listOfRentals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listOfRentals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rentalID,
             this.customer,
             this.pickUpDate,
@@ -81,28 +82,11 @@ namespace CarRental
             this.estimatedCost,
             this.totalFee,
             this.employee});
-            this.dataGridView1.Location = new System.Drawing.Point(29, 155);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(998, 424);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Customer";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(29, 84);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 3;
+            this.listOfRentals.Location = new System.Drawing.Point(29, 155);
+            this.listOfRentals.Name = "listOfRentals";
+            this.listOfRentals.RowTemplate.Height = 25;
+            this.listOfRentals.Size = new System.Drawing.Size(998, 424);
+            this.listOfRentals.TabIndex = 1;
             // 
             // rentalID
             // 
@@ -174,13 +158,30 @@ namespace CarRental
             this.employee.HeaderText = "Employee";
             this.employee.Name = "employee";
             // 
-            // comboBox2
+            // label1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(172, 84);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 5;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Customer";
+            // 
+            // customerList
+            // 
+            this.customerList.FormattingEnabled = true;
+            this.customerList.Location = new System.Drawing.Point(29, 84);
+            this.customerList.Name = "customerList";
+            this.customerList.Size = new System.Drawing.Size(121, 23);
+            this.customerList.TabIndex = 3;
+            // 
+            // employeeList
+            // 
+            this.employeeList.FormattingEnabled = true;
+            this.employeeList.Location = new System.Drawing.Point(172, 84);
+            this.employeeList.Name = "employeeList";
+            this.employeeList.Size = new System.Drawing.Size(121, 23);
+            this.employeeList.TabIndex = 5;
             // 
             // label2
             // 
@@ -191,40 +192,41 @@ namespace CarRental
             this.label2.TabIndex = 4;
             this.label2.Text = "Employee";
             // 
-            // button1
+            // loadButton
             // 
-            this.button1.Location = new System.Drawing.Point(338, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Load Rental Reservations";
-            this.button1.UseVisualStyleBackColor = true;
+            this.loadButton.Location = new System.Drawing.Point(338, 84);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(175, 23);
+            this.loadButton.TabIndex = 6;
+            this.loadButton.Text = "Load Rental Reservations";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
-            // button2
+            // clearFiltersButton
             // 
-            this.button2.Location = new System.Drawing.Point(338, 114);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Clear Filters";
-            this.button2.UseVisualStyleBackColor = true;
+            this.clearFiltersButton.Location = new System.Drawing.Point(338, 114);
+            this.clearFiltersButton.Name = "clearFiltersButton";
+            this.clearFiltersButton.Size = new System.Drawing.Size(175, 23);
+            this.clearFiltersButton.TabIndex = 7;
+            this.clearFiltersButton.Text = "Clear Filters";
+            this.clearFiltersButton.UseVisualStyleBackColor = true;
             // 
             // RentalReservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 595);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.clearFiltersButton);
+            this.Controls.Add(this.loadButton);
+            this.Controls.Add(this.employeeList);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.customerList);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.listOfRentals);
             this.Controls.Add(this.backButton);
             this.Name = "RentalReservations";
             this.Text = "RentalReservations";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listOfRentals)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +235,7 @@ namespace CarRental
         #endregion
 
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView listOfRentals;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalID;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn pickUpDate;
@@ -249,10 +251,10 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewTextBoxColumn totalFee;
         private System.Windows.Forms.DataGridViewTextBoxColumn employee;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox customerList;
+        private System.Windows.Forms.ComboBox employeeList;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Button clearFiltersButton;
     }
 }
