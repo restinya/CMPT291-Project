@@ -203,6 +203,10 @@ namespace CarRental
                 confirm.Text = "A new customer entry has been added!";
                 resetFields();
                 edit = false;
+                customerForm.Visible = false;
+                submitForm.Visible = false;
+                cusID.Visible = false;
+                cusText.Visible = false;
             }
         }
 
