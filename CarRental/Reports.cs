@@ -82,11 +82,11 @@ namespace CarRental
                     break;
 
                 case "Customer with most SUVs reserved in the same month":
-                    query =  "SELECT customerID\n"+
-                             "FROM(SELECT Rental.customerID, CarType.carTypeID, MONTH(pickUpDate) as [month], COUNT(*) as [count]\n" +
+                    query = "SELECT Top(1) customerID\n" +
+                             "FROM (SELECT Rental.customerID, CarType.carTypeID, MONTH(pickUpDate) as [month], COUNT(*) as [count]\n" +
                              "FROM Rental, Car, CarType\n" +
                              "WHERE Rental.carID = Car.carID and Car.carTypeID = CarType.carTypeID and CarType.carTypeID = 1\n" +
-                             "GROUP BY Rental.customerID, CarType.carTypeID, MONTH(pickUpDate)) as subQuery";
+                             "GROUP BY Rental.customerID, CarType.carTypeID, MONTH(pickUpDate)) as subQuery Order BY count desc;";
                   
                     myCommand.CommandText = query;
                     myReader = myCommand.ExecuteReader();
@@ -115,7 +115,7 @@ namespace CarRental
                             "From(SELECT TOP(3) customerID, COUNT(*) as [Cars Returned]\n" +
                             "FROM Rental, Branch\n" +
                             "where Rental.returnBranchID = Branch.branchID\n" +
-                            "GROUP BY customerID) as subquery\n";
+                            "GROUP BY customerID Order BY Count(*) desc) as subquery";
 
 
                     myCommand.CommandText = query;
@@ -130,7 +130,7 @@ namespace CarRental
                             "FROM(SELECT TOP(3) employeeID, Sum(totalFee) as [Total Fees from Transactions]\n" +
                             "from Rental\n" +
                             "GROUP BY employeeID\n" +
-                            "ORDER BY COUNT(*) DESC) as subQuery";
+                            "ORDER BY Sum(totalFee) DESC) as subQuery";
 
 
                     myCommand.CommandText = query;
@@ -145,7 +145,7 @@ namespace CarRental
                             "FROM(SELECT TOP(10) carID, Sum(mileageUsed) as [Total Mileage used]\n" +
                             "FROM Rental\n" +
                             "GROUP BY carID\n" +
-                            "ORDER BY COUNT(*) DESC) as subQuery";
+                            "ORDER BY Sum(mileageUsed) DESC) as subQuery";
 
 
                     myCommand.CommandText = query;
