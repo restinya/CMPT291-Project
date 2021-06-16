@@ -56,37 +56,37 @@ namespace CarRental
             myCommand = new SqlCommand("SELECT * FROM Employee WHERE IsDeleted = 0", myConnection);
             if (empIDBox.Text != "")
             {
-                myCommand.CommandText = " AND empID = @empID";
+                myCommand.CommandText += " AND empID = @empID";
                 myCommand.Parameters.AddWithValue("@empID", empIDBox.Text);
             }
             if (branchBox.Text != "")
             {
-                myCommand.CommandText = " AND branchID = @branchID";
+                myCommand.CommandText += " AND branchID = @branchID";
                 myCommand.Parameters.AddWithValue("@branchID", branchBox.Text);
             }
             if (fNameBox.Text != "")
             {
-                myCommand.CommandText = " AND fName = @fName";
+                myCommand.CommandText += " AND fName = @fName";
                 myCommand.Parameters.AddWithValue("@fName", fNameBox.Text + '%');
             }
             if (lNameBox.Text != "")
             {
-                myCommand.CommandText = " AND lName = @lName";
+                myCommand.CommandText += " AND lName = @lName";
                 myCommand.Parameters.AddWithValue("@lName", lNameBox.Text + '%');
             }
             if (streetBox.Text != "")
             {
-                myCommand.CommandText = " AND street = @street";
+                myCommand.CommandText += " AND street = @street";
                 myCommand.Parameters.AddWithValue("@street", streetBox.Text + '%');
             }
             if (cityBox.Text != "")
             {
-                myCommand.CommandText = " AND city = @city";
+                myCommand.CommandText += " AND city = @city";
                 myCommand.Parameters.AddWithValue("@city", cityBox.Text + '%');
             }
             if (postalBox.Text != "")
             {
-                myCommand.CommandText = " AND postalCode = @postalCode";
+                myCommand.CommandText += " AND postalCode = @postalCode";
                 myCommand.Parameters.AddWithValue("@postalCode", postalBox.Text);
             }
             myConnection.Open();
