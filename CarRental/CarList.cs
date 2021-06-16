@@ -117,7 +117,7 @@ namespace CarRental
             {
                 //myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and branchID = " + branchID + " and CarType.carTypeID = " + carTypeID;
                 myCommand.CommandText = "select * from Car, Branch, CarType where Car.branchID = Branch.branchID and Car.cartypeID = CarType.cartypeID and " +
-                "Branch.branchID = " + branchID + " and Car.carID not in " +
+                "Branch.branchID = " + branchID + " and Car.carTypeID = " + carTypeID + " and Car.carID not in " +
                 "((select carID from Rental where pickUpDate between '" + pickupDate.Text + "' and '" + returnDate.Text + "') UNION " +
                 "(select carID from Rental where expectedDate between '" + pickupDate.Text + "' and '" + returnDate.Text + "'))";
             }
