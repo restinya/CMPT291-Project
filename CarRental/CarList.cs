@@ -115,9 +115,14 @@ namespace CarRental
             }
             else
             {
-                myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and branchID = " + branchID + " and CarType.carTypeID = " + carTypeID;
+                //myCommand.CommandText = "select * from Car, CarType where Car.carTypeID = CarType.carTypeID and branchID = " + branchID + " and CarType.carTypeID = " + carTypeID;
+                myCommand.CommandText = "select * from Car, Branch, CarType where Car.branchID = Branch.branchID and Car.cartypeID = CarType.cartypeID and " +
+                "Branch.branchID = " + branchID + " and Car.carID not in " +
+                "((select carID from Rental where pickUpDate between '" + pickupDate.Text + "' and '" + returnDate.Text + "') UNION " +
+                "(select carID from Rental where expectedDate between '" + pickupDate.Text + "' and '" + returnDate.Text + "'))";
             }
             myReader = myCommand.ExecuteReader();
+
             while (myReader.Read())
             {
                 listOfCars.Rows.Add(myReader["carID"].ToString(), myReader["carClass"].ToString(), myReader["make"].ToString(), myReader["model"].ToString(),
@@ -125,9 +130,6 @@ namespace CarRental
                                     myReader["transmissionType"].ToString(), myReader["seats"].ToString(), myReader["branchID"].ToString(), myReader["status"].ToString());
             }
             myReader.Close();
-
-
-
         }
 
         private void vehicleSelection_Click(object sender, EventArgs e)
@@ -138,6 +140,18 @@ namespace CarRental
         private void submitButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listOfCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            carTypeSel c1 = new carTypeSel();
+            c1.ShowDialog();
         }
     }
 }

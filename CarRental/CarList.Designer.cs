@@ -53,6 +53,7 @@ namespace CarRental
             this.seats2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.BranchID = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.status2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.listOfCars)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,7 +159,7 @@ namespace CarRental
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(26, 546);
+            this.submitButton.Location = new System.Drawing.Point(668, 546);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(92, 32);
             this.submitButton.TabIndex = 12;
@@ -189,6 +190,7 @@ namespace CarRental
             this.listOfCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listOfCars.Size = new System.Drawing.Size(734, 386);
             this.listOfCars.TabIndex = 38;
+            this.listOfCars.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listOfCars_CellContentClick);
             // 
             // CarID
             // 
@@ -278,11 +280,22 @@ namespace CarRental
             this.status2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.status2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(26, 546);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(82, 32);
+            this.backButton.TabIndex = 39;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // CarList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 599);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.listOfCars);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.label1);
@@ -330,5 +343,6 @@ namespace CarRental
         private System.Windows.Forms.DataGridViewComboBoxColumn seats2;
         private System.Windows.Forms.DataGridViewComboBoxColumn BranchID;
         private System.Windows.Forms.DataGridViewComboBoxColumn status2;
+        private System.Windows.Forms.Button backButton;
     }
 }
