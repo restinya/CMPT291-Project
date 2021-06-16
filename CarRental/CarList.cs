@@ -134,7 +134,9 @@ namespace CarRental
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            RentalTransactionForm c1 = new RentalTransactionForm();
+            c1.ShowDialog();
         }
 
         private void listOfCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
