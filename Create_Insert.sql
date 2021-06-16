@@ -169,3 +169,10 @@ insert into Customer values ('Twyla', 'Sands', 0, 'Saskatoon', 'SK', '28 114 Ave
 insert into Customer values ('Patrick', 'Brewer', 1, 'Saskatoon', 'SK', '58 56 St NW', 'S6V9S3', '1990-06-08');
 insert into Customer values ('Roland', 'Schitt', 0, 'Saskatoon', 'SK', '27 Revel Drive NW', 'S6V9D1', '1990-06-08');
 insert into Customer values ('Jocelyn', 'Schitt', 0, 'Saskatoon', 'SK', '3 Starling St NW', 'S8K6G4', '1990-06-08');
+
+-- Insert Rentals - this leaves carID=1 available between 05-24 and 05-25
+insert into Rental values ('20210515 12:01:00 AM', '20210516 12:01:00 AM', '20210516 12:01:00 AM', 30, 200.50, 200.50, 1, 1, 1, 1, 1, 1);
+insert into Rental values ('20210518 12:01:00 AM', '20210519 12:01:00 AM', '20210519 12:01:00 AM', 30, 200.50, 200.50, 1, 1, 1, 1, 1, 1);
+insert into Rental values ('20210521 12:01:00 AM', '20210523 12:01:00 AM', '20210523 12:01:00 AM', 30, 200.50, 200.50, 1, 1, 1, 1, 1, 1);
+insert into Rental values ('20210526 12:01:00 AM', '20210527 12:01:00 AM', '20210527 12:01:00 AM', 30, 200.50, 200.50, 1, 1, 1, 1, 1, 1);
+insert into Rental values ('20210529 12:01:00 AM', '20210530 12:01:00 AM', '20210530 12:01:00 AM', 30, 200.50, 200.50, 1, 1, 1, 1, 1, 1);
