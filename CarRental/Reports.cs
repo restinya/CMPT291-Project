@@ -37,6 +37,7 @@ namespace CarRental
             selectReport.Items.Add("10 Most Used Cars");
             selectReport.Items.Add("Top 3 customers with the most reserved cars returned in a branch");
             selectReport.Items.Add("Top 3 Highest Earning Employees");
+            selectReport.Items.Add("Top 3 Cars with the most mileage used");
         }
         /// <summary>
         /// Back button
@@ -129,6 +130,21 @@ namespace CarRental
                             "FROM(SELECT TOP(3) employeeID, Sum(totalFee) as [Total Fees from Transactions]\n" +
                             "from Rental\n" +
                             "GROUP BY employeeID\n" +
+                            "ORDER BY COUNT(*) DESC) as subQuery";
+
+
+                    myCommand.CommandText = query;
+                    myReader = myCommand.ExecuteReader();
+                    dt.Load(myReader);
+                    queryData.DataSource = dt;
+                    myReader.Close();
+                    break;
+
+                case "Top 3 Cars with the most mileage used":
+                    query = "SELECT TOP (3) *\n" +
+                            "FROM(SELECT TOP(10) carID, Sum(mileageUsed) as [Total Mileage used]\n" +
+                            "FROM Rental\n" +
+                            "GROUP BY carID\n" +
                             "ORDER BY COUNT(*) DESC) as subQuery";
 
 
