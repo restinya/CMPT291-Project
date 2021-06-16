@@ -64,6 +64,7 @@
 ![img](https://i.imgur.com/Z3O40a1.png)
 1. Choose the type of user you are and leave EmpID empty if you're a customer
 2. If an employee is signing in then enter the EmpID in the text box
+3. Click Log in
 
 ### Customer Records:
 
