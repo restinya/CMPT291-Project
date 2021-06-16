@@ -53,7 +53,7 @@ namespace CarRental
         private void empSearchButton_Click(object sender, EventArgs e)
         {
             //Generate list of employees given query
-            myCommand = new SqlCommand("SELECT * FROM Employee WHERE IsDeleted = 0", myConnection);
+            myCommand = new SqlCommand("SELECT * FROM Employee WHERE empID IS NOT NULL", myConnection);
             if (empIDBox.Text != "")
             {
                 myCommand.CommandText += " AND empID = @empID";

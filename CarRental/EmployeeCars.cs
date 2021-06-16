@@ -172,6 +172,11 @@ namespace CarRental
             r1.ShowDialog();
         }
 
+        private void vehicleClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /* Button linking to Reports Form */
         private void button7_Click(object sender, EventArgs e)
         {

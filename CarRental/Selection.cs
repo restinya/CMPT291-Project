@@ -34,6 +34,38 @@ namespace CarRental
                 this.Close();
             }
 
+
+            //Populate the items in the following comboboxes
+            try
+            {
+                //Retrieving branchIDs
+                myCommand.CommandText = "select branchID, branchName from Branch";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    pickupLocation.Items.Add(myReader["branchID"].ToString() + " - " + myReader["branchName"].ToString());
+                    returnLocation.Items.Add(myReader["branchID"].ToString() + " - " + myReader["branchName"].ToString());
+                    /* branchName.Items.Add(myReader["branchName"].ToString()); */
+                }
+                myReader.Close();
+
+                //Retrieving Vehicle Classes
+                myCommand.CommandText = "select carTypeID, carClass from CarType";
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    vehicleClass.Items.Add(myReader["carTypeID"].ToString() + " - " + myReader["carClass"].ToString());
+                    /* carClass.Items.Add(myReader["carClass"].ToString()); */
+                }
+                myReader.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error");
+                this.Close();
+            }
+
         }
 
         public static string SetValueForPickupLoc = "";
@@ -110,6 +142,11 @@ namespace CarRental
         }
 
         private void Selection_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vehicleClass_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

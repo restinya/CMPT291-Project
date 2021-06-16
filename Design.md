@@ -14,7 +14,9 @@
 
 - The main entities in this E-R Diagram are the Employees, Customers, Branches, Rentals, Cars and CarTypes.
 - There is a "Requested" relationship between Rentals and CarTypes because if a gold member customer is eligible for a free car upgrade during rental reservation, then the customer's requested car type would have to be recorded in order to override the selected car type pricing with their requested one. This only applies if the requested car type is not available in the time frame they had selected.
+- There are two relationship sets between Rentals and Branches: PickUp and Return. This is to compare data to calculate the changeBranch fee if applicable.
 - Customers have a multi-valued attribute for phone numbers because there is an unknown number of phone numbers that a customer can have. This ensures flexibility in case the customer has more phone numbers than expected and avoids the situation where there is not enough columns in the Customers table.
+- The Rentals table make up the central entity that connects to all of the other entities in the E-R Diagram. It is total participatory for all of them except for CarTypes and the return Branch since those fields do not have to be necessarily filled when the record is first made.
 
 ### Integrity Constraints
 
@@ -26,3 +28,7 @@
 - **Employee Table**: The Employee table's branchID is referenced as a foreign key from the Branch Table
 - **Car Table**: The Car table's carTypeID is referenced as a foreign key from the Car Type table and the branchID is referenced as a foreign key from the Branch table
 - **Rental Table**: The Rental table's customerID is referenced as a foreign key from the Customer table, employeeID from the Employee table, expectedCarTypeID from the Car Type table, carID from the Car table, and the pickUpBranchID and returnBranchID from the Branch table
+
+###### Auto-Generated Primary Keys:
+
+- ID numbers for the primary keys of the Car, Customer and Rental Tables are automatically generated and increments by 1 after every creation of new entries in the User Interface. 
