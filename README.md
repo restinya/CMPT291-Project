@@ -4,3 +4,4 @@ Members:
 - Mario Calderon
 - Joseph Latina
 - Courtney McNeilly
+- Neill Reyes

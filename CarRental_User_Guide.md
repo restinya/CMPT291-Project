@@ -142,3 +142,24 @@ Your selected information from the previous screen will appear in the header. Co
 1. Click "Custom Reports" button from the Employee Cars screen
 2. Choose a report from the drop down menu
 2. Click get report
+
+### Employee Records
+
+###### Searching for an employee
+
+1. To the top-right of the interface is a set of fields to search through the database of employees.
+2. Fill in the desired fields and hit search to generate a list of employees.
+
+###### Editing an employee's records 
+
+1. First, select the employee you would like to edit but clicking on the leftmost column of the employee's row.
+2. This will populate the bottom right fields with the current info of the employee.
+3. Modify the fields and hit edit to change the employee record in the database.
+
+### Rental Records
+
+###### Retrieving rental records
+
+1. On the Rental Reservations screen, you're offered two fields. By selecting the customer and employee, you can filter rentals made by those two.
+2. Hit 'Load Rental Reservations' once the fields have been selected to populate the database.
+3. Hit 'Clear Filters' to reset the screen to its neutral state. 
