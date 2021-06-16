@@ -57,3 +57,58 @@
 ###### Deleting Car Records:
 
 - Select the record to be deleted on the table. Click "Delete" and a confirmation message will pop up. Select "Yes" and the record will then be deleted from the database.
+
+
+### Logging in :
+
+![img](https://i.imgur.com/Z3O40a1.png)
+1. Choose the type of user you are and leave EmpID empty if you're a customer
+2. If an employee is signing in then enter the EmpID in the text box
+
+### Customer Records:
+
+### Updating a customer record:
+1. From the Employee Cars screen hit the Customer Records button
+
+![img](https://i.imgur.com/tZKviqJ.png)
+
+2. To update a customers information click on the row the customer is on
+   then hit the "Update Selected Customer" button.
+
+3. A form with the customer's information then pops up. Edit the information and
+   hit submit
+
+
+![img](https://i.imgur.com/3cIDmwD.png)
+
+### Adding a customer record:
+
+![img](https://i.imgur.com/pA2UJXC.png)
+
+1. Click the "Add Customer" button
+2. Fill out the form
+3. Submit the form
+
+### Adding a phone number to a customers record
+
+![img](https://i.imgur.com/aGhx6Rj.png)
+
+1. Select the customer in the customer records table
+2. Click the "Add phone" button
+3. Fill out the form that appears and submit
+
+### Updating a customer's phone number
+
+![img](https://i.imgur.com/XDmMHK8.png)
+
+1. Select a phone number in the phone number's table
+2. Click the "Update Phone Number" button
+3. Fill out form and submit
+
+### Custom reports :
+
+![img](https://i.imgur.com/T959Tsb.png)
+
+1. Click "Custom Reports" button from the Employee Cars screen
+2. Choose a report from the drop down menu
+2. Click get report
