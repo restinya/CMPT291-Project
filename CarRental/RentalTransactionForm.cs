@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -196,7 +191,7 @@ namespace CarRental
                 e1.ShowDialog();
             }
 
-            catch (Exception e2) 
+            catch (Exception e2)
             {
                 MessageBox.Show(e2.ToString(), "Error: Missing Some Fields.");
             }
@@ -208,9 +203,9 @@ namespace CarRental
             String custID = "sample";
             try
             {
-                
-                myCommand.CommandText = "insert into Customer values (" + "'" + fName.Text + "','" + lName.Text + "',NULL,'" + 
-                                            city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "','" + 
+
+                myCommand.CommandText = "insert into Customer values (" + "'" + fName.Text + "','" + lName.Text + "',NULL,'" +
+                                            city.Text + "','" + state.Text + "','" + street.Text + "','" + postalCode.Text + "','" +
                                             dateOfBirth.Text + "')";
                 myCommand.ExecuteNonQuery();
 
@@ -221,14 +216,14 @@ namespace CarRental
                 {
                     custID = myReader["customerID"].ToString();
                     MessageBox.Show("Customer ID " + custID + " is created.");
-                    
+
                 }
                 myReader.Close();
 
                 //Create records for customer phone number table
                 if (homeNum.Text != "")
                 {
-                    myCommand.CommandText = "insert into PhoneNum values (" + custID + ",'" + homeNum.Text +  "')";
+                    myCommand.CommandText = "insert into PhoneNum values (" + custID + ",'" + homeNum.Text + "')";
                     myCommand.ExecuteNonQuery();
                 }
                 if (mobileNum.Text != "")
@@ -273,8 +268,8 @@ namespace CarRental
 
         private void customerID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         /* Function that will calculate the estimated cost of the rental transaction */

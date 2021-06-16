@@ -438,7 +438,9 @@ namespace CarRental
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox mileageUsed;
+#pragma warning disable CS0169 // The field 'ReturnTransactionForm.button1' is never used
         private System.Windows.Forms.Button button1;
+#pragma warning restore CS0169 // The field 'ReturnTransactionForm.button1' is never used
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox customerIDBox;
@@ -452,7 +454,9 @@ namespace CarRental
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox result;
         private System.Windows.Forms.Button loadButton;
+#pragma warning disable CS0169 // The field 'ReturnTransactionForm.rn' is never used
         private System.Windows.Forms.ComboBox rn;
+#pragma warning restore CS0169 // The field 'ReturnTransactionForm.rn' is never used
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalID;
         private System.Windows.Forms.DataGridViewTextBoxColumn pickUpDate;

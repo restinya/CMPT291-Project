@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -103,55 +99,55 @@ namespace CarRental
             }
         }
 
-            /* Helper function that will retrieve all of the items for the BranchID combobox in data grid view 
+            /* Helper function that will retrieve all of the items for the BranchID combobox in data grid view */
             private DataTable GetBranchTable()
             {
                 DataTable l_dtBranch = new DataTable();
                 l_dtBranch.Columns.Add("BranchID", typeof(string));
 
-                myCommand.CommandText = "select branchID, branchName from Branch";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    l_dtBranch.Rows.Add(myReader["branchID"].ToString());
-                }
-                myReader.Close();
+            myCommand.CommandText = "select branchID, branchName from Branch";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                l_dtBranch.Rows.Add(myReader["branchID"].ToString());
+            }
+            myReader.Close();
 
                 return l_dtBranch;
-            }*/
+            }
 
-            /* Helper function that will retrieve all of the items for the CarType combobox in data grid view 
+            /* Helper function that will retrieve all of the items for the CarType combobox in data grid view */
             private DataTable GetVehicleClassTable()
             {
                 DataTable l_dtVehicleClass = new DataTable();
                 l_dtVehicleClass.Columns.Add("CarType", typeof(string));
 
-                myCommand.CommandText = "select carClass from CarType";
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    l_dtVehicleClass.Rows.Add(myReader["carClass"].ToString());
-                }
-                myReader.Close();
+            myCommand.CommandText = "select carClass from CarType";
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                l_dtVehicleClass.Rows.Add(myReader["carClass"].ToString());
+            }
+            myReader.Close();
 
                 return l_dtVehicleClass;
-            }*/
+            }
 
         /* Button linking to Rental Transaction Form */
         private void button5_Click(object sender, EventArgs e)
-            {
-                this.Hide();
-                RentalTransactionForm r1 = new RentalTransactionForm();
-                r1.ShowDialog();
-            }
+        {
+            this.Hide();
+            RentalTransactionForm r1 = new RentalTransactionForm();
+            r1.ShowDialog();
+        }
 
-            /* Button linking to Return Transaction Form */
-            private void button6_Click(object sender, EventArgs e)
-            {
-                this.Hide();
-                ReturnTransactionForm r1 = new ReturnTransactionForm();
-                r1.ShowDialog();
-            }
+        /* Button linking to Return Transaction Form */
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnTransactionForm r1 = new ReturnTransactionForm();
+            r1.ShowDialog();
+        }
 
         /* Customer Records Button */
         private void button4_Click_1(object sender, EventArgs e)
@@ -183,19 +179,19 @@ namespace CarRental
 
         /* Button linking to Reports Form */
         private void button7_Click(object sender, EventArgs e)
-            {
-                this.Hide();
-                Reports r1 = new Reports();
-                r1.ShowDialog();
-            }
+        {
+            this.Hide();
+            Reports r1 = new Reports();
+            r1.ShowDialog();
+        }
 
-            /* Back Button */
-            private void button8_Click(object sender, EventArgs e)
-            {
-                this.Hide();
-                Welcome w1 = new Welcome();
-                w1.ShowDialog();
-            }
+        /* Back Button */
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Welcome w1 = new Welcome();
+            w1.ShowDialog();
+        }
 
         /* Helper function that will connect the populated combobox to the data grid view */
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -222,22 +218,22 @@ namespace CarRental
                 }
             }*/
         }
-    
-            /* Helper function that will retrieve the modified values once the data grid view is done being edited */
-            private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-            {
-                int rowselect = e.RowIndex;
-                updateCarID = listOfCars.Rows[rowselect].Cells[0].Value.ToString();
-                updateCarType = listOfCars.Rows[rowselect].Cells[1].Value.ToString();
-                updateMake = listOfCars.Rows[rowselect].Cells[2].Value.ToString();
-                updateModel = listOfCars.Rows[rowselect].Cells[3].Value.ToString();
-                updateYear = listOfCars.Rows[rowselect].Cells[4].Value.ToString();
-                updateLicensePlate = listOfCars.Rows[rowselect].Cells[5].Value.ToString();
-                updateCurrentMileage = listOfCars.Rows[rowselect].Cells[6].Value.ToString();
-                updateTransmissionType = listOfCars.Rows[rowselect].Cells[7].Value.ToString();
-                updateSeats = listOfCars.Rows[rowselect].Cells[8].Value.ToString();
-                updateBranchID = listOfCars.Rows[rowselect].Cells[9].Value.ToString();
-                updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
+
+        /* Helper function that will retrieve the modified values once the data grid view is done being edited */
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowselect = e.RowIndex;
+            updateCarID = listOfCars.Rows[rowselect].Cells[0].Value.ToString();
+            updateCarType = listOfCars.Rows[rowselect].Cells[1].Value.ToString();
+            updateMake = listOfCars.Rows[rowselect].Cells[2].Value.ToString();
+            updateModel = listOfCars.Rows[rowselect].Cells[3].Value.ToString();
+            updateYear = listOfCars.Rows[rowselect].Cells[4].Value.ToString();
+            updateLicensePlate = listOfCars.Rows[rowselect].Cells[5].Value.ToString();
+            updateCurrentMileage = listOfCars.Rows[rowselect].Cells[6].Value.ToString();
+            updateTransmissionType = listOfCars.Rows[rowselect].Cells[7].Value.ToString();
+            updateSeats = listOfCars.Rows[rowselect].Cells[8].Value.ToString();
+            updateBranchID = listOfCars.Rows[rowselect].Cells[9].Value.ToString();
+            updateStatus = listOfCars.Rows[rowselect].Cells[10].Value.ToString();
         }
 
         /* Add Button */
@@ -365,7 +361,7 @@ namespace CarRental
             String id = listOfCars.SelectedRows[0].Cells[0].Value.ToString();
             if (id != "")
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?","Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     myCommand.CommandText = "delete from Car where carID = " + id;
@@ -402,4 +398,4 @@ namespace CarRental
             }
         }
     }
-    }
+}

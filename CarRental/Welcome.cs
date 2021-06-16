@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -68,7 +64,7 @@ namespace CarRental
                 {
                     int i = 0;
                     //Checking if empID is valid
-                    myCommand.CommandText = "select * from employee where empID = '"+empIdBox.Text+"'";
+                    myCommand.CommandText = "select * from employee where empID = '" + empIdBox.Text + "'";
                     myCommand.ExecuteNonQuery();
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(myCommand);
@@ -95,7 +91,7 @@ namespace CarRental
                     MessageBox.Show(e3.ToString(), "Error");
                 }
             };
-            
+
             // if Customer is Selected
             if (selectedIndex == 0)
             {
@@ -104,7 +100,7 @@ namespace CarRental
                 s1.ShowDialog();
             };
 
-            
+
 
 
 

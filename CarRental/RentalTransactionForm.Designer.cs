@@ -712,7 +712,9 @@ namespace CarRental
         private System.Windows.Forms.ComboBox requestedClass;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox pickUpBranch;
+#pragma warning disable CS0169 // The field 'RentalTransactionForm.car' is never used
         private System.Windows.Forms.TextBox car;
+#pragma warning restore CS0169 // The field 'RentalTransactionForm.car' is never used
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker pickUpDate;
         private System.Windows.Forms.DateTimePicker expectedDate;
@@ -749,10 +751,14 @@ namespace CarRental
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
+#pragma warning disable CS0169 // The field 'RentalTransactionForm.member' is never used
         private System.Windows.Forms.GroupBox member;
+#pragma warning restore CS0169 // The field 'RentalTransactionForm.member' is never used
         private System.Windows.Forms.DataGridView availableCars;
         private System.Windows.Forms.GroupBox s;
+#pragma warning disable CS0169 // The field 'RentalTransactionForm.hi' is never used
         private System.Windows.Forms.TextBox hi;
+#pragma warning restore CS0169 // The field 'RentalTransactionForm.hi' is never used
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox returnBranch;
         private System.Windows.Forms.Label returnBranchID;

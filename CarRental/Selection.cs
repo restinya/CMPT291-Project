@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CarRental
@@ -91,7 +86,8 @@ namespace CarRental
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (returnCheckbox.Checked) {
+            if (returnCheckbox.Checked)
+            {
                 returnLocLabel.Visible = true;
                 returnLocation.Visible = true;
             }
@@ -113,12 +109,13 @@ namespace CarRental
             //if return location is different to pickup location
             if (returnCheckbox.Checked == true)
             {
-               SetValueForReturnLoc = returnLocation.Text;
-            } else
+                SetValueForReturnLoc = returnLocation.Text;
+            }
+            else
             {
                 SetValueForReturnLoc = pickupLocation.Text;   // if returning to same location
             }
-            
+
 
 
             this.Hide();
@@ -141,7 +138,7 @@ namespace CarRental
 
         private void pickupLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Selection_Load(object sender, EventArgs e)
