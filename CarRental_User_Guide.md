@@ -1,5 +1,34 @@
 ## Car Rental User Guide
 
+### Logging In
+
+![img](https://i.imgur.com/p3Bq8cZ.png)
+
+1. Select your user profile: Customer or Employee.
+    - If Employee, enter your Employee ID.
+2. Click the Login button to move forward.
+
+### Customer - Find a Rental
+
+![img](https://i.imgur.com/9SiiReL.png)
+
+1. Select your pick-up location.
+2. If returning to a different branch, select the "Return to different location" checkbox.
+    - Enter Return Location if applicable
+3. Select pick-up and return dates.
+4. Select Vehicle Class that you're interested in from the dropdown menu.
+5. When ready, click the button titled "Check Availability"
+6. If you have made a mistake and would like to log in as an employee instead, click the "Back" buttons.
+
+### Customer - Vehicle Selection
+
+![img](https://i.imgur.com/zDNaUAm.png)
+
+Your selected information from the previous screen will appear in the header. Confirm that this is correct before proceeding.
+
+1. Select preferred vehicle from the populated list of available vehicles.
+2. When ready, click the button titled "Submit" and your Representative will then help you to complete your rental.
+
 ### Booking a New Rental Reservation:
 
 ![img](https://i.imgur.com/RCNY4iP.png)
