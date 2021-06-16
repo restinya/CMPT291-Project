@@ -67,7 +67,7 @@
 
 ### Customer Records:
 
-### Updating a customer record:
+###### Updating a customer record:
 1. From the Employee Cars screen hit the Customer Records button
 
 ![img](https://i.imgur.com/tZKviqJ.png)
@@ -81,7 +81,7 @@
 
 ![img](https://i.imgur.com/3cIDmwD.png)
 
-### Adding a customer record:
+###### Adding a customer record:
 
 ![img](https://i.imgur.com/pA2UJXC.png)
 
@@ -89,7 +89,7 @@
 2. Fill out the form
 3. Submit the form
 
-### Adding a phone number to a customers record
+###### Adding a phone number to a customers record
 
 ![img](https://i.imgur.com/aGhx6Rj.png)
 
@@ -97,7 +97,7 @@
 2. Click the "Add phone" button
 3. Fill out the form that appears and submit
 
-### Updating a customer's phone number
+###### Updating a customer's phone number
 
 ![img](https://i.imgur.com/XDmMHK8.png)
 
