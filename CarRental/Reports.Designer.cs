@@ -75,7 +75,7 @@ namespace CarRental
             this.selectReport.FormattingEnabled = true;
             this.selectReport.Location = new System.Drawing.Point(6, 22);
             this.selectReport.Name = "selectReport";
-            this.selectReport.Size = new System.Drawing.Size(121, 23);
+            this.selectReport.Size = new System.Drawing.Size(385, 23);
             this.selectReport.TabIndex = 1;
             this.selectReport.Text = "Select Report";
             this.selectReport.SelectedIndexChanged += new System.EventHandler(this.selectReport_SelectedIndexChanged);

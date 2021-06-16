@@ -36,15 +36,24 @@ namespace CarRental
             selectReport.Items.Add("Customer with most SUVs reserved in the same month");
             selectReport.Items.Add("10 Most Used Cars");
             selectReport.Items.Add("Top 3 customers with the most reserved cars returned in a branch");
+            selectReport.Items.Add("Top 3 Highest Earning Employees");
         }
-
+        /// <summary>
+        /// Back button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
             EmployeeCars e1 = new EmployeeCars();
             e1.ShowDialog();
         }
-
+        /// <summary>
+        /// Displays the contents of the selected report on a table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void getReport_Click(object sender, EventArgs e)
         {
             String query;
@@ -58,8 +67,8 @@ namespace CarRental
             switch (choice)
             {
                 case "Top 3 employees based on number of rental reservations completed":
-                    query = "SELECT TOP (3) employeeID\n" + 
-                    "FROM(SELECT TOP(3) employeeID, COUNT(*) as [count]\n" + 
+                    query = "SELECT TOP (3) *\n" + 
+                    "FROM(SELECT TOP(3) employeeID, COUNT(*) as [Rental reservations completed]\n" + 
                     "from Rental\n" + 
                     "GROUP BY employeeID\n" +
                     "ORDER BY COUNT(*) DESC) as subQuery;";
@@ -86,8 +95,8 @@ namespace CarRental
                     break;
 
                 case "10 Most Used Cars":
-                    query = "SELECT TOP (3) carID\n"+
-                            "FROM(SELECT TOP(10) carID, COUNT(*) as [count]\n"+
+                    query = "SELECT TOP (10) *\n"+
+                            "FROM(SELECT TOP(10) carID, COUNT(*) as [Times Used]\n"+
                             "FROM Rental\n" +
                             "GROUP BY carID\n" +
                             "ORDER BY COUNT(*) DESC) as subQuery";
@@ -101,8 +110,8 @@ namespace CarRental
                     break;
 
                 case "Top 3 customers with the most reserved cars returned in a branch":
-                    query = "SELECT customerID\n" + 
-                            "From(SELECT TOP(3) customerID, COUNT(*) as [count]\n" +
+                    query = "SELECT *\n" + 
+                            "From(SELECT TOP(3) customerID, COUNT(*) as [Cars Returned]\n" +
                             "FROM Rental, Branch\n" +
                             "where Rental.returnBranchID = Branch.branchID\n" +
                             "GROUP BY customerID) as subquery\n";
@@ -115,8 +124,22 @@ namespace CarRental
                     myReader.Close();
                     break;
 
+                case "Top 3 Highest Earning Employees":
+                    query = "SELECT TOP(3) *\n" +
+                            "FROM(SELECT TOP(3) employeeID, Sum(totalFee) as [Total Fees from Transactions]\n" +
+                            "from Rental\n" +
+                            "GROUP BY employeeID\n" +
+                            "ORDER BY COUNT(*) DESC) as subQuery";
+
+
+                    myCommand.CommandText = query;
+                    myReader = myCommand.ExecuteReader();
+                    dt.Load(myReader);
+                    queryData.DataSource = dt;
+                    myReader.Close();
+                    break;
+
                 default:
-                    Console.WriteLine("Default case");
                     break;
             }
 
