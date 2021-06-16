@@ -58,21 +58,44 @@ namespace CarRental
         private void empSearchButton_Click(object sender, EventArgs e)
         {
             //Generate list of employees given query
-            myCommand = new SqlCommand("SELECT * FROM Employee WHERE empID = @empID " +
-                "AND branchID = @branchID " +
-                "AND fName LIKE @fName " +
-                "AND lName LIKE @lName " +
-                "AND street LIKE @street " +
-                "AND city LIKE @city " +
-                "AND postalcode = @postalcode", myConnection);
+            myCommand = new SqlCommand("SELECT * FROM Employee WHERE IsDeleted = 0", myConnection);
+            if (empIDBox.Text != "")
+            {
+                myCommand.CommandText = " AND empID = @empID";
+                myCommand.Parameters.AddWithValue("@empID", empIDBox.Text);
+            }
+            if (branchBox.Text != "")
+            {
+                myCommand.CommandText = " AND branchID = @branchID";
+                myCommand.Parameters.AddWithValue("@branchID", branchBox.Text);
+            }
+            if (fNameBox.Text != "")
+            {
+                myCommand.CommandText = " AND fName = @fName";
+                myCommand.Parameters.AddWithValue("@fName", fNameBox.Text + '%');
+            }
+            if (lNameBox.Text != "")
+            {
+                myCommand.CommandText = " AND lName = @lName";
+                myCommand.Parameters.AddWithValue("@lName", lNameBox.Text + '%');
+            }
+            if (streetBox.Text != "")
+            {
+                myCommand.CommandText = " AND street = @street";
+                myCommand.Parameters.AddWithValue("@street", streetBox.Text + '%');
+            }
+            if (cityBox.Text != "")
+            {
+                myCommand.CommandText = " AND city = @city";
+                myCommand.Parameters.AddWithValue("@city", cityBox.Text + '%');
+            }
+            if (postalBox.Text != "")
+            {
+                myCommand.CommandText = " AND postalCode = @postalCode";
+                myCommand.Parameters.AddWithValue("@postalCode", postalBox.Text);
+            }
             myConnection.Open();
-            myCommand.Parameters.AddWithValue("@empID", empIDBox.Text);
-            myCommand.Parameters.AddWithValue("@branchID", branchBox.Text);
-            myCommand.Parameters.AddWithValue("@fName", fNameBox.Text + '%');
-            myCommand.Parameters.AddWithValue("@lName", lNameBox.Text + '%');
-            myCommand.Parameters.AddWithValue("@street", streetBox.Text + '%');
-            myCommand.Parameters.AddWithValue("@city", cityBox.Text + '%');
-            myCommand.Parameters.AddWithValue("@postalcode", postalBox.Text);
+
             //myCommand.CommandText = "SELECT * FROM Employee WHERE Employee.branchID =" + branchCombo.Text + " AND " +
             //                        "Employee.fName LIKE '" + fNameBox.Text + "%' AND " +
             //                        "Employee.lName LIKE '" + lNameBox.Text + "%' AND " +

@@ -34,6 +34,7 @@ namespace CarRental
             this.fNameBox = new System.Windows.Forms.TextBox();
             this.lNameBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.branchBox = new System.Windows.Forms.TextBox();
             this.empIDBox = new System.Windows.Forms.TextBox();
             this.postalBox = new System.Windows.Forms.TextBox();
             this.cityBox = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@ namespace CarRental
             this.postalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editButton = new System.Windows.Forms.Button();
             this.editEmployee = new System.Windows.Forms.GroupBox();
+            this.editBranchBox = new System.Windows.Forms.TextBox();
             this.editEmpIDBox = new System.Windows.Forms.TextBox();
             this.editPostalBox = new System.Windows.Forms.TextBox();
             this.editCityBox = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@ namespace CarRental
             this.editStreetBox = new System.Windows.Forms.TextBox();
             this.editFNameBox = new System.Windows.Forms.TextBox();
             this.backButton = new System.Windows.Forms.Button();
-            this.branchBox = new System.Windows.Forms.TextBox();
-            this.editBranchBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empDataView)).BeginInit();
             this.editEmployee.SuspendLayout();
@@ -75,9 +75,9 @@ namespace CarRental
             // 
             this.streetBox.Location = new System.Drawing.Point(8, 52);
             this.streetBox.Name = "streetBox";
+            this.streetBox.PlaceholderText = "Street";
             this.streetBox.Size = new System.Drawing.Size(100, 23);
             this.streetBox.TabIndex = 2;
-            this.streetBox.Text = "Street";
             this.streetBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // fNameBox
@@ -85,17 +85,17 @@ namespace CarRental
             this.fNameBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.fNameBox.Location = new System.Drawing.Point(6, 22);
             this.fNameBox.Name = "fNameBox";
+            this.fNameBox.PlaceholderText = "First Name";
             this.fNameBox.Size = new System.Drawing.Size(100, 23);
             this.fNameBox.TabIndex = 3;
-            this.fNameBox.Text = "First Name";
             // 
             // lNameBox
             // 
             this.lNameBox.Location = new System.Drawing.Point(112, 22);
             this.lNameBox.Name = "lNameBox";
+            this.lNameBox.PlaceholderText = "Last Name";
             this.lNameBox.Size = new System.Drawing.Size(100, 23);
             this.lNameBox.TabIndex = 4;
-            this.lNameBox.Text = "Last Name";
             // 
             // groupBox1
             // 
@@ -115,26 +115,35 @@ namespace CarRental
             this.groupBox1.Text = "Search for Employee";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // branchBox
+            // 
+            this.branchBox.Location = new System.Drawing.Point(110, 81);
+            this.branchBox.Name = "branchBox";
+            this.branchBox.PlaceholderText = "Branch ID";
+            this.branchBox.Size = new System.Drawing.Size(100, 23);
+            this.branchBox.TabIndex = 9;
+            // 
             // empIDBox
             // 
             this.empIDBox.Location = new System.Drawing.Point(9, 110);
             this.empIDBox.Name = "empIDBox";
+            this.empIDBox.PlaceholderText = "Employee ID";
             this.empIDBox.Size = new System.Drawing.Size(100, 23);
             this.empIDBox.TabIndex = 8;
-            this.empIDBox.Text = "Employee ID.";
             // 
             // postalBox
             // 
             this.postalBox.Location = new System.Drawing.Point(8, 81);
             this.postalBox.Name = "postalBox";
+            this.postalBox.PlaceholderText = "Postal Code";
             this.postalBox.Size = new System.Drawing.Size(100, 23);
             this.postalBox.TabIndex = 7;
-            this.postalBox.Text = "Postal Code";
             // 
             // cityBox
             // 
             this.cityBox.Location = new System.Drawing.Point(111, 51);
             this.cityBox.Name = "cityBox";
+            this.cityBox.PlaceholderText = "City";
             this.cityBox.Size = new System.Drawing.Size(100, 23);
             this.cityBox.TabIndex = 6;
             this.cityBox.Text = "City";
@@ -228,55 +237,63 @@ namespace CarRental
             this.editEmployee.TabStop = false;
             this.editEmployee.Text = "Edit Selected Employee";
             // 
+            // editBranchBox
+            // 
+            this.editBranchBox.Location = new System.Drawing.Point(110, 81);
+            this.editBranchBox.Name = "editBranchBox";
+            this.editBranchBox.PlaceholderText = "Branch ID";
+            this.editBranchBox.Size = new System.Drawing.Size(100, 23);
+            this.editBranchBox.TabIndex = 9;
+            // 
             // editEmpIDBox
             // 
             this.editEmpIDBox.Location = new System.Drawing.Point(6, 109);
             this.editEmpIDBox.Name = "editEmpIDBox";
+            this.editEmpIDBox.PlaceholderText = "Employee ID";
             this.editEmpIDBox.ReadOnly = true;
             this.editEmpIDBox.Size = new System.Drawing.Size(100, 23);
             this.editEmpIDBox.TabIndex = 8;
-            this.editEmpIDBox.Text = "Employee ID";
             // 
             // editPostalBox
             // 
             this.editPostalBox.Location = new System.Drawing.Point(6, 80);
             this.editPostalBox.Name = "editPostalBox";
+            this.editPostalBox.PlaceholderText = "Postal Code";
             this.editPostalBox.Size = new System.Drawing.Size(100, 23);
             this.editPostalBox.TabIndex = 7;
-            this.editPostalBox.Text = "Postal Code";
             // 
             // editCityBox
             // 
             this.editCityBox.Location = new System.Drawing.Point(110, 52);
             this.editCityBox.Name = "editCityBox";
+            this.editCityBox.PlaceholderText = "City";
             this.editCityBox.Size = new System.Drawing.Size(100, 23);
             this.editCityBox.TabIndex = 6;
-            this.editCityBox.Text = "City";
             // 
             // editLNameBox
             // 
             this.editLNameBox.Location = new System.Drawing.Point(110, 22);
             this.editLNameBox.Name = "editLNameBox";
+            this.editLNameBox.PlaceholderText = "Last Name";
             this.editLNameBox.Size = new System.Drawing.Size(100, 23);
             this.editLNameBox.TabIndex = 4;
-            this.editLNameBox.Text = "Last Name";
             // 
             // editStreetBox
             // 
             this.editStreetBox.Location = new System.Drawing.Point(6, 51);
             this.editStreetBox.Name = "editStreetBox";
+            this.editStreetBox.PlaceholderText = "Street";
             this.editStreetBox.Size = new System.Drawing.Size(100, 23);
             this.editStreetBox.TabIndex = 2;
-            this.editStreetBox.Text = "Street";
             // 
             // editFNameBox
             // 
             this.editFNameBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.editFNameBox.Location = new System.Drawing.Point(6, 22);
             this.editFNameBox.Name = "editFNameBox";
+            this.editFNameBox.PlaceholderText = "First Name";
             this.editFNameBox.Size = new System.Drawing.Size(100, 23);
             this.editFNameBox.TabIndex = 3;
-            this.editFNameBox.Text = "First Name";
             this.editFNameBox.TextChanged += new System.EventHandler(this.editFNameBox_TextChanged);
             // 
             // backButton
@@ -288,22 +305,6 @@ namespace CarRental
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // branchBox
-            // 
-            this.branchBox.Location = new System.Drawing.Point(110, 81);
-            this.branchBox.Name = "branchBox";
-            this.branchBox.Size = new System.Drawing.Size(100, 23);
-            this.branchBox.TabIndex = 9;
-            this.branchBox.Text = "Branch ID";
-            // 
-            // editBranchBox
-            // 
-            this.editBranchBox.Location = new System.Drawing.Point(110, 81);
-            this.editBranchBox.Name = "editBranchBox";
-            this.editBranchBox.Size = new System.Drawing.Size(100, 23);
-            this.editBranchBox.TabIndex = 9;
-            this.editBranchBox.Text = "Branch ID";
             // 
             // Employees
             // 
