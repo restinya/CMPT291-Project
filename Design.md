@@ -6,7 +6,9 @@
 
 **Purpose**: A design documents that describes the design decisions made
 
+### Goals
 
+The goal of this program is to allow Rental Car Company to effectively manage a database of their fleet of cars, employees, customers, and  rental transactions, and to be able to modify the records when required. In addition, the program should satisfy the customer who will be looking to book their rental given specific parameters, the employee who will be completing the transactions on behalf of the customers, and the management team who will be running reports on the effectiveness of their branches.
 
 ### Entity-Relationship Diagram
 
@@ -32,3 +34,4 @@
 ###### Auto-Generated Primary Keys:
 
 - ID numbers for the primary keys of the Car, Customer and Rental Tables are automatically generated and increments by 1 after every creation of new entries in the User Interface. 
+
