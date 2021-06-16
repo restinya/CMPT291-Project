@@ -4,7 +4,6 @@ drop table Rental;
 drop table Employee;
 drop table PhoneNum;
 drop table Car;
-drop table Test;
 drop table Branch;
 drop table Customer;
 drop table CarType;
