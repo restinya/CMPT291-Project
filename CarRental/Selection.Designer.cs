@@ -121,11 +121,6 @@ namespace CarRental
             // 
             this.pickupLocation.Cursor = System.Windows.Forms.Cursors.Default;
             this.pickupLocation.FormattingEnabled = true;
-            this.pickupLocation.Items.AddRange(new object[] {
-            "Edmonton",
-            "Calgary",
-            "Saskatoon",
-            "Vancouver"});
             this.pickupLocation.Location = new System.Drawing.Point(54, 126);
             this.pickupLocation.Name = "pickupLocation";
             this.pickupLocation.Size = new System.Drawing.Size(121, 23);
@@ -146,11 +141,6 @@ namespace CarRental
             // returnLocation
             // 
             this.returnLocation.FormattingEnabled = true;
-            this.returnLocation.Items.AddRange(new object[] {
-            "Edmonton",
-            "Calgary",
-            "Saskatoon",
-            "Vancouver"});
             this.returnLocation.Location = new System.Drawing.Point(257, 126);
             this.returnLocation.Name = "returnLocation";
             this.returnLocation.Size = new System.Drawing.Size(121, 23);
@@ -194,15 +184,11 @@ namespace CarRental
             // vehicleClass
             // 
             this.vehicleClass.FormattingEnabled = true;
-            this.vehicleClass.Items.AddRange(new object[] {
-            "Cars",
-            "SUVs",
-            "Vans",
-            "Pickups"});
             this.vehicleClass.Location = new System.Drawing.Point(54, 345);
             this.vehicleClass.Name = "vehicleClass";
             this.vehicleClass.Size = new System.Drawing.Size(121, 23);
             this.vehicleClass.TabIndex = 14;
+            this.vehicleClass.SelectedIndexChanged += new System.EventHandler(this.vehicleClass_SelectedIndexChanged);
             // 
             // checkAvailability
             // 
