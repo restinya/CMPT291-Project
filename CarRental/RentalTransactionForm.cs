@@ -427,8 +427,8 @@ namespace CarRental
             string branchID = extractID(pickUpBranch);
             myCommand.CommandText = "select * from Car, Branch, CarType where Car.branchID = Branch.branchID and Car.cartypeID = CarType.cartypeID and " +
                                     "Branch.branchID = " + branchID + " and Car.carID not in " +
-                                    "((select carID from Rental where pickUpDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "') UNION " +
-                                    "(select carID from Rental where expectedDate between '" + pickUpDate.Text + "' and '" + expectedDate.Text + "'))";
+                                    "((select carID from Rental where pickUpDate between '" + pickUpDate.Value.ToString() + "' and '" + expectedDate.Value.ToString() + "') UNION " +
+                                    "(select carID from Rental where expectedDate between '" + pickUpDate.Value.ToString() + "' and '" + expectedDate.Value.ToString() + "'))";
             myReader = myCommand.ExecuteReader();
             availableCars.Rows.Clear();
             //Initialize eligible variable based on the content of the requested Class box
